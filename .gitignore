@@ -1,0 +1,9 @@
+node_modules
+dist
+dev-out.txt
+dev-err.txt
+dev-output.txt
+dev-error.txt
+*.log
+.DS_Store
+.vscode

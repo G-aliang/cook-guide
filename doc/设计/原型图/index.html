@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家常菜入门指南 - 原型图</title>
+<style>
+:root {
+  --primary: #FF6B35;
+  --primary-light: #FFF0EB;
+  --primary-dark: #E55A2B;
+  --secondary: #2D9D78;
+  --secondary-light: #E8F5F0;
+  --bg: #F7F7F7;
+  --card: #FFFFFF;
+  --text: #333333;
+  --text-2: #888888;
+  --text-3: #BBBBBB;
+  --border: #E8E8E8;
+  --danger: #E74C3C;
+  --danger-light: #FDECEA;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); }
+
+/* === Sidebar === */
+.sidebar { position: fixed; left: 0; top: 0; width: 220px; height: 100vh; background: #fff; border-right: 1px solid var(--border); padding: 20px 0; overflow-y: auto; z-index: 100; }
+.sidebar h1 { font-size: 16px; padding: 0 20px 16px; color: var(--primary); border-bottom: 2px solid var(--primary-light); }
+.sidebar ul { list-style: none; padding: 8px 0; }
+.sidebar li a { display: block; padding: 10px 20px; font-size: 14px; color: var(--text-2); text-decoration: none; transition: all .2s; }
+.sidebar li a:hover { background: var(--primary-light); color: var(--primary); }
+
+/* === Main === */
+.main { margin-left: 220px; padding: 40px; }
+.page-section { margin-bottom: 60px; }
+.page-section h2 { font-size: 20px; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+.page-section h2 .badge { font-size: 12px; color: var(--text-3); margin-left: 8px; }
+
+.wireframe-pair { display: flex; gap: 24px; align-items: flex-start; }
+.wireframe-label { font-size: 13px; color: var(--text-2); margin-bottom: 8px; font-weight: 600; }
+
+/* === Frame === */
+.frame { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.frame-desktop { width: 800px; }
+.frame-mobile { width: 320px; }
+
+/* === Top Nav === */
+.top-nav { display: flex; align-items: center; height: 56px; background: #fff; border-bottom: 1px solid var(--border); padding: 0 16px; gap: 12px; }
+.top-nav .logo { font-size: 16px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+.top-nav .search { flex: 1; height: 36px; background: var(--bg); border-radius: 8px; display: flex; align-items: center; padding: 0 12px; font-size: 13px; color: var(--text-3); }
+.top-nav .nav-links { display: flex; gap: 16px; }
+.top-nav .nav-links span { font-size: 13px; color: var(--text-2); }
+.top-nav .nav-links span.active { color: var(--primary); font-weight: 600; }
+
+/* === Bottom Nav === */
+.bottom-nav { display: flex; height: 56px; background: #fff; border-top: 1px solid var(--border); }
+.bottom-nav .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10px; color: var(--text-3); }
+.bottom-nav .nav-item.active { color: var(--primary); }
+.bottom-nav .nav-item .icon { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
+
+/* === Content areas === */
+.content { padding: 16px; min-height: 300px; }
+.placeholder { background: #F0F0F0; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 12px; }
+.placeholder-dashed { border: 2px dashed #DDD; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 12px; background: #FAFAFA; }
+
+/* === Cards === */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.card-grid-mobile { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.wf-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.wf-card .card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.wf-card .card-desc { font-size: 12px; color: var(--text-2); }
+.wf-card .card-tags { display: flex; gap: 4px; margin-top: 6px; }
+
+/* Tags */
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+.tag-primary { background: var(--primary-light); color: var(--primary); }
+.tag-secondary { background: var(--secondary-light); color: var(--secondary); }
+.tag-danger { background: var(--danger-light); color: var(--danger); }
+.tag-warning { background: var(--primary); color: #fff; }
+.tag-gray { background: #F0F0F0; color: var(--text-2); }
+
+/* === List items === */
+.wf-list-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.wf-list-item:last-child { border-bottom: none; }
+.wf-list-item .thumb { width: 40px; height: 40px; border-radius: 8px; background: #F0F0F0; flex-shrink: 0; }
+.wf-list-item .info { flex: 1; }
+.wf-list-item .info .title { font-size: 14px; font-weight: 500; }
+.wf-list-item .info .desc { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+
+/* === Pagination === */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 16px 0; }
+.pagination button { min-width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 6px; background: #fff; font-size: 13px; color: var(--text-2); cursor: pointer; }
+.pagination button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.pagination .ellipsis { color: var(--text-3); }
+
+/* Load more */
+.load-more { text-align: center; padding: 16px 0; }
+.load-more button { padding: 10px 32px; border: 1px solid var(--primary); border-radius: 8px; background: #fff; color: var(--primary); font-size: 14px; }
+
+/* === Category tabs === */
+.cat-tabs { display: flex; gap: 8px; padding: 0 16px 12px; flex-wrap: wrap; }
+.cat-tabs-mobile { overflow-x: auto; white-space: nowrap; padding: 0 16px 12px; -webkit-overflow-scrolling: touch; }
+.cat-tab { padding: 6px 14px; border-radius: 20px; font-size: 13px; background: #fff; border: 1px solid var(--border); color: var(--text-2); cursor: pointer; }
+.cat-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* === Detail page === */
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-2); padding: 12px 16px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+
+.detail-modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 16px; }
+.detail-modules-mobile { display: flex; flex-direction: column; gap: 12px; padding: 16px; }
+.module-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.module-card .module-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.module-card .module-content { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+.module-card .mini-table { width: 100%; font-size: 13px; border-collapse: collapse; margin-top: 6px; }
+.module-card .mini-table td { padding: 4px 0; border-bottom: 1px solid var(--border); }
+.module-card .mini-table td:first-child { color: var(--text-2); width: 35%; }
+
+/* Note input */
+.note-input-area { border-top: 1px solid var(--border); padding: 12px 16px; background: #FAFAFA; }
+.note-input-area textarea { width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 13px; resize: none; }
+.note-list { margin-top: 8px; }
+.note-item { font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.note-item .note-time { font-size: 12px; color: var(--text-3); }
+
+/* === Home page === */
+.home-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.home-grid-mobile { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.home-entry { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+.home-entry .entry-icon { width: 40px; height: 40px; margin: 0 auto 8px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.home-entry .entry-title { font-size: 14px; font-weight: 600; }
+.home-entry .entry-desc { font-size: 12px; color: var(--text-2); margin-top: 4px; }
+.progress-overview { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+.progress-overview .progress-row { display: flex; gap: 20px; }
+.progress-overview .progress-item { text-align: center; }
+.progress-overview .progress-num { font-size: 24px; font-weight: 700; color: var(--primary); }
+.progress-overview .progress-label { font-size: 12px; color: var(--text-2); }
+
+/* === Shopping list === */
+.check-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.check-item .checkbox { width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 4px; flex-shrink: 0; }
+.check-item .checkbox.checked { background: var(--secondary); border-color: var(--secondary); }
+.check-item.checked .item-name { text-decoration: line-through; color: var(--text-3); }
+.check-item .item-name { font-size: 14px; flex: 1; }
+.check-item .item-amount { font-size: 12px; color: var(--text-2); }
+
+/* === Steps === */
+.wf-step { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.wf-step .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.wf-step .step-content { flex: 1; }
+.wf-step .step-desc { font-size: 14px; }
+.wf-step .step-note { font-size: 12px; color: var(--primary); margin-top: 4px; }
+
+/* === Data manage === */
+.data-actions { display: flex; flex-direction: column; gap: 12px; }
+.data-btn { padding: 14px 20px; border-radius: 12px; font-size: 15px; text-align: left; }
+.data-btn-export { background: var(--primary-light); border: 1px solid var(--primary); color: var(--primary); }
+.data-btn-import { background: var(--secondary-light); border: 1px solid var(--secondary); color: var(--secondary); }
+.data-btn-reset { background: var(--danger-light); border: 1px solid var(--danger); color: var(--danger); }
+
+/* === Nutrition table === */
+.nutrition-table { width: 100%; font-size: 13px; }
+.nutrition-table td { padding: 6px 0; }
+.nutrition-table td:first-child { color: var(--text-2); }
+.nutrition-table td:last-child { text-align: right; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- === Sidebar Navigation === -->
+<nav class="sidebar">
+  <h1>🍳 原型图</h1>
+  <ul>
+    <li><a href="#home">首页</a></li>
+    <li><a href="#ingredients">食材库</a></li>
+    <li><a href="#ingredient-detail">食材详情</a></li>
+    <li><a href="#dishes">菜品库</a></li>
+    <li><a href="#dish-detail">菜品详情</a></li>
+    <li><a href="#match">选菜匹配</a></li>
+    <li><a href="#match-results">匹配结果</a></li>
+    <li><a href="#profile">个人中心</a></li>
+    <li><a href="#history">浏览记录</a></li>
+    <li><a href="#favorites">收藏</a></li>
+    <li><a href="#progress">学习进度</a></li>
+    <li><a href="#settings">设置</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+<!-- === 1. 首页 === -->
+<section id="home" class="page-section">
+  <h2>1. 首页 <span class="badge">Home</span></h2>
+  <div class="wireframe-pair">
+    <!-- Desktop -->
+    <div>
+      <div class="wireframe-label">桌面端 (≥1024px)</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav">
+          <span class="logo">🍳 家常菜</span>
+          <div class="search">🔍 搜索食材或菜品...</div>
+          <div class="nav-links">
+            <span>食材库</span>
+            <span>菜品库</span>
+            <span>收藏</span>
+            <span>清单</span>
+            <span>进度</span>
+          </div>
+        </div>
+        <div class="content">
+          <div class="progress-overview">
+            <div class="progress-row">
+              <div class="progress-item"><div class="progress-num">12</div><div class="progress-label">已做过</div></div>
+              <div class="progress-item"><div class="progress-num" style="color:var(--primary)">8</div><div class="progress-label">想做</div></div>
+              <div class="progress-item"><div class="progress-num" style="color:var(--text-2)">100+</div><div class="progress-label">总菜品</div></div>
+            </div>
+          </div>
+          <div class="home-grid">
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🥬</div><div class="entry-title">食材库</div><div class="entry-desc">认识 · 挑选 · 储存 · 处理</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🍳</div><div class="entry-title">菜品库</div><div class="entry-desc">分步教学 · 从入门到挑战</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--secondary-light)">⭐</div><div class="entry-title">收藏</div><div class="entry-desc">常做的好菜</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🔍</div><div class="entry-title">选菜匹配</div><div class="entry-desc">勾选食材 · 一键匹配</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">📚</div><div class="entry-title">学习进度</div><div class="entry-desc">记录每道菜</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--danger-light)">👤</div><div class="entry-title">个人中心</div><div class="entry-desc">收藏 · 浏览 · 进度 · 设置</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile -->
+    <div>
+      <div class="wireframe-label">移动端 (<768px)</div>
+      <div class="frame frame-mobile">
+        <div class="content" style="padding:12px;">
+          <div class="home-grid-mobile">
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🥬</div><div class="entry-title">食材库</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🍳</div><div class="entry-title">菜品库</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--secondary-light)">⭐</div><div class="entry-title">收藏</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🔍</div><div class="entry-title">选菜匹配</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">📚</div><div class="entry-title">学习进度</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--danger-light)">👤</div><div class="entry-title">个人中心</div></div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 2. 食材库 === -->
+<section id="ingredients" class="page-section">
+  <h2>2. 食材库 <span class="badge">Ingredient List + Pagination</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索食材...</div><div class="nav-links"><span class="active">食材库</span><span>菜品库</span><span>收藏</span><span>清单</span><span>进度</span></div></div>
+        <div class="cat-tabs">
+          <span class="cat-tab active">全部</span><span class="cat-tab">蔬菜</span><span class="cat-tab">肉禽</span><span class="cat-tab">海鲜水产</span><span class="cat-tab">蛋奶</span><span class="cat-tab">豆类</span><span class="cat-tab">冻品</span><span class="cat-tab">主食</span><span class="cat-tab">调味项</span><span class="cat-tab">干货</span>
+        </div>
+        <div class="content">
+          <div class="card-grid">
+            <div class="wf-card"><div class="card-title">🍅 番茄</div><div class="card-desc">茄科浆果，富含番茄红素</div><div class="card-tags"><span class="tag tag-primary">蔬菜</span></div></div>
+            <div class="wf-card"><div class="card-title">🥚 鸡蛋</div><div class="card-desc">优质蛋白质来源</div><div class="card-tags"><span class="tag tag-secondary">蛋奶</span></div></div>
+            <div class="wf-card"><div class="card-title">🥔 土豆</div><div class="card-desc">淀粉含量高，做法多样</div><div class="card-tags"><span class="tag tag-primary">蔬菜</span></div></div>
+            <div class="wf-card"><div class="card-title">🫑 青椒</div><div class="card-desc">清脆爽口，百搭配菜</div><div class="card-tags"><span class="tag tag-primary">蔬菜</span></div></div>
+            <div class="wf-card"><div class="card-title">🥦 大白菜</div><div class="card-desc">耐储存，冬日必备</div><div class="card-tags"><span class="tag tag-primary">蔬菜</span></div></div>
+            <div class="wf-card"><div class="card-title">🥕 胡萝卜</div><div class="card-desc">富含β-胡萝卜素</div><div class="card-tags"><span class="tag tag-primary">蔬菜</span></div></div>
+          </div>
+          <div class="pagination">
+            <button>上一页</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <span class="ellipsis">...</span>
+            <button>10</button>
+            <button>下一页</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="cat-tabs-mobile">
+          <span class="cat-tab active">全部</span><span class="cat-tab">蔬菜</span><span class="cat-tab">肉禽</span><span class="cat-tab">海鲜</span><span class="cat-tab">蛋奶</span><span class="cat-tab">豆类</span><span class="cat-tab">冻品</span>
+        </div>
+        <div class="content" style="padding:0 16px;">
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄</div><div class="desc">茄科浆果，富含番茄红素</div></div><span class="tag tag-primary">蔬菜</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥚 鸡蛋</div><div class="desc">优质蛋白质来源</div></div><span class="tag tag-secondary">蛋奶</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥔 土豆</div><div class="desc">淀粉含量高，做法多样</div></div><span class="tag tag-primary">蔬菜</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🫑 青椒</div><div class="desc">清脆爽口，百搭配菜</div></div><span class="tag tag-primary">蔬菜</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥦 大白菜</div><div class="desc">耐储存，冬日必备</div></div><span class="tag tag-primary">蔬菜</span></div>
+        </div>
+        <div class="load-more"><button>加载更多</button></div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item active"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 3. 食材详情 === -->
+<section id="ingredient-detail" class="page-section">
+  <h2>3. 食材详情 <span class="badge">8 大信息模块</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索食材...</div><div class="nav-links"><span class="active">食材库</span><span>菜品库</span><span>收藏</span><span>清单</span><span>进度</span></div></div>
+        <div class="breadcrumb"><a href="#">食材库</a> <span>/</span> <a href="#">蔬菜</a> <span>/</span> 🍅 番茄</div>
+        <div class="detail-modules">
+          <div class="module-card"><div class="module-title">① 介绍</div><div class="module-content">番茄（Tomato），茄科番茄属浆果，富含番茄红素和维生素C。既是蔬菜也是水果，口感酸甜多汁。</div></div>
+          <div class="module-card"><div class="module-title">② 品种</div><table class="mini-table"><tr><td>大番茄</td><td>个大肉厚，适合炒蛋</td></tr><tr><td>圣女果</td><td>甜度高，适合凉拌</td></tr><tr><td>普罗旺斯</td><td>沙瓤绵密，适合炖煮</td></tr></table></div>
+          <div class="module-card"><div class="module-title">③ 购买/挑选</div><div class="module-content">看颜色均匀有光泽 · 摸手感有弹性 · 闻气味有清香 · 价格 3-6元/斤</div></div>
+          <div class="module-card"><div class="module-title">④ 储存</div><table class="mini-table"><tr><td>常温</td><td>3-5天，阴凉处</td></tr><tr><td>冷藏</td><td>7-10天，口感会变</td></tr><tr><td>冷冻</td><td>数月，适合做汤</td></tr></table></div>
+          <div class="module-card"><div class="module-title">⑤ 处理</div><div class="module-content">清洗 → 去蒂 → 去皮(烫皮法/火烤法) → 切片/切块 → 出沙技巧 → 去籽</div></div>
+          <div class="module-card"><div class="module-title">⑥ 相关菜品</div><div class="module-content"><a href="#" style="color:var(--primary)">🍅 番茄炒蛋（入门）</a> · <a href="#" style="color:var(--primary)">🍅 番茄牛腩（进阶）</a> · <a href="#" style="color:var(--primary)">🍅 罗宋汤（进阶）</a></div></div>
+          <div class="module-card"><div class="module-title">⑦ 营养成分</div><table class="nutrition-table"><tr><td>热量</td><td>18 kcal/100g</td></tr><tr><td>脂肪</td><td>0.2g</td></tr><tr><td>蛋白质</td><td>0.9g</td></tr><tr><td>碳水</td><td>3.9g</td></tr></table><div style="font-size:12px;color:var(--secondary);margin-top:6px">✅ 低热量，富含维C，适合减脂期</div></div>
+          <div class="module-card"><div class="module-title">⑧ 个人备注</div><div class="note-list"><div class="note-item">今天买的番茄特别新鲜，沙瓤很明显 <span class="note-time">10-31 20:00</span></div><div class="note-item">烫皮时间别超过20秒 <span class="note-time">10-28 15:30</span></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="breadcrumb"><a href="#">食材库</a> / 🍅 番茄</div>
+        <div class="detail-modules-mobile">
+          <div class="module-card"><div class="module-title">① 介绍</div><div class="module-content">番茄，茄科浆果，富含番茄红素...</div></div>
+          <div class="module-card"><div class="module-title">② 品种</div><table class="mini-table"><tr><td>大番茄</td><td>适合炒蛋</td></tr></table></div>
+          <div class="module-card"><div class="module-title">③ 购买/挑选</div><div class="module-content">看颜色·摸手感·闻气味</div></div>
+          <div class="module-card"><div class="module-title">④ 储存</div><table class="mini-table"><tr><td>常温</td><td>3-5天</td></tr></table></div>
+          <div class="module-card"><div class="module-title">⑤ 处理</div><div class="module-content">清洗→去蒂→去皮→切片</div></div>
+          <div class="module-card"><div class="module-title">⑥ 相关菜品</div><div class="module-content"><a href="#" style="color:var(--primary)">番茄炒蛋</a> · <a href="#" style="color:var(--primary)">番茄牛腩</a></div></div>
+          <div class="module-card"><div class="module-title">⑦ 营养成分</div><table class="nutrition-table"><tr><td>热量</td><td>18 kcal</td></tr></table></div>
+          <div class="module-card"><div class="module-title">⑧ 个人备注</div><div class="note-input-area"><textarea placeholder="记录你的心得..." rows="2"></textarea></div><div class="note-list"><div class="note-item">沙瓤很明显 📅 10-31</div></div></div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item active"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 4. 菜品库 === -->
+<section id="dishes" class="page-section">
+  <h2>4. 菜品库 <span class="badge">Dish List + Pagination</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索菜品...</div><div class="nav-links"><span>食材库</span><span class="active">菜品库</span><span>收藏</span><span>清单</span><span>进度</span></div></div>
+        <div class="cat-tabs">
+          <span class="cat-tab active">全部</span><span class="cat-tab">凉菜</span><span class="cat-tab">热炒</span><span class="cat-tab">汤羹</span><span class="cat-tab">主食</span><span class="cat-tab">甜点</span>
+        </div>
+        <div class="cat-tabs" style="padding-top:0">
+          <span class="cat-tab" style="background:var(--secondary-light);border-color:var(--secondary);color:var(--secondary)">入门</span>
+          <span class="cat-tab" style="background:var(--primary-light);border-color:var(--primary);color:var(--primary)">进阶</span>
+          <span class="cat-tab" style="background:var(--danger-light);border-color:var(--danger);color:var(--danger)">挑战</span>
+        </div>
+        <div class="cat-tabs" style="padding-top:0;font-size:12px;">
+          <span style="color:var(--text-2);font-size:12px;line-height:24px;">烹饪方式：</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">蒸</span>
+          <span class="cat-tab active" style="font-size:12px;padding:4px 10px;background:var(--primary);color:#fff;border-color:var(--primary)">炒</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">炖</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">烤</span>
+          <span style="color:var(--text-2);font-size:12px;line-height:24px;margin-left:8px">菜系：</span>
+          <span class="cat-tab active" style="font-size:12px;padding:4px 10px;background:var(--primary);color:#fff;border-color:var(--primary)">家常</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">川菜</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">东北</span>
+          <span style="color:var(--text-2);font-size:12px;line-height:24px;margin-left:8px">时段：</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">早餐</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">午餐</span>
+          <span class="cat-tab" style="font-size:12px;padding:4px 10px">晚餐</span>
+        </div>
+        <div class="content">
+          <div class="card-grid">
+            <div class="wf-card"><div class="card-title">🍅 番茄炒蛋</div><div class="card-desc">酸甜下饭，10分钟搞定</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-secondary">入门</span><span class="tag tag-gray">炒</span><span class="tag tag-gray">家常</span><span class="tag tag-gray">约250kcal</span></div></div>
+            <div class="wf-card"><div class="card-title">🥔 酸辣土豆丝</div><div class="card-desc">爽脆开胃，经典家常菜</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-secondary">入门</span><span class="tag tag-gray">炒</span><span class="tag tag-gray">家常</span><span class="tag tag-gray">约180kcal</span></div></div>
+            <div class="wf-card"><div class="card-title">🍤 白灼虾</div><div class="card-desc">鲜甜简单，原汁原味</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-secondary">入门</span><span class="tag tag-gray">煮</span><span class="tag tag-gray">粤菜</span><span class="tag tag-gray">约200kcal</span></div></div>
+            <div class="wf-card"><div class="card-title">🍖 红烧肉</div><div class="card-desc">肥而不腻，入口即化</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-warning">进阶</span><span class="tag tag-gray">炖</span><span class="tag tag-gray">家常</span><span class="tag tag-gray">约500kcal</span></div></div>
+            <div class="wf-card"><div class="card-title">🐔 宫保鸡丁</div><div class="card-desc">麻辣鲜香，下饭神器</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-warning">进阶</span><span class="tag tag-gray">炒</span><span class="tag tag-gray">川菜</span><span class="tag tag-gray">约350kcal</span></div></div>
+            <div class="wf-card"><div class="card-title">🐟 清蒸鲈鱼</div><div class="card-desc">鲜嫩多汁，营养丰富</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-danger">挑战</span><span class="tag tag-gray">蒸</span><span class="tag tag-gray">粤菜</span><span class="tag tag-gray">约300kcal</span></div></div>
+          </div>
+          <div class="pagination">
+            <button>上一页</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <span class="ellipsis">...</span>
+            <button>10</button>
+            <button>下一页</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="cat-tabs-mobile"><span class="cat-tab active">全部</span><span class="cat-tab">凉菜</span><span class="cat-tab">热炒</span><span class="cat-tab">汤羹</span><span class="cat-tab">主食</span></div>
+        <div class="cat-tabs-mobile" style="padding-top:0"><span class="cat-tab" style="background:var(--secondary-light);border-color:var(--secondary);color:var(--secondary)">入门</span><span class="cat-tab" style="background:var(--primary-light);border-color:var(--primary);color:var(--primary)">进阶</span><span class="cat-tab" style="background:var(--danger-light);border-color:var(--danger);color:var(--danger)">挑战</span></div>
+        <div class="content" style="padding:0 16px;">
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄炒蛋</div><div class="desc">10分钟 · 约250kcal</div></div><span class="tag tag-secondary">入门</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥔 酸辣土豆丝</div><div class="desc">15分钟 · 约180kcal</div></div><span class="tag tag-secondary">入门</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍤 白灼虾</div><div class="desc">8分钟 · 约200kcal</div></div><span class="tag tag-secondary">入门</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍖 红烧肉</div><div class="desc">60分钟 · 约500kcal</div></div><span class="tag tag-warning">进阶</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🐔 宫保鸡丁</div><div class="desc">30分钟 · 约350kcal</div></div><span class="tag tag-warning">进阶</span></div>
+        </div>
+        <div class="load-more"><button>加载更多</button></div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item active"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 5. 菜品详情 === -->
+<section id="dish-detail" class="page-section">
+  <h2>5. 菜品详情 <span class="badge">Dish Detail + Notes</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索菜品...</div><div class="nav-links"><span>食材库</span><span class="active">菜品库</span><span>收藏</span><span>清单</span><span>进度</span></div></div>
+        <div class="breadcrumb"><a href="#">菜品库</a> / <a href="#">热炒</a> / 🍅 番茄炒蛋</div>
+        <div class="detail-modules">
+          <div class="module-card"><div class="module-title">🍅 番茄炒蛋 <span class="tag tag-secondary">入门</span></div><div class="module-content">预估 10 分钟 · 约 250 kcal/份</div><div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap"><span class="tag tag-gray">烹饪: 炒</span><span class="tag tag-gray">荤素: 素</span><span class="tag tag-gray">菜系: 家常</span><span class="tag tag-gray">时段: 早/午/晚</span><span class="tag tag-gray">下酒菜</span><span class="tag tag-gray">快手菜</span></div></div>
+          <div class="module-card"><div class="module-title">📋 食材清单</div>
+            <div class="check-item"><div class="checkbox"></div><div class="item-name">🍅 番茄</div><div class="item-amount">2个</div></div>
+            <div class="check-item"><div class="checkbox"></div><div class="item-name">🥚 鸡蛋</div><div class="item-amount">3个</div></div>
+            <div class="check-item"><div class="checkbox"></div><div class="item-name">🧂 盐</div><div class="item-amount">适量</div></div>
+            <div class="check-item"><div class="checkbox"></div><div class="item-name">🫒 油</div><div class="item-amount">2勺</div></div>
+          </div>
+          <div class="module-card"><div class="module-title">👩‍🍳 制作步骤</div>
+            <div class="wf-step"><div class="step-num">1</div><div class="step-content"><div class="step-desc">番茄洗净，切块备用</div></div></div>
+            <div class="wf-step"><div class="step-num">2</div><div class="step-content"><div class="step-desc">鸡蛋打散，加少许盐</div></div></div>
+            <div class="wf-step"><div class="step-num">3</div><div class="step-content"><div class="step-desc">热锅热油，倒入蛋液炒至金黄</div></div></div>
+            <div class="wf-step"><div class="step-num">4</div><div class="step-content"><div class="step-desc">倒入番茄，加盐炒出汁</div><div class="step-note">💡 小火慢炒出沙，口感更好</div></div></div>
+            <div class="wf-step"><div class="step-num">5</div><div class="step-content"><div class="step-desc">翻炒均匀，出锅</div></div></div>
+          </div>
+          <div class="module-card"><div class="module-title">📊 营养信息</div><table class="nutrition-table"><tr><td>热量</td><td>250 kcal/份</td></tr><tr><td>脂肪</td><td>12g</td></tr><tr><td>蛋白质</td><td>15g</td></tr><tr><td>碳水</td><td>20g</td></tr></table></div>
+          <div class="module-card"><div class="module-title">💬 个人备注</div>
+            <div class="note-input-area"><textarea placeholder="记录做这道菜的心得..." rows="2"></textarea></div>
+            <div class="note-list"><div class="note-item">第一次做太咸了，下次生抽减半 <span class="note-time">10-30 18:00</span></div><div class="note-item">老公说比餐厅做的还好吃 😄 <span class="note-time">10-25 19:30</span></div></div>
+          </div>
+          <div class="module-card"><div class="module-title">🔗 相关食材</div><div class="module-content"><a href="#" style="color:var(--primary)">🍅 番茄</a> · <a href="#" style="color:var(--primary)">🥚 鸡蛋</a> · <a href="#" style="color:var(--primary)">🧂 盐</a> · <a href="#" style="color:var(--primary)">🫒 油</a></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="breadcrumb"><a href="#">菜品库</a> / 🍅 番茄炒蛋</div>
+        <div class="detail-modules-mobile">
+          <div class="module-card"><div class="module-title">🍅 番茄炒蛋 <span class="tag tag-secondary">入门</span></div><div class="module-content">10分钟 · 250kcal/份</div></div>
+          <div class="module-card"><div class="module-title">📋 食材清单</div>
+            <div class="check-item"><div class="checkbox"></div><div class="item-name">🍅 番茄</div><div class="item-amount">2个</div></div>
+            <div class="check-item"><div class="checkbox"></div><div class="item-name">🥚 鸡蛋</div><div class="item-amount">3个</div></div>
+          </div>
+          <div class="module-card"><div class="module-title">👩‍🍳 制作步骤</div>
+            <div class="wf-step"><div class="step-num">1</div><div class="step-content"><div class="step-desc">番茄洗净切块</div></div></div>
+            <div class="wf-step"><div class="step-num">2</div><div class="step-content"><div class="step-desc">鸡蛋打散</div></div></div>
+            <div class="wf-step"><div class="step-num">3</div><div class="step-content"><div class="step-desc">炒蛋→加番茄→出锅</div><div class="step-note">💡 小火炒出沙</div></div></div>
+          </div>
+          <div class="module-card"><div class="module-title">📊 营养信息</div><table class="nutrition-table"><tr><td>热量</td><td>250 kcal</td></tr><tr><td>蛋白质</td><td>15g</td></tr></table></div>
+          <div class="module-card"><div class="module-title">💬 个人备注</div>
+            <div class="note-input-area"><textarea placeholder="记录心得..." rows="2"></textarea></div>
+            <div class="note-list"><div class="note-item">下次生抽减半 📅 10-30</div></div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item active"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 5a. 选菜匹配 === -->
+<section id="match" class="page-section">
+  <h2>5a. 选菜匹配 <span class="badge">Ingredient Match</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索...</div><div class="nav-links"><span>食材库</span><span class="active">选菜</span><span>收藏</span><span>清单</span><span>进度</span></div></div>
+        <div class="content">
+          <h3 style="font-size:18px;margin-bottom:12px">🔎 选菜匹配</h3>
+          <div class="placeholder-dashed" style="height:36px;margin-bottom:12px;font-size:13px">点此添加自定义食材</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="font-size:14px;font-weight:600">已选食材 (3)</span>
+              <span style="font-size:12px;color:var(--text-2);cursor:pointer">清空</span>
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span class="tag tag-primary" style="font-size:13px;padding:4px 10px">🍅 番茄 ×</span>
+              <span class="tag tag-primary" style="font-size:13px;padding:4px 10px">🥚 鸡蛋 ×</span>
+              <span class="tag tag-secondary" style="font-size:13px;padding:4px 10px">🧅 洋葱 ×</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">* 点击 × 移除食材</div>
+          </div>
+          <div style="width:100%;padding:12px;border:none;border-radius:12px;background:var(--primary-light);color:var(--primary);font-size:15px;font-weight:600;text-align:center;cursor:pointer;margin-bottom:16px">✨ 匹配菜谱</div>
+          <div style="font-size:14px;font-weight:600;margin-bottom:8px;color:var(--text-2)">🥬 蔬菜</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+            <span class="cat-tab active" style="font-size:12px;padding:4px 10px;background:var(--primary);color:#fff;border-color:var(--primary)">🍅 番茄</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🥚 鸡蛋</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🥔 土豆</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🫑 青椒</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🥦 白菜</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🥕 胡萝卜</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🧅 洋葱</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🥦 西兰花</span>
+          </div>
+          <div style="font-size:14px;font-weight:600;margin-bottom:8px;color:var(--text-2)">🍖 肉禽</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🐔 鸡胸肉</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🥩 五花肉</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🥩 牛肉</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🍖 排骨</span>
+          </div>
+          <div style="font-size:14px;font-weight:600;margin-bottom:8px;color:var(--text-2)">🍤 海鲜水产</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🐟 鲈鱼</span>
+            <span class="cat-tab" style="font-size:12px;padding:4px 10px">🦐 虾仁</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="content" style="padding:12px;">
+          <h3 style="font-size:16px;margin-bottom:8px">🔎 选菜匹配</h3>
+          <div class="placeholder-dashed" style="height:32px;margin-bottom:8px;font-size:12px">添加自定义食材</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span style="font-size:13px;font-weight:600">已选 (3)</span>
+              <span style="font-size:11px;color:var(--text-2)">清空</span>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span class="tag tag-primary" style="font-size:11px;padding:3px 8px">🍅 番茄 ×</span>
+              <span class="tag tag-primary" style="font-size:11px;padding:3px 8px">🥚 鸡蛋 ×</span>
+              <span class="tag tag-secondary" style="font-size:11px;padding:3px 8px">🧅 洋葱 ×</span>
+            </div>
+          </div>
+          <div style="width:100%;padding:10px;border-radius:10px;background:var(--primary-light);color:var(--primary);font-size:14px;font-weight:600;text-align:center;cursor:pointer;margin-bottom:12px">✨ 匹配菜谱</div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text-2)">🥬 蔬菜</div>
+          <div class="cat-tabs-mobile">
+            <span class="cat-tab active" style="font-size:11px;padding:4px 8px;background:var(--primary);color:#fff;border-color:var(--primary)">🍅</span>
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🥔</span>
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🫑</span>
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🥦</span>
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🥕</span>
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🧅</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;margin:8px 0 6px;color:var(--text-2)">🍖 肉禽</div>
+          <div class="cat-tabs-mobile">
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🐔</span>
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🥩</span>
+            <span class="cat-tab" style="font-size:11px;padding:4px 8px">🍖</span>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item active"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 5b. 匹配结果 === -->
+<section id="match-results" class="page-section">
+  <h2>5b. 匹配结果 <span class="badge">Match Results</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索...</div><div class="nav-links"><span>食材库</span><span class="active">选菜</span><span>收藏</span><span>清单</span><span>进度</span></div></div>
+        <div class="content">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <h3 style="font-size:16px">匹配结果</h3>
+            <span style="font-size:12px;color:var(--text-2)">共 6 道菜</span>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">
+            <span class="tag tag-primary" style="font-size:12px;padding:4px 10px">🍅 番茄 ×</span>
+            <span class="tag tag-primary" style="font-size:12px;padding:4px 10px">🥚 鸡蛋 ×</span>
+            <span class="tag tag-secondary" style="font-size:12px;padding:4px 10px">🧅 洋葱 ×</span>
+            <span style="font-size:12px;color:var(--text-2);align-self:center">已选 3 个食材 · </span>
+            <span style="font-size:12px;color:var(--primary);cursor:pointer">重新选菜</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-2);margin-bottom:8px">
+            <span style="color:var(--secondary);font-weight:600">✅ 完美匹配 (3/3)</span> — 2 道 · <span style="color:var(--primary)">用了 2/3</span> — 3 道 · <span style="color:var(--text-2)">用了 1/3</span> — 1 道
+          </div>
+          <div class="card-grid">
+            <div class="wf-card"><div class="card-title">🍅 番茄炒蛋</div><div class="card-desc">10分钟 · 入门</div><div class="card-tags"><span class="tag tag-secondary">完美匹配</span><span class="tag tag-gray">3/3 食材</span></div></div>
+            <div class="wf-card"><div class="card-title">🧅 洋葱炒蛋</div><div class="card-desc">8分钟 · 入门</div><div class="card-tags"><span class="tag tag-secondary">完美匹配</span><span class="tag tag-gray">3/3 食材</span></div></div>
+            <div class="wf-card"><div class="card-title">🍅 番茄牛腩</div><div class="card-desc">60分钟 · 进阶</div><div class="card-tags"><span class="tag tag-warning">2/3 食材</span></div></div>
+            <div class="wf-card"><div class="card-title">🥚 洋葱蛋饼</div><div class="card-desc">15分钟 · 入门</div><div class="card-tags"><span class="tag tag-warning">2/3 食材</span></div></div>
+            <div class="wf-card"><div class="card-title">🍤 番茄虾仁</div><div class="card-desc">12分钟 · 入门</div><div class="card-tags"><span class="tag tag-gray">1/3 食材</span></div></div>
+            <div class="wf-card"><div class="card-title">🥔 洋葱土豆丝</div><div class="card-desc">15分钟 · 入门</div><div class="card-tags"><span class="tag tag-gray">1/3 食材</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="content" style="padding:0 16px;">
+          <h3 style="font-size:16px;margin:12px 0 8px">匹配结果</h3>
+          <div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap">
+            <span class="tag tag-primary" style="font-size:11px;padding:3px 8px">🍅 ×</span>
+            <span class="tag tag-primary" style="font-size:11px;padding:3px 8px">🥚 ×</span>
+            <span class="tag tag-secondary" style="font-size:11px;padding:3px 8px">🧅 ×</span>
+          </div>
+          <div style="font-size:11px;color:var(--secondary);margin-bottom:8px;font-weight:600">✅ 完美匹配 2 道 · 用了 2/3 有 3 道</div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄炒蛋</div><div class="desc">10分钟 · 完美匹配 3/3</div></div><span class="tag tag-secondary">完美</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🧅 洋葱炒蛋</div><div class="desc">8分钟 · 完美匹配 3/3</div></div><span class="tag tag-secondary">完美</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄牛腩</div><div class="desc">60分钟 · 用了 2/3</div></div><span class="tag tag-warning">2/3</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥚 洋葱蛋饼</div><div class="desc">15分钟 · 用了 2/3</div></div><span class="tag tag-warning">2/3</span></div>
+          <div class="load-more"><button>加载更多</button></div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item active"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 6. 收藏 === -->
+<section id="favorites" class="page-section">
+  <h2>6. 收藏 <span class="badge">Favorites</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索...</div><div class="nav-links"><span>食材库</span><span>菜品库</span><span class="active">收藏</span><span>清单</span><span>进度</span></div></div>
+        <div class="content">
+          <div class="card-grid">
+            <div class="wf-card"><div class="card-title">🍅 番茄炒蛋</div><div class="card-desc">10分钟 · 入门</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-secondary">入门</span></div></div>
+            <div class="wf-card"><div class="card-title">🍤 白灼虾</div><div class="card-desc">8分钟 · 入门</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-secondary">入门</span></div></div>
+            <div class="wf-card"><div class="card-title">🍖 红烧肉</div><div class="card-desc">60分钟 · 进阶</div><div class="card-tags"><span class="tag tag-primary">热炒</span><span class="tag tag-warning">进阶</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="content" style="padding:0 16px;">
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄炒蛋</div><div class="desc">10分钟 · 入门</div></div></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍤 白灼虾</div><div class="desc">8分钟 · 入门</div></div></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍖 红烧肉</div><div class="desc">60分钟 · 进阶</div></div></div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item active"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 7. 个人中心 === -->
+<section id="profile" class="page-section">
+  <h2>7. 个人中心 <span class="badge">Profile</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索...</div><div class="nav-links"><span>食材库</span><span>菜品库</span><span class="active">我的</span></div></div>
+        <div class="content">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;padding:16px;background:#fff;border-radius:12px">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:28px">👤</div>
+            <div><div style="font-size:18px;font-weight:600">我的厨房</div><div style="font-size:13px;color:var(--text-2)">已做过 12 道 · 收藏 8 道</div></div>
+          </div>
+          <div class="home-grid">
+            <div class="home-entry"><div class="entry-icon" style="background:var(--secondary-light)">⭐</div><div class="entry-title">收藏</div><div class="entry-desc">8 道常做的菜</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🕐</div><div class="entry-title">浏览记录</div><div class="entry-desc">最近看过的菜品和食材</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">📚</div><div class="entry-title">学习进度</div><div class="entry-desc">已做 12 · 想做 8</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--danger-light)">⚙️</div><div class="entry-title">设置</div><div class="entry-desc">版本管理 · 数据管理</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="content" style="padding:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:12px;background:#fff;border-radius:10px">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:22px">👤</div>
+            <div><div style="font-size:15px;font-weight:600">我的厨房</div><div style="font-size:11px;color:var(--text-2)">已做12 · 收藏8</div></div>
+          </div>
+          <div class="home-grid-mobile">
+            <div class="home-entry"><div class="entry-icon" style="background:var(--secondary-light)">⭐</div><div class="entry-title">收藏</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">🕐</div><div class="entry-title">浏览记录</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--primary-light)">📚</div><div class="entry-title">学习进度</div></div>
+            <div class="home-entry"><div class="entry-icon" style="background:var(--danger-light)">⚙️</div><div class="entry-title">设置</div></div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item active"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 7b. 浏览记录 === -->
+<section id="history" class="page-section">
+  <h2>7b. 浏览记录 <span class="badge">Browsing History</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索...</div><div class="nav-links"><span>食材库</span><span>菜品库</span><span class="active">我的</span></div></div>
+        <div class="content">
+          <h3 style="font-size:18px;margin-bottom:16px">🕐 浏览记录</h3>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄炒蛋</div><div class="desc">10分钟 · 入门</div></div><span class="tag tag-gray">菜品</span><span style="font-size:12px;color:var(--text-3)">10-31 20:00</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄</div><div class="desc">茄科浆果，富含番茄红素</div></div><span class="tag tag-primary">食材</span><span style="font-size:12px;color:var(--text-3)">10-31 19:30</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍖 红烧肉</div><div class="desc">60分钟 · 进阶</div></div><span class="tag tag-gray">菜品</span><span style="font-size:12px;color:var(--text-3)">10-31 18:00</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥔 土豆</div><div class="desc">淀粉含量高，做法多样</div></div><span class="tag tag-primary">食材</span><span style="font-size:12px;color:var(--text-3)">10-31 17:00</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥚 鸡蛋</div><div class="desc">优质蛋白质来源</div></div><span class="tag tag-primary">食材</span><span style="font-size:12px;color:var(--text-3)">10-31 16:30</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="content" style="padding:0 16px;">
+          <h3 style="font-size:16px;margin:12px 0">🕐 浏览记录</h3>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄炒蛋</div><div class="desc">10-31 20:00</div></div><span class="tag tag-gray">菜品</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄</div><div class="desc">10-31 19:30</div></div><span class="tag tag-primary">食材</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍖 红烧肉</div><div class="desc">10-31 18:00</div></div><span class="tag tag-gray">菜品</span></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥔 土豆</div><div class="desc">10-31 17:00</div></div><span class="tag tag-primary">食材</span></div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item active"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 8. 学习进度 === -->
+<section id="progress" class="page-section">
+  <h2>8. 学习进度 <span class="badge">Learning Progress</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索...</div><div class="nav-links"><span>食材库</span><span>菜品库</span><span>收藏</span><span>清单</span><span class="active">进度</span></div></div>
+        <div class="content">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div>
+              <h3 style="font-size:16px;color:var(--secondary);margin-bottom:12px">✅ 已做过 (12)</h3>
+              <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄炒蛋</div><div class="desc">10-30 做得不错</div></div></div>
+              <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥔 酸辣土豆丝</div><div class="desc">10-28 太咸了</div></div></div>
+              <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍤 白灼虾</div><div class="desc">10-25 完美</div></div></div>
+            </div>
+            <div>
+              <h3 style="font-size:16px;color:var(--primary);margin-bottom:12px">⭐ 想做 (8)</h3>
+              <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍖 红烧肉</div><div class="desc"></div></div></div>
+              <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🐔 宫保鸡丁</div><div class="desc"></div></div></div>
+              <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🐟 清蒸鲈鱼</div><div class="desc"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="cat-tabs-mobile"><span class="cat-tab active" style="background:var(--secondary);color:#fff;border-color:var(--secondary)">已做过 (12)</span><span class="cat-tab" style="background:var(--primary-light);border-color:var(--primary);color:var(--primary)">想做 (8)</span></div>
+        <div class="content" style="padding:0 16px;">
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍅 番茄炒蛋</div><div class="desc">10-30 做得不错</div></div></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🥔 酸辣土豆丝</div><div class="desc">10-28 太咸了</div></div></div>
+          <div class="wf-list-item"><div class="thumb"></div><div class="info"><div class="title">🍤 白灼虾</div><div class="desc">10-25 完美</div></div></div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item active"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === 9. 设置 === -->
+<section id="settings" class="page-section">
+  <h2>9. 设置 <span class="badge">Settings</span></h2>
+  <div class="wireframe-pair">
+    <div>
+      <div class="wireframe-label">桌面端</div>
+      <div class="frame frame-desktop">
+        <div class="top-nav"><span class="logo">🍳 家常菜</span><div class="search">🔍 搜索...</div><div class="nav-links"><span>食材库</span><span>菜品库</span><span class="active">我的</span></div></div>
+        <div class="content">
+          <h3 style="font-size:18px;margin-bottom:20px">⚙️ 设置</h3>
+          <div style="margin-bottom:20px;padding:16px;background:#fff;border:1px solid var(--border);border-radius:12px">
+            <div style="font-size:14px;font-weight:600;margin-bottom:8px">📋 版本信息</div>
+            <div style="font-size:13px;color:var(--text-2)">家常菜入门指南 v1.0.0</div>
+            <div style="font-size:13px;color:var(--text-2);margin-top:4px">更新日期：2026-10-31</div>
+          </div>
+          <div class="data-actions">
+            <div class="data-btn data-btn-export">📤 导出数据 — 下载全部数据为 JSON 文件，用于备份或跨设备迁移</div>
+            <div class="data-btn data-btn-import">📥 导入数据 — 从 JSON 文件恢复数据，可选择覆盖或合并</div>
+            <div class="data-btn data-btn-reset">⚠️ 重置数据 — 清空所有内容，恢复到初始状态（不可恢复）</div>
+          </div>
+          <div style="margin-top:24px;padding:16px;background:#FAFAFA;border-radius:12px;font-size:13px;color:var(--text-2)">
+            <div style="margin-bottom:8px">📊 数据概览：</div>
+            <div>食材：108 种 · 菜品：112 道 · 备注：36 条 · 收藏：12 道</div>
+            <div style="margin-top:4px">最后导出：2026-10-31</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-label">移动端</div>
+      <div class="frame frame-mobile">
+        <div class="content" style="padding:16px;">
+          <h3 style="font-size:16px;margin-bottom:16px">⚙️ 设置</h3>
+          <div style="margin-bottom:16px;padding:12px;background:#fff;border:1px solid var(--border);border-radius:10px">
+            <div style="font-size:13px;font-weight:600;margin-bottom:4px">📋 版本信息</div>
+            <div style="font-size:12px;color:var(--text-2)">v1.0.0 · 2026-10-31</div>
+          </div>
+          <div class="data-actions">
+            <div class="data-btn data-btn-export" style="padding:12px 16px;font-size:14px">📤 导出数据</div>
+            <div class="data-btn data-btn-import" style="padding:12px 16px;font-size:14px">📥 导入数据</div>
+            <div class="data-btn data-btn-reset" style="padding:12px 16px;font-size:14px">⚠️ 重置数据</div>
+          </div>
+          <div style="margin-top:16px;padding:12px;background:#FAFAFA;border-radius:8px;font-size:12px;color:var(--text-2)">
+            <div>食材：108 · 菜品：112</div>
+            <div style="margin-top:4px">最后导出：10-31</div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="icon">🏠</div>首页</div>
+          <div class="nav-item"><div class="icon">🥬</div>食材</div>
+          <div class="nav-item"><div class="icon">🍳</div>菜品</div>
+          <div class="nav-item"><div class="icon">👤</div>我的</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+</body>
+</html>
