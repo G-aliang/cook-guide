@@ -73,4 +73,10 @@ npm run preview
 
 ---
 
-*项目状态：需求确认完成，待开发*
+*项目状态：已部署，v1.0*
+
+## 访问地址
+
+部署完成后访问：
+- 桌面端：`https://g-aliang.github.io/cook-guide/`
+- 手机端：同一 WiFi 下 `http://192.168.1.7:4173/`，可安装为 PWA
