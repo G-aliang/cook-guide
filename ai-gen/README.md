@@ -70,12 +70,12 @@ node ai-gen/run.js export
 node ai-gen/run.js prompts
 ```
 
-产出 `ai-gen/prompts.md`，包含 90 批提示词（每批 5 道）。
+产出 `ai-gen/prompts.md`，包含**一份通用提示词 + 90 批菜名名单**（每批 5 道）。
 
 ### 3. AI 生成（人工）
 
-1. 打开 `ai-gen/prompts.md`
-2. 复制某批提示词（如"第 001 批"）
+1. 打开 `ai-gen/prompts.md`（含"通用提示词"+"分批名单"）
+2. 复制「通用提示词」，把 `【此处填入菜名】` 替换为某批的菜名（如"第 001 批"）
 3. 粘贴到 AI 工具（ChatGPT / Claude / 通义千问）
 4. AI 返回 JSON 数组
 5. 保存到 `ai-gen/ai-output/batch-001.json`
