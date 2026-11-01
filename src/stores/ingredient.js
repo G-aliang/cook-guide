@@ -77,8 +77,10 @@ export const useIngredientStore = defineStore('ingredient', {
       const filtered = getters.filtered
       const start = (state.page - 1) * state.pageSize
       const end = start + state.pageSize
-      state.hasMore = end < filtered.length
-      return filtered.slice(start, end)
+      return {
+        items: filtered.slice(start, end),
+        hasMore: end < filtered.length,
+      }
     },
   },
 })

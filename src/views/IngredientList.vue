@@ -26,7 +26,7 @@
     <div v-else>
       <!-- 桌面端：分页 -->
       <div class="card-grid" v-if="!isMobile">
-        <div v-for="ing in paged" :key="ing.id" class="card ingredient-card" @click="goDetail(ing.id)">
+        <div v-for="ing in pagedItems" :key="ing.id" class="card ingredient-card" @click="goDetail(ing.id)">
           <div class="card-emoji">{{ ing.emoji || getEmoji(ing.category) }}</div>
           <div class="card-name">{{ ing.name }}</div>
           <div class="card-tags">
@@ -38,7 +38,7 @@
 
       <!-- 移动端：列表 + 加载更多 -->
       <div v-else>
-        <div v-for="ing in paged" :key="ing.id" class="ingredient-list-item" @click="goDetail(ing.id)">
+        <div v-for="ing in pagedItems" :key="ing.id" class="ingredient-list-item" @click="goDetail(ing.id)">
           <div class="list-emoji">{{ ing.emoji || getEmoji(ing.category) }}</div>
           <div class="list-info">
             <div class="list-name">{{ ing.name }}</div>
@@ -88,8 +88,8 @@ const isMobile = ref(window.innerWidth < 768)
 const filter = computed(() => store.filter)
 const loading = computed(() => store.loading)
 const filtered = computed(() => store.filtered)
-const paged = computed(() => store.paged)
-const hasMore = computed(() => store.hasMore)
+const pagedItems = computed(() => store.paged.items)
+const hasMore = computed(() => store.paged.hasMore)
 const page = computed(() => store.page)
 const pageSize = computed(() => store.pageSize)
 

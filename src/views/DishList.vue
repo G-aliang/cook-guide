@@ -43,7 +43,7 @@
     <!-- 卡片网格 -->
     <div v-else>
       <div class="card-grid" v-if="!isMobile">
-        <div v-for="dish in paged" :key="dish.id" class="card dish-card" @click="goDetail(dish.id)">
+        <div v-for="dish in pagedItems" :key="dish.id" class="card dish-card" @click="goDetail(dish.id)">
           <div class="dish-header">
             <span class="tag tag-primary">{{ dish.category }}</span>
             <span class="tag" :class="difficultyClass(dish.difficulty)">{{ dish.difficulty }}</span>
@@ -59,7 +59,7 @@
       </div>
 
       <div v-else>
-        <div v-for="dish in paged" :key="dish.id" class="dish-list-item" @click="goDetail(dish.id)">
+        <div v-for="dish in pagedItems" :key="dish.id" class="dish-list-item" @click="goDetail(dish.id)">
           <div class="list-info">
             <div class="list-name">{{ dish.name }}</div>
             <div class="list-desc">{{ dish.duration || '' }} · {{ dish.difficulty }}</div>
@@ -105,8 +105,8 @@ const isMobile = ref(window.innerWidth < 768)
 const filter = computed(() => store.filter)
 const loading = computed(() => store.loading)
 const filtered = computed(() => store.filtered)
-const paged = computed(() => store.paged)
-const hasMore = computed(() => store.hasMore)
+const pagedItems = computed(() => store.paged.items)
+const hasMore = computed(() => store.paged.hasMore)
 const page = computed(() => store.page)
 const pageSize = computed(() => store.pageSize)
 
