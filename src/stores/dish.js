@@ -59,16 +59,23 @@ export const useDishStore = defineStore('dish', {
       this.page = 1
       this.hasMore = true
     },
-    get filtered() {
-      let result = this.dishes
-      if (this.filter.category) {
-        result = result.filter(d => d.category === this.filter.category)
+    nextPage() {
+      if (this.hasMore) this.page++
+    },
+    prevPage() {
+      if (this.page > 1) this.page--
+    },
+  },
+  getters: {
+    filtered: (state) => {
+      let result = state.dishes
+      if (state.filter.category) {
+        result = result.filter(d => d.category === state.filter.category)
       }
-      if (this.filter.difficulty) {
-        result = result.filter(d => d.difficulty === this.filter.difficulty)
+      if (state.filter.difficulty) {
+        result = result.filter(d => d.difficulty === state.filter.difficulty)
       }
-      // Tag filtering
-      const tags = this.filter.tags
+      const tags = state.filter.tags
       if (tags.cooking && tags.cooking.length) {
         result = result.filter(d => d.tags?.cooking?.some(t => tags.cooking.includes(t)))
       }
@@ -78,24 +85,18 @@ export const useDishStore = defineStore('dish', {
       if (tags.meal && tags.meal.length) {
         result = result.filter(d => d.tags?.meal?.some(t => tags.meal.includes(t)))
       }
-      if (this.keyword) {
-        const kw = this.keyword.toLowerCase()
+      if (state.keyword) {
+        const kw = state.keyword.toLowerCase()
         result = result.filter(d => d.name?.toLowerCase().includes(kw))
       }
       return result
     },
-    get paged() {
-      const filtered = this.filtered
-      const start = (this.page - 1) * this.pageSize
-      const end = start + this.pageSize
-      this.hasMore = end < filtered.length
+    paged: (state, getters) => {
+      const filtered = getters.filtered
+      const start = (state.page - 1) * state.pageSize
+      const end = start + state.pageSize
+      state.hasMore = end < filtered.length
       return filtered.slice(start, end)
-    },
-    nextPage() {
-      if (this.hasMore) this.page++
-    },
-    prevPage() {
-      if (this.page > 1) this.page--
     },
   },
 })

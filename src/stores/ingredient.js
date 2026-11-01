@@ -54,29 +54,31 @@ export const useIngredientStore = defineStore('ingredient', {
       this.page = 1
       this.hasMore = true
     },
-    get filtered() {
-      let result = this.ingredients
-      if (this.filter.category) {
-        result = result.filter(i => i.category === this.filter.category)
-      }
-      if (this.filter.keyword) {
-        const kw = this.filter.keyword.toLowerCase()
-        result = result.filter(i => i.name?.toLowerCase().includes(kw))
-      }
-      return result
-    },
-    get paged() {
-      const filtered = this.filtered
-      const start = (this.page - 1) * this.pageSize
-      const end = start + this.pageSize
-      this.hasMore = end < filtered.length
-      return filtered.slice(start, end)
-    },
     nextPage() {
       if (this.hasMore) this.page++
     },
     prevPage() {
       if (this.page > 1) this.page--
+    },
+  },
+  getters: {
+    filtered: (state) => {
+      let result = state.ingredients
+      if (state.filter.category) {
+        result = result.filter(i => i.category === state.filter.category)
+      }
+      if (state.filter.keyword) {
+        const kw = state.filter.keyword.toLowerCase()
+        result = result.filter(i => i.name?.toLowerCase().includes(kw))
+      }
+      return result
+    },
+    paged: (state, getters) => {
+      const filtered = getters.filtered
+      const start = (state.page - 1) * state.pageSize
+      const end = start + state.pageSize
+      state.hasMore = end < filtered.length
+      return filtered.slice(start, end)
     },
   },
 })

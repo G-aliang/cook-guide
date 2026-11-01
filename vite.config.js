@@ -17,7 +17,7 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: '/icon.svg',
+            src: 'icon.svg',
             sizes: 'any',
             type: 'image/svg+xml',
             purpose: 'any'
@@ -25,7 +25,21 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,png,svg,woff2}']
+        globPatterns: ['**/*.{js,css,html,png,svg,woff2,json}'],
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/api/],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.endsWith('import-data.json'),
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'import-data-cache',
+              networkTimeoutSeconds: 10,
+              expiration: { maxEntries: 1, maxAgeSeconds: 60 * 60 * 24 * 7 }
+            }
+          }
+        ]
       }
     })
   ],
