@@ -114,6 +114,62 @@ cd ..
 
 ---
 
+## 端到端串联
+
+一条完整流水线，三份流转数据：**名单 → 提示词 → 详细数据**。
+
+### 三份流转数据
+
+| 数据 | 位置 | 作用 |
+|------|------|------|
+| 数据源 | `data/import-data.json` | 应用的唯一数据源（起点也是终点） |
+| 名单 | `ai-gen/data/dishes-list.json` | 从数据源导出的菜品清单 |
+| 提示词 | `ai-gen/prompts.md` | 给 AI 的生成指令（90 批） |
+| 详细数据 | `ai-gen/data/dishes-generated.json` | AI 生成并经校验的数据 |
+
+### 完整命令序列（可直接复制）
+
+```bash
+cd D:\code\cook
+
+# ── 准备 ──
+node ai-gen/run.js export     # 导出名单
+node ai-gen/run.js prompts    # 生成提示词
+
+# ── 人工 ──
+# 打开 ai-gen/prompts.md，复制一批提示词 → AI 工具 → 存到 ai-output/batch-XXX.json
+
+# ── 汇入 ──
+node ai-gen/run.js parse      # 解析 AI 输出
+node ai-gen/run.js merge      # 合并进系统
+
+# ── 上线 ──
+node ai-gen/run.js build      # 构建
+cd dist && git init && git add -A && git commit -m "更新菜品数据" && git push --force <仓库地址> HEAD:gh-pages && cd ..
+```
+
+### 每步验证点
+
+| 步骤 | 看到什么算成功 |
+|------|---------------|
+| export | "待生成 450 道" |
+| prompts | "共 90 批" |
+| parse | "✓ 菜名 - X步, Y种食材, Z条避坑" |
+| merge | "更新菜品 X 道" |
+| build | "files generated" |
+
+### 三条回路
+
+| 回路 | 触发场景 | 命令 |
+|------|----------|------|
+| **数据生成环** | 补充详细菜谱 | export → prompts → [AI] → parse → merge |
+| **质量修复环** | 数据有重复/异常名 | `node ai-gen/run.js clean` |
+| **部署环** | 任何变更后上线 | `node ai-gen/run.js build` → 推送 dist |
+
+> 💡 支持**滚动执行**：不用等 450 道全生成完，每跑 5 道就能 merge → build → 部署一次，随时看到效果。
+
+---
+
 ## 命令对照
 
 | 命令 | 作用 |
