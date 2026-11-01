@@ -91,13 +91,33 @@ export const useDishStore = defineStore('dish', {
       }
       return result
     },
-    paged: (state, getters) => {
-      const filtered = getters.filtered
+    paged: (state) => {
+      let result = state.dishes
+      if (state.filter.category) {
+        result = result.filter(d => d.category === state.filter.category)
+      }
+      if (state.filter.difficulty) {
+        result = result.filter(d => d.difficulty === state.filter.difficulty)
+      }
+      const tags = state.filter.tags
+      if (tags.cooking && tags.cooking.length) {
+        result = result.filter(d => d.tags?.cooking?.some(t => tags.cooking.includes(t)))
+      }
+      if (tags.cuisine && tags.cuisine.length) {
+        result = result.filter(d => d.tags?.cuisine?.some(t => tags.cuisine.includes(t)))
+      }
+      if (tags.meal && tags.meal.length) {
+        result = result.filter(d => d.tags?.meal?.some(t => tags.meal.includes(t)))
+      }
+      if (state.keyword) {
+        const kw = state.keyword.toLowerCase()
+        result = result.filter(d => d.name?.toLowerCase().includes(kw))
+      }
       const start = (state.page - 1) * state.pageSize
       const end = start + state.pageSize
       return {
-        items: filtered.slice(start, end),
-        hasMore: end < filtered.length,
+        items: result.slice(start, end),
+        hasMore: end < result.length,
       }
     },
   },

@@ -94,9 +94,29 @@
                 <button class="btn btn-sm btn-danger" @click="form.steps.splice(i,1)">✕</button>
               </div>
               <textarea v-model="step.desc" class="input" rows="2" placeholder="步骤描述"></textarea>
-              <input v-model="step.note" class="input" placeholder="注意事项（可选）" />
+              <div class="form-row" style="margin-top:6px">
+                <div class="form-section" style="flex:1">
+                  <label style="font-size:12px;color:var(--text-2)">火候</label>
+                  <select v-model="step.heat" class="input" style="height:32px">
+                    <option value="">不限</option>
+                    <option value="小火">小火</option>
+                    <option value="中火">中火</option>
+                    <option value="大火">大火</option>
+                    <option value="中大火">中大火</option>
+                  </select>
+                </div>
+                <div class="form-section" style="flex:1">
+                  <label style="font-size:12px;color:var(--text-2)">时间</label>
+                  <input v-model="step.time" class="input" style="height:32px" placeholder="如：1分钟" />
+                </div>
+                <div class="form-section" style="flex:1">
+                  <label style="font-size:12px;color:var(--text-2)">用量</label>
+                  <input v-model="step.amount" class="input" style="height:32px" placeholder="如：油15ml" />
+                </div>
+              </div>
+              <input v-model="step.note" class="input" style="margin-top:6px" placeholder="注意事项（可选）" />
             </div>
-            <button class="btn btn-sm btn-outline" @click="form.steps.push({ order: form.steps.length + 1, desc: '', note: '' })">+ 添加步骤</button>
+            <button class="btn btn-sm btn-outline" @click="form.steps.push({ order: form.steps.length + 1, desc: '', heat: '', time: '', amount: '', note: '' })">+ 添加步骤</button>
           </div>
 
           <!-- 营养信息 -->

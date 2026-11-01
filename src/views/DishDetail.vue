@@ -80,9 +80,14 @@
           <div v-for="(step, i) in current.steps" :key="i" class="step-item">
             <div class="step-header">
               <span class="step-num">{{ i + 1 }}</span>
+              <div class="step-meta">
+                <span v-if="step.heat" class="step-badge step-heat">{{ step.heat }}</span>
+                <span v-if="step.time" class="step-badge step-time">⏱ {{ step.time }}</span>
+              </div>
               <a v-if="step.videoUrl" :href="step.videoUrl" target="_blank" class="step-video">▶ 视频</a>
             </div>
             <div class="step-desc">{{ step.desc }}</div>
+            <div v-if="step.amount" class="step-amount">📦 {{ step.amount }}</div>
             <div v-if="step.note" class="step-note">💡 {{ step.note }}</div>
           </div>
         </div>
@@ -246,10 +251,15 @@ onMounted(loadData)
 .ing-amount { font-size: 14px; color: var(--text-2); }
 .step-list { }
 .step-item { margin-bottom: 16px; }
-.step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+.step-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 8px; }
+.step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.step-meta { display: flex; gap: 4px; flex: 1; }
+.step-badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+.step-heat { background: var(--danger-light); color: var(--danger); }
+.step-time { background: var(--bg); color: var(--text-2); }
 .step-video { font-size: 12px; color: var(--primary); text-decoration: none; }
-.step-desc { font-size: 14px; }
+.step-desc { font-size: 14px; line-height: 1.6; }
+.step-amount { font-size: 12px; color: var(--text-2); margin-top: 4px; }
 .step-note { font-size: 12px; color: var(--primary); margin-top: 4px; }
 .nutrition-table { width: 100%; font-size: 13px; }
 .nutrition-table td { padding: 6px 0; }

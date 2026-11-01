@@ -17,16 +17,16 @@
     </div>
 
     <!-- 多维度标签筛选 -->
-    <div class="tag-filters" v-if="filter.tags && (filter.tags.cooking.length || filter.tags.cuisine.length || filter.tags.meal.length)">
-      <div v-if="filter.tags.cooking.length" class="filter-group">
+    <div class="tag-filters" v-if="filter.tags && (filter.tags.cooking?.length || filter.tags.cuisine?.length || filter.tags.meal?.length)">
+      <div v-if="filter.tags.cooking?.length" class="filter-group">
         <span class="filter-label">烹饪：</span>
         <span v-for="t in filter.tags.cooking" :key="t" class="tag tag-primary">{{ t }} ✕</span>
       </div>
-      <div v-if="filter.tags.cuisine.length" class="filter-group">
+      <div v-if="filter.tags.cuisine?.length" class="filter-group">
         <span class="filter-label">菜系：</span>
         <span v-for="t in filter.tags.cuisine" :key="t" class="tag tag-primary">{{ t }} ✕</span>
       </div>
-      <div v-if="filter.tags.meal.length" class="filter-group">
+      <div v-if="filter.tags.meal?.length" class="filter-group">
         <span class="filter-label">时段：</span>
         <span v-for="t in filter.tags.meal" :key="t" class="tag tag-primary">{{ t }} ✕</span>
       </div>
@@ -104,9 +104,9 @@ const isMobile = ref(window.innerWidth < 768)
 
 const filter = computed(() => store.filter)
 const loading = computed(() => store.loading)
-const filtered = computed(() => store.filtered)
-const pagedItems = computed(() => store.paged.items)
-const hasMore = computed(() => store.paged.hasMore)
+const filtered = computed(() => store.filtered || [])
+const pagedItems = computed(() => (store.paged?.items) || [])
+const hasMore = computed(() => store.paged?.hasMore || false)
 const page = computed(() => store.page)
 const pageSize = computed(() => store.pageSize)
 

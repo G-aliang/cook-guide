@@ -75,8 +75,8 @@ const ingredients = [
 // 使用简化的菜品模板生成大量菜品
 const dishTemplates = [
   // 入门 - 热炒
-  { name: '番茄炒蛋', category: '热炒', difficulty: '入门', duration: '10分钟', intro: '酸甜开胃的快手菜，永远的下饭之王。', ingredients: [{ name: '番茄', amount: '2个' }, { name: '鸡蛋', amount: '3个' }, { name: '盐', amount: '适量' }, { name: '糖', amount: '1勺' }, { name: '油', amount: '2勺' }], steps: [{ desc: '番茄洗净切块', note: '顶部划十字开水烫去皮' }, { desc: '鸡蛋打散加少许盐' }, { desc: '热锅热油，倒入蛋液炒至金黄盛出' }, { desc: '锅中留底油，下番茄炒出汁', note: '小火慢炒出沙，口感更好' }, { desc: '加盐、糖调味，倒入鸡蛋翻炒均匀' }, { desc: '撒葱花出锅' }], nutrition: { perUnit: '1份', calories: '250', fat: '12', protein: '15', carbs: '20', healthNotes: '营养均衡，适合日常' }, tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['早餐', '午餐', '晚餐'], custom: ['快手菜', '下酒菜'] } },
-  { name: '酸辣土豆丝', category: '热炒', difficulty: '入门', duration: '15分钟', intro: '爽脆开胃，经典家常菜。', ingredients: [{ name: '土豆', amount: '2个' }, { name: '青椒', amount: '1个' }, { name: '干辣椒', amount: '5个' }, { name: '花椒', amount: '10粒' }, { name: '醋', amount: '2勺' }, { name: '盐', amount: '适量' }], steps: [{ desc: '土豆切丝泡水去淀粉' }, { desc: '青椒切丝，干辣椒切段' }, { desc: '热油爆香花椒、干辣椒、蒜末' }, { desc: '加入土豆丝翻炒至断生' }, { desc: '加青椒、盐、醋快炒出锅' }], nutrition: { perUnit: '1份', calories: '180', fat: '5', protein: '4', carbs: '35', healthNotes: '低脂肪，富含碳水' }, tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['午餐', '晚餐'], custom: ['快手菜', '下酒菜'] } },
+  { name: '番茄炒蛋', category: '热炒', difficulty: '入门', duration: '10分钟', intro: '酸甜开胃的快手菜，永远的下饭之王。', ingredients: [{ name: '番茄', amount: '2个(约300g)' }, { name: '鸡蛋', amount: '3个(约150g)' }, { name: '盐', amount: '3g(半小勺)' }, { name: '白糖', amount: '8g(1勺)' }, { name: '葱花', amount: '适量(约5g)' }, { name: '食用油', amount: '25ml(2勺半)' }], steps: [{ order: 1, desc: '番茄顶部划十字，开水烫15秒去皮', heat: '', time: '2分钟', amount: '番茄2个', note: '烫后立即入冷水，皮即可轻松撕下' }, { order: 2, desc: '番茄切块', heat: '', time: '1分钟', amount: '', note: '切成2cm见方的块，大小均匀' }, { order: 3, desc: '鸡蛋打散加盐', heat: '', time: '1分钟', amount: '鸡蛋3个、盐1g', note: '加一小撮盐可以让蛋更蓬松' }, { order: 4, desc: '热锅热油，倒入蛋液', heat: '中大火', time: '20秒', amount: '油15ml', note: '油温六成热（约180℃），蛋液边缘开始凝固时用铲子划散' }, { order: 5, desc: '炒至金黄盛出', heat: '中火', time: '30秒', amount: '', note: '蛋液八成熟（表面金黄、内部微湿）即可盛出，不要炒老' }, { order: 6, desc: '锅中留底油，下番茄炒出汁', heat: '中火', time: '2分钟', amount: '油10ml', note: '小火慢炒，用铲子压番茄出汁，炒至番茄软烂出沙' }, { order: 7, desc: '加盐、糖调味', heat: '中火', time: '10秒', amount: '盐2g、糖8g', note: '糖可以中和番茄的酸味，让味道更平衡' }, { order: 8, desc: '倒入鸡蛋翻炒均匀', heat: '大火', time: '30秒', amount: '', note: '快速翻炒，让蛋块裹上番茄汁' }, { order: 9, desc: '撒葱花出锅', heat: '', time: '', amount: '葱花5g', note: '' }], nutrition: { perUnit: '1份', calories: '250', fat: '12', protein: '15', carbs: '20', healthNotes: '营养均衡，适合日常' }, tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['早餐', '午餐', '晚餐'], custom: ['快手菜', '下酒菜'] } },
+  { name: '酸辣土豆丝', category: '热炒', difficulty: '入门', duration: '15分钟', intro: '爽脆开胃，经典家常菜。', ingredients: [{ name: '土豆', amount: '2个(约300g)' }, { name: '青椒', amount: '1个(约100g)' }, { name: '干辣椒', amount: '5个(约5g)' }, { name: '花椒', amount: '10粒(约2g)' }, { name: '蒜', amount: '3瓣(约15g)' }, { name: '醋', amount: '20ml(2勺)' }, { name: '盐', amount: '3g(半小勺)' }, { name: '白糖', amount: '3g(半小勺)' }, { name: '食用油', amount: '20ml(2勺)' }], steps: [{ order: 1, desc: '土豆去皮切丝', heat: '', time: '5分钟', amount: '土豆2个', note: '切成均匀细丝（约3mm宽），越均匀越好' }, { order: 2, desc: '土豆丝泡水去淀粉', heat: '', time: '10分钟', amount: '', note: '放入清水中浸泡10分钟，换水一次，去除表面淀粉' }, { order: 3, desc: '青椒切丝，干辣椒切段', heat: '', time: '2分钟', amount: '青椒1个、干辣椒5个', note: '青椒去籽切丝，干辣椒剪成1cm小段' }, { order: 4, desc: '土豆丝焯水过凉水', heat: '大火', time: '1分钟', amount: '水500ml', note: '水开后下土豆丝焯15秒，立即捞出过凉水，保持脆爽' }, { order: 5, desc: '热锅热油，爆香花椒干辣椒', heat: '中火', time: '15秒', amount: '油10ml', note: '油温五成热（约150℃），花椒和干辣椒微微变色即可，不要炸糊' }, { order: 6, desc: '下蒜末爆香', heat: '中火', time: '10秒', amount: '蒜3瓣', note: '' }, { order: 7, desc: '下土豆丝大火快炒', heat: '大火', time: '1分钟', amount: '', note: '土豆丝入锅后快速翻炒，保持大火' }, { order: 8, desc: '沿锅边淋醋', heat: '大火', time: '30秒', amount: '醋15ml', note: '醋沿锅边淋入，激发出酸香味' }, { order: 9, desc: '加青椒、盐、糖', heat: '大火', time: '30秒', amount: '青椒1个、盐3g、糖3g', note: '青椒入锅后快速翻炒' }, { order: 10, desc: '出锅装盘', heat: '', time: '', amount: '', note: '土豆丝保持脆爽，不要炒过头' }], nutrition: { perUnit: '1份', calories: '180', fat: '5', protein: '4', carbs: '35', healthNotes: '低脂肪，富含碳水' }, tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['午餐', '晚餐'], custom: ['快手菜', '下酒菜'] } },
   { name: '清炒时蔬', category: '热炒', difficulty: '入门', duration: '8分钟', intro: '简单快手的清炒蔬菜，保持蔬菜原味。', ingredients: [{ name: '大白菜', amount: '半棵' }, { name: '蒜', amount: '3瓣' }, { name: '盐', amount: '适量' }, { name: '油', amount: '1勺' }], steps: [{ desc: '蔬菜洗净切段' }, { desc: '热油爆香蒜末' }, { desc: '下蔬菜大火快炒' }, { desc: '加盐调味出锅' }], nutrition: { perUnit: '1份', calories: '80', fat: '3', protein: '2', carbs: '12', healthNotes: '低热量，富含维生素' }, tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['午餐', '晚餐'] } },
   { name: '白灼虾', category: '热炒', difficulty: '入门', duration: '8分钟', intro: '鲜甜简单，原汁原味。', ingredients: [{ name: '虾仁', amount: '200g' }, { name: '葱', amount: '2根' }, { name: '姜', amount: '3片' }, { name: '料酒', amount: '1勺' }, { name: '生抽', amount: '2勺' }], steps: [{ desc: '虾仁去虾线，洗净' }, { desc: '锅中加水，放葱姜料酒' }, { desc: '水开后下虾仁煮2分钟' }, { desc: '捞出蘸生抽食用' }], nutrition: { perUnit: '1份', calories: '200', fat: '2', protein: '35', carbs: '5', healthNotes: '高蛋白低脂肪' }, tags: { cooking: ['煮'], diet: ['荤菜'], cuisine: ['粤菜'], meal: ['午餐', '晚餐'] } },
   { name: '蒜蓉西兰花', category: '热炒', difficulty: '入门', duration: '10分钟', intro: '蒜香浓郁，营养健康的西兰花做法。', ingredients: [{ name: '西兰花', amount: '1个' }, { name: '蒜', amount: '5瓣' }, { name: '盐', amount: '适量' }, { name: '油', amount: '1勺' }], steps: [{ desc: '西兰花掰小朵，焯水' }, { desc: '蒜切末' }, { desc: '热油爆香蒜末' }, { desc: '下西兰花翻炒' }, { desc: '加盐调味出锅' }], nutrition: { perUnit: '1份', calories: '120', fat: '5', protein: '5', carbs: '15', healthNotes: '富含维生素C和膳食纤维' }, tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['午餐', '晚餐'] } },
@@ -86,7 +86,7 @@ const dishTemplates = [
   { name: '皮蛋豆腐', category: '凉菜', difficulty: '入门', duration: '5分钟', intro: '简单快手的凉菜，豆腐嫩滑。', ingredients: [{ name: '豆腐', amount: '1块' }, { name: '鸡蛋', amount: '1个' }, { name: '生抽', amount: '2勺' }, { name: '香油', amount: '半勺' }, { name: '葱', amount: '1根' }], steps: [{ desc: '豆腐切块摆盘' }, { desc: '皮蛋切块摆盘' }, { desc: '淋生抽、香油' }, { desc: '撒葱花' }], nutrition: { perUnit: '1份', calories: '150', fat: '8', protein: '12', carbs: '5', healthNotes: '适量食用' }, tags: { cooking: ['拌'], diet: ['素'], cuisine: ['家常'], meal: ['午餐', '晚餐'] } },
 
   // 进阶 - 热炒
-  { name: '红烧肉', category: '热炒', difficulty: '进阶', duration: '60分钟', intro: '肥而不腻的经典硬菜，入口即化。', ingredients: [{ name: '五花肉', amount: '500g' }, { name: '冰糖', amount: '20g' }, { name: '八角', amount: '2颗' }, { name: '生抽', amount: '3勺' }, { name: '老抽', amount: '1勺' }, { name: '料酒', amount: '2勺' }], steps: [{ desc: '五花肉切块冷水下锅焯水', note: '加料酒去腥' }, { desc: '热锅冷油放冰糖，小火炒至焦糖色' }, { desc: '倒入肉块翻炒上色' }, { desc: '加开水没过肉，放八角、生抽' }, { desc: '小火炖50分钟，收汁撒芝麻' }, { desc: '出锅' }], nutrition: { perUnit: '1份', calories: '500', fat: '40', protein: '20', carbs: '15', healthNotes: '高脂肪高热量，适量食用' }, tags: { cooking: ['炖'], diet: ['荤菜'], cuisine: ['家常'], meal: ['晚餐'], custom: ['宴客菜'] } },
+  { name: '红烧肉', category: '热炒', difficulty: '进阶', duration: '60分钟', intro: '肥而不腻的经典硬菜，入口即化。', ingredients: [{ name: '五花肉', amount: '500g' }, { name: '冰糖', amount: '20g' }, { name: '八角', amount: '2颗' }, { name: '香叶', amount: '2片' }, { name: '生抽', amount: '30ml(3勺)' }, { name: '老抽', amount: '10ml(1勺)' }, { name: '料酒', amount: '20ml(2勺)' }, { name: '姜', amount: '5片(约15g)' }, { name: '葱', amount: '2根(约20g)' }], steps: [{ order: 1, desc: '五花肉切块', heat: '', time: '5分钟', amount: '五花肉500g', note: '切成2.5cm见方的块，肥瘦比例约3:7' }, { order: 2, desc: '冷水下锅焯水', heat: '中火', time: '5分钟', amount: '水500ml、料酒10ml', note: '冷水下锅，加料酒和姜片去腥，水开后撇去浮沫，捞出用温水冲洗' }, { order: 3, desc: '热锅冷油，放冰糖炒糖色', heat: '小火', time: '3分钟', amount: '油10ml、冰糖20g', note: '小火慢慢炒，冰糖融化后变成焦糖色（琥珀色），注意不要炒糊，糊了会发苦' }, { order: 4, desc: '倒入肉块翻炒上色', heat: '中火', time: '3分钟', amount: '', note: '快速翻炒让每块肉都裹上糖色' }, { order: 5, desc: '加姜葱、料酒', heat: '中火', time: '30秒', amount: '姜5片、葱2根、料酒10ml', note: '' }, { order: 6, desc: '加开水没过肉', heat: '', time: '', amount: '开水500ml', note: '一定要加开水，冷水会让肉收缩变柴' }, { order: 7, desc: '加生抽、八角、香叶', heat: '', time: '', amount: '生抽30ml、八角2颗、香叶2片', note: '' }, { order: 8, desc: '大火烧开转小火炖', heat: '小火', time: '50分钟', amount: '', note: '加盖小火慢炖，炖至肉软烂（筷子能轻松插入）' }, { order: 9, desc: '加老抽调色', heat: '中火', time: '2分钟', amount: '老抽10ml', note: '开盖后加老抽上色' }, { order: 10, desc: '大火收汁', heat: '大火', time: '5分钟', note: '汤汁变浓稠，裹在肉上即可' }, { order: 11, desc: '出锅装盘', heat: '', time: '', amount: '', note: '' }], nutrition: { perUnit: '1份', calories: '500', fat: '40', protein: '20', carbs: '15', healthNotes: '高脂肪高热量，适量食用' }, tags: { cooking: ['炖'], diet: ['荤菜'], cuisine: ['家常'], meal: ['晚餐'], custom: ['宴客菜'] } },
   { name: '宫保鸡丁', category: '热炒', difficulty: '进阶', duration: '30分钟', intro: '麻辣鲜香，下饭神器。', ingredients: [{ name: '鸡胸肉', amount: '200g' }, { name: '花生米', amount: '50g' }, { name: '干辣椒', amount: '8个' }, { name: '花椒', amount: '10粒' }, { name: '葱', amount: '1根' }, { name: '生抽', amount: '2勺' }, { name: '醋', amount: '2勺' }, { name: '糖', amount: '1勺' }], steps: [{ desc: '鸡胸肉切丁，加料酒、生抽、淀粉腌制' }, { desc: '花生米炒熟去皮' }, { desc: '热油爆香干辣椒、花椒' }, { desc: '下鸡丁炒至变色' }, { desc: '加葱、调料调味' }, { desc: '倒入宫保汁（生抽、醋、糖、料酒、淀粉、水）' }, { desc: '最后加入花生米炒匀' }], nutrition: { perUnit: '1份', calories: '350', fat: '15', protein: '25', carbs: '20', healthNotes: '适量食用' }, tags: { cooking: ['炒'], diet: ['荤菜'], cuisine: ['川菜'], meal: ['午餐', '晚餐'], custom: ['下酒菜'] } },
   { name: '鱼香肉丝', category: '热炒', difficulty: '进阶', duration: '25分钟', intro: '酸甜微辣，经典川菜。', ingredients: [{ name: '猪肉', amount: '200g' }, { name: '木耳', amount: '50g' }, { name: '胡萝卜', amount: '1根' }, { name: '青椒', amount: '1个' }, { name: '泡椒', amount: '3个' }, { name: '豆瓣酱', amount: '1勺' }, { name: '生抽', amount: '2勺' }, { name: '醋', amount: '2勺' }, { name: '糖', amount: '1勺' }], steps: [{ desc: '肉丝加料酒、淀粉腌制' }, { desc: '木耳泡发切丝，胡萝卜青椒切丝' }, { desc: '热油滑炒肉丝变色盛出' }, { desc: '爆香豆瓣酱、泡椒' }, { desc: '下蔬菜炒软' }, { desc: '倒肉丝，加鱼香汁（生抽、醋、糖、淀粉、水）' }, { desc: '勾芡出锅' }], nutrition: { perUnit: '1份', calories: '300', fat: '12', protein: '20', carbs: '25', healthNotes: '适量食用' }, tags: { cooking: ['炒'], diet: ['荤菜'], cuisine: ['川菜'], meal: ['午餐', '晚餐'] } },
   { name: '麻婆豆腐', category: '热炒', difficulty: '进阶', duration: '20分钟', intro: '麻辣鲜香，口感滑嫩，川菜经典。', ingredients: [{ name: '豆腐', amount: '1块' }, { name: '猪肉', amount: '100g' }, { name: '豆瓣酱', amount: '1勺' }, { name: '花椒', amount: '10粒' }, { name: '蒜', amount: '3瓣' }, { name: '生抽', amount: '1勺' }], steps: [{ desc: '豆腐切块焯水去豆腥味' }, { desc: '猪肉切末煸炒至变色' }, { desc: '加豆瓣酱、蒜末炒出红油' }, { desc: '倒入适量清水，放入豆腐' }, { desc: '加盐、生抽调味，小火煮几分钟' }, { desc: '水淀粉勾芡，撒花椒粉' }, { desc: '撒葱花出锅' }], nutrition: { perUnit: '1份', calories: '280', fat: '15', protein: '18', carbs: '12', healthNotes: '适量食用' }, tags: { cooking: ['炖'], diet: ['荤菜'], cuisine: ['川菜'], meal: ['午餐', '晚餐'], custom: ['下饭'] } },
@@ -175,8 +175,24 @@ for (let i = 0; i < 15; i++) {
     difficulty: v.difficulty,
     duration: `${10 + i * 2}分钟`,
     intro: `${v.veg[0]}与${v.veg[1]}的搭配，简单美味。`,
-    ingredients: [{ name: v.veg[0], amount: '适量' }, { name: v.veg[1], amount: '适量' }, { name: '蒜', amount: '3瓣' }, { name: '盐', amount: '适量' }, { name: '生抽', amount: '1勺' }],
-    steps: [{ desc: '食材洗净切好' }, { desc: '热油爆香蒜末' }, { desc: '下食材翻炒' }, { desc: '加盐、生抽调味' }, { desc: '出锅' }],
+    ingredients: [
+      { name: v.veg[0], amount: '200g' },
+      { name: v.veg[1], amount: '100g' },
+      { name: '蒜', amount: '3瓣(约15g)' },
+      { name: '盐', amount: '3g(半小勺)' },
+      { name: '生抽', amount: '10ml(1勺)' },
+      { name: '食用油', amount: '15ml(1勺半)' }
+    ],
+    steps: [
+      { order: 1, desc: `${v.veg[0]}洗净切好`, heat: '', time: '3分钟', amount: '', note: `${v.veg[0]}切好后放入清水中浸泡5分钟` },
+      { order: 2, desc: `${v.veg[1]}洗净切好`, heat: '', time: '2分钟', amount: '', note: '' },
+      { order: 3, desc: '蒜切末', heat: '', time: '1分钟', amount: '蒜3瓣', note: '' },
+      { order: 4, desc: '热锅热油，爆香蒜末', heat: '中火', time: '20秒', amount: '油15ml', note: '油温六成热（约180℃），蒜末微微变黄即可' },
+      { order: 5, desc: `下${v.veg[0]}大火快炒`, heat: '大火', time: '1分钟', amount: '', note: `炒至${v.veg[0]}断生（表面微微变软）` },
+      { order: 6, desc: `下${v.veg[1]}继续翻炒`, heat: '大火', time: '30秒', amount: '', note: '' },
+      { order: 7, desc: '加盐、生抽调味', heat: '大火', time: '10秒', amount: '盐3g、生抽10ml', note: '调味后快速翻炒均匀' },
+      { order: 8, desc: '出锅装盘', heat: '', time: '', amount: '', note: '' }
+    ],
     nutrition: { perUnit: '1份', calories: `${100 + i * 20}`, fat: `${3 + i}`, protein: `${3 + i}`, carbs: `${10 + i * 2}`, healthNotes: '适量食用' },
     tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['午餐', '晚餐'] }
   })
@@ -190,8 +206,27 @@ for (let i = 0; i < 16; i++) {
     difficulty: m.difficulty,
     duration: `${20 + i * 3}分钟`,
     intro: `${m.main}与${m.veg[0]}的经典搭配，营养丰富。`,
-    ingredients: [{ name: m.main, amount: '适量' }, { name: m.veg[0], amount: '适量' }, { name: '姜', amount: '3片' }, { name: '生抽', amount: '2勺' }, { name: '料酒', amount: '1勺' }],
-    steps: [{ desc: '食材洗净切好' }, { desc: '肉类焯水' }, { desc: '热油爆香姜蒜' }, { desc: '下食材翻炒' }, { desc: '加调料调味' }, { desc: '加水炖煮' }, { desc: '收汁出锅' }],
+    ingredients: [
+      { name: m.main, amount: '200g' },
+      { name: m.veg[0], amount: '150g' },
+      { name: '姜', amount: '3片(约10g)' },
+      { name: '蒜', amount: '3瓣(约15g)' },
+      { name: '生抽', amount: '15ml(1.5勺)' },
+      { name: '料酒', amount: '10ml(1勺)' },
+      { name: '食用油', amount: '20ml(2勺)' },
+      { name: '盐', amount: '3g(半小勺)' }
+    ],
+    steps: [
+      { order: 1, desc: `${m.main}洗净切块/切片`, heat: '', time: '3分钟', amount: '', note: `${m.main}切好后用料酒5ml、生抽5ml腌制10分钟去腥` },
+      { order: 2, desc: `${m.veg[0]}洗净切好`, heat: '', time: '2分钟', amount: '', note: '' },
+      { order: 3, desc: `${m.main}焯水去血沫`, heat: '中火', time: '3分钟', amount: '', note: '冷水下锅，水开后撇去浮沫' },
+      { order: 4, desc: '热锅热油，爆香姜蒜', heat: '中火', time: '20秒', amount: '油20ml', note: '油温六成热（约180℃），姜蒜微微变黄即可' },
+      { order: 5, desc: `下${m.main}翻炒上色`, heat: '中火', time: '2分钟', amount: '', note: `炒至表面微微焦黄` },
+      { order: 6, desc: `下${m.veg[0]}翻炒`, heat: '大火', time: '1分钟', amount: '', note: '' },
+      { order: 7, desc: '加生抽、盐调味', heat: '大火', time: '10秒', amount: '生抽10ml、盐3g', note: '沿锅边淋入生抽，翻炒均匀' },
+      { order: 8, desc: '加水炖煮', heat: '小火', time: '10分钟', amount: '水200ml', note: '水没过食材一半即可，小火慢炖' },
+      { order: 9, desc: '大火收汁出锅', heat: '大火', time: '2分钟', amount: '', note: '汤汁浓稠即可出锅' }
+    ],
     nutrition: { perUnit: '1份', calories: `${200 + i * 20}`, fat: `${10 + i}`, protein: `${20 + i}`, carbs: `${5 + i}`, healthNotes: '适量食用' },
     tags: { cooking: ['炒'], diet: ['荤菜'], cuisine: ['家常'], meal: ['午餐', '晚餐'] }
   })
@@ -214,6 +249,7 @@ for (let i = 0; i < extraVegDishes.length; i++) {
   const name = extraVegDishes[i]
   const isSoup = name.includes('汤')
   const isCold = name.includes('凉拌')
+  const isStew = name.includes('炖') || name.includes('烧')
   const difficulty = isSoup ? '进阶' : (isCold ? '入门' : (i % 3 === 0 ? '进阶' : '入门'))
   moreDishes.push({
     name,
@@ -221,8 +257,14 @@ for (let i = 0; i < extraVegDishes.length; i++) {
     difficulty,
     duration: `${isSoup ? 30 + i : 10 + i}分钟`,
     intro: `${name}，家常美味。`,
-    ingredients: [{ name: '蔬菜', amount: '适量' }, { name: '蒜', amount: '3瓣' }, { name: '盐', amount: '适量' }, { name: '生抽', amount: '1勺' }],
-    steps: [{ desc: '食材洗净切好' }, { desc: '热油爆香蒜末' }, { desc: '下食材翻炒' }, { desc: '加盐、生抽调味' }, { desc: '出锅' }],
+    ingredients: [
+      { name: isSoup ? '食材' : '蔬菜', amount: '200g' },
+      { name: '蒜', amount: '3瓣(约15g)' },
+      { name: '盐', amount: '3g(半小勺)' },
+      { name: '生抽', amount: '10ml(1勺)' },
+      { name: '食用油', amount: '15ml(1勺半)' }
+    ],
+    steps: genSteps(name, isSoup, isCold, isStew, '蔬菜', ''),
     nutrition: { perUnit: '1份', calories: `${80 + i * 10}`, fat: `${3 + i}`, protein: `${2 + i}`, carbs: `${10 + i}`, healthNotes: '适量食用' },
     tags: { cooking: ['炒'], diet: ['素'], cuisine: ['家常'], meal: ['午餐', '晚餐'] }
   })
@@ -245,15 +287,26 @@ const extraMeatDishes = [
 for (let i = 0; i < extraMeatDishes.length; i++) {
   const name = extraMeatDishes[i]
   const isSoup = name.includes('汤')
-  const difficulty = isSoup ? '进阶' : (i % 3 === 0 ? '挑战' : (i % 2 === 0 ? '进阶' : '入门'))
+  const isCold = name.includes('凉拌')
+  const isStew = name.includes('炖') || name.includes('烧') || name.includes('蒸')
+  const difficulty = isSoup ? '进阶' : (isCold ? '入门' : (i % 3 === 0 ? '挑战' : (i % 2 === 0 ? '进阶' : '入门')))
   moreDishes.push({
     name,
-    category: isSoup ? '汤羹' : '热炒',
+    category: isSoup ? '汤羹' : (isCold ? '凉菜' : '热炒'),
     difficulty,
     duration: `${isSoup ? 60 + i : 20 + i}分钟`,
     intro: `${name}，经典家常菜。`,
-    ingredients: [{ name: '肉类', amount: '适量' }, { name: '蔬菜', amount: '适量' }, { name: '姜', amount: '3片' }, { name: '生抽', amount: '2勺' }, { name: '料酒', amount: '1勺' }],
-    steps: [{ desc: '食材洗净切好' }, { desc: '肉类焯水' }, { desc: '热油爆香姜蒜' }, { desc: '下食材翻炒' }, { desc: '加调料调味' }, { desc: '加水炖煮' }, { desc: '收汁出锅' }],
+    ingredients: [
+      { name: '肉类', amount: '200g' },
+      { name: '蔬菜', amount: '150g' },
+      { name: '姜', amount: '3片(约10g)' },
+      { name: '蒜', amount: '3瓣(约15g)' },
+      { name: '生抽', amount: '15ml(1.5勺)' },
+      { name: '料酒', amount: '10ml(1勺)' },
+      { name: '食用油', amount: '20ml(2勺)' },
+      { name: '盐', amount: '3g(半小勺)' }
+    ],
+    steps: genSteps(name, isSoup, isCold, isStew, '蔬菜', ''),
     nutrition: { perUnit: '1份', calories: `${250 + i * 15}`, fat: `${12 + i}`, protein: `${22 + i}`, carbs: `${8 + i}`, healthNotes: '适量食用' },
     tags: { cooking: ['炒'], diet: ['荤菜'], cuisine: ['家常'], meal: ['午餐', '晚餐'] }
   })
@@ -271,14 +324,40 @@ const extraStapleDishes = [
 
 for (let i = 0; i < extraStapleDishes.length; i++) {
   const name = extraStapleDishes[i]
+  const isNoodle = name.includes('面')
+  const isRice = name.includes('饭')
   moreDishes.push({
     name,
-    category: name.includes('饭') ? '主食' : (name.includes('面') ? '主食' : (name.includes('饺') || name.includes('包') || name.includes('馄') ? '主食' : '主食')),
+    category: '主食',
     difficulty: '入门',
     duration: `${10 + i}分钟`,
     intro: `${name}，方便快手的主食。`,
-    ingredients: [{ name: '大米', amount: '适量' }, { name: '鸡蛋', amount: '1个' }, { name: '葱', amount: '1根' }, { name: '盐', amount: '适量' }],
-    steps: [{ desc: '食材准备' }, { desc: '热油翻炒' }, { desc: '加盐调味' }, { desc: '出锅' }],
+    ingredients: [
+      { name: isRice ? '大米' : '面条', amount: isRice ? '150g' : '200g' },
+      { name: '鸡蛋', amount: '1个(约50g)' },
+      { name: '葱', amount: '1根(约10g)' },
+      { name: '盐', amount: '2g(小半勺)' },
+      { name: '生抽', amount: '10ml(1勺)' },
+      { name: '食用油', amount: '15ml(1勺半)' }
+    ],
+    steps: isNoodle
+      ? [
+          { order: 1, desc: '烧水煮面', heat: '大火', time: '5分钟', amount: '水500ml', note: '水开后下面条，煮至浮起' },
+          { order: 2, desc: '准备配菜', heat: '', time: '2分钟', amount: '鸡蛋1个', note: '鸡蛋打散，葱切末' },
+          { order: 3, desc: '热锅热油炒蛋', heat: '中火', time: '30秒', amount: '油10ml', note: '蛋液凝固即可盛出' },
+          { order: 4, desc: '面条捞出过凉水', heat: '', time: '1分钟', amount: '', note: '过凉水保持弹性' },
+          { order: 5, desc: '拌面调味', heat: '', time: '1分钟', amount: '生抽10ml、盐2g、油5ml', note: '调料与面条拌匀' },
+          { order: 6, desc: '装盘撒葱花', heat: '', time: '', amount: '', note: '' }
+        ]
+      : [
+          { order: 1, desc: '准备米饭', heat: '', time: '2分钟', amount: '大米150g', note: '最好用隔夜饭，炒出来粒粒分明' },
+          { order: 2, desc: '鸡蛋打散炒熟', heat: '中火', time: '30秒', amount: '鸡蛋1个、油10ml', note: '蛋液凝固即可盛出' },
+          { order: 3, desc: '热锅热油，爆香葱末', heat: '中火', time: '15秒', amount: '油5ml', note: '葱末微微变黄即可' },
+          { order: 4, desc: '下米饭大火翻炒', heat: '大火', time: '2分钟', amount: '', note: '用铲子将米饭压散，炒至粒粒分明' },
+          { order: 5, desc: '加盐、生抽调味', heat: '大火', time: '10秒', amount: '盐2g、生抽10ml', note: '快速翻炒均匀' },
+          { order: 6, desc: '倒入鸡蛋翻炒', heat: '大火', time: '30秒', amount: '', note: '' },
+          { order: 7, desc: '撒葱花出锅', heat: '', time: '', amount: '', note: '' }
+        ],
     nutrition: { perUnit: '1份', calories: `${300 + i * 10}`, fat: `${5 + i}`, protein: `${10 + i}`, carbs: `${50 + i}`, healthNotes: '适量食用' },
     tags: { cooking: ['炒'], diet: ['荤菜'], cuisine: ['家常'], meal: ['午餐', '晚餐'] }
   })
@@ -300,11 +379,84 @@ for (let i = 0; i < extraDessertDishes.length; i++) {
     difficulty: '入门',
     duration: `${20 + i}分钟`,
     intro: `${name}，清甜润燥。`,
-    ingredients: [{ name: '银耳', amount: '10g' }, { name: '红枣', amount: '5颗' }, { name: '冰糖', amount: '适量' }, { name: '枸杞', amount: '10g' }],
-    steps: [{ desc: '食材泡发' }, { desc: '加水炖煮' }, { desc: '加冰糖调味' }, { desc: '出锅' }],
+    ingredients: [
+      { name: '银耳', amount: '10g' },
+      { name: '红枣', amount: '5颗(约25g)' },
+      { name: '冰糖', amount: '20g' },
+      { name: '枸杞', amount: '10g' },
+      { name: '水', amount: '500ml' }
+    ],
+    steps: [
+      { order: 1, desc: '银耳泡发', heat: '', time: '30分钟', amount: '银耳10g', note: '冷水泡发至完全展开，去根部杂质' },
+      { order: 2, desc: '红枣去核', heat: '', time: '2分钟', amount: '红枣5颗', note: '' },
+      { order: 3, desc: '加水炖煮银耳', heat: '大火', time: '10分钟', amount: '水500ml', note: '大火烧开后转小火' },
+      { order: 4, desc: '小火慢炖', heat: '小火', time: '20分钟', amount: '', note: '炖至银耳软糯出胶' },
+      { order: 5, desc: '加红枣、枸杞', heat: '小火', time: '5分钟', amount: '红枣5颗、枸杞10g', note: '继续炖煮' },
+      { order: 6, desc: '加冰糖调味', heat: '小火', time: '3分钟', amount: '冰糖20g', note: '冰糖融化即可' },
+      { order: 7, desc: '出锅', heat: '', time: '', amount: '', note: '温热或冷藏食用均可' }
+    ],
     nutrition: { perUnit: '1份', calories: `${80 + i * 5}`, fat: `${1 + i}`, protein: `${2 + i}`, carbs: `${15 + i * 2}`, healthNotes: '适量食用' },
     tags: { cooking: ['炖'], diet: ['素'], cuisine: ['家常'], meal: ['晚餐'], custom: ['甜品'] }
   })
+}
+
+// ========== 步骤生成器 ==========
+// 为自动生成的菜品创建详细的步骤（含火候、时间、用量、注意事项）
+function genSteps(name, isSoup, isCold, isStew, veg1, veg2) {
+  const mainIng = veg1 || '蔬菜'
+  const subIng = veg2 || ''
+  const hasMeat = name.includes('肉') || name.includes('鸡') || name.includes('牛') || name.includes('排骨') || name.includes('虾') || name.includes('鱼') || name.includes('蛋')
+
+  if (isCold) {
+    return [
+      { order: 1, desc: `${mainIng}洗净处理`, heat: '', time: '3分钟', amount: mainIng, note: `${mainIng}切好后放入冰水中浸泡5分钟，口感更脆` },
+      { order: 2, desc: subIng ? `${subIng}洗净切好` : '辅料洗净切好', heat: '', time: '2分钟', amount: subIng, note: '' },
+      { order: 3, desc: '焯水处理', heat: '中火', time: '1-2分钟', amount: '', note: `水开后下锅，${mainIng}变色即可捞出，过凉水保持脆爽` },
+      { order: 4, desc: '准备调料', heat: '', time: '2分钟', amount: '蒜3瓣、醋15ml、生抽10ml、糖5g、盐3g、香油5ml', note: '调料混合均匀' },
+      { order: 5, desc: '拌匀装盘', heat: '', time: '1分钟', amount: '', note: '将调料淋在食材上，轻轻拌匀' }
+    ]
+  }
+
+  if (isSoup) {
+    return [
+      { order: 1, desc: `${hasMeat ? '肉类' : '食材'}洗净切块`, heat: '', time: '3分钟', amount: hasMeat ? '200g' : '200g', note: hasMeat ? '切块后用料酒5ml腌制10分钟去腥' : '' },
+      { order: 2, desc: `${mainIng}洗净切好`, heat: '', time: '2分钟', amount: mainIng, note: '' },
+      { order: 3, desc: hasMeat ? '肉类焯水去血沫' : '食材焯水', heat: '中火', time: '3分钟', amount: '', note: '冷水下锅，水开后撇去浮沫' },
+      { order: 4, desc: '热锅热油，爆香姜蒜', heat: '中火', time: '20秒', amount: '油15ml', note: '油温六成热，姜蒜微微变黄即可' },
+      { order: 5, desc: hasMeat ? '下肉类翻炒' : '下食材翻炒', heat: '中火', time: '2分钟', amount: '', note: hasMeat ? '炒至表面微微焦黄' : '' },
+      { order: 6, desc: `下${mainIng}继续翻炒`, heat: '大火', time: '1分钟', amount: '', note: '' },
+      { order: 7, desc: '加水炖煮', heat: '小火', time: '20分钟', amount: '水500ml', note: '水没过食材，小火慢炖' },
+      { order: 8, desc: '加盐调味', heat: '小火', time: '2分钟', amount: '盐4g', note: '出锅前调味' },
+      { order: 9, desc: '出锅装盘', heat: '', time: '', amount: '', note: '' }
+    ]
+  }
+
+  // 热炒类
+  if (isStew) {
+    return [
+      { order: 1, desc: `${hasMeat ? '肉类' : '食材'}洗净切块`, heat: '', time: '3分钟', amount: hasMeat ? '200g' : '200g', note: hasMeat ? '切块后用料酒5ml、生抽5ml腌制10分钟去腥' : '' },
+      { order: 2, desc: `${mainIng}洗净切块`, heat: '', time: '2分钟', amount: mainIng, note: '' },
+      { order: 3, desc: hasMeat ? '肉类焯水去血沫' : '', heat: '中火', time: '3分钟', amount: '', note: hasMeat ? '冷水下锅，水开后撇去浮沫' : '' },
+      { order: 4, desc: '热锅热油，爆香姜蒜', heat: '中火', time: '20秒', amount: '油20ml', note: '油温六成热（约180℃）' },
+      { order: 5, desc: hasMeat ? '下肉类翻炒上色' : '下食材翻炒', heat: '中火', time: '2分钟', amount: '', note: hasMeat ? '炒至表面微微焦黄' : '' },
+      { order: 6, desc: `下${mainIng}翻炒`, heat: '大火', time: '1分钟', amount: '', note: '' },
+      { order: 7, desc: '加生抽、盐调味', heat: '大火', time: '10秒', amount: '生抽15ml、盐3g', note: '沿锅边淋入生抽' },
+      { order: 8, desc: '加水炖煮', heat: '小火', time: '15分钟', amount: '水300ml', note: '水没过食材一半，小火慢炖' },
+      { order: 9, desc: '大火收汁出锅', heat: '大火', time: '3分钟', amount: '', note: '汤汁浓稠即可出锅' }
+    ]
+  }
+
+  // 普通热炒
+  return [
+    { order: 1, desc: `${mainIng}洗净切好`, heat: '', time: '3分钟', amount: mainIng, note: `${mainIng}切好后放入清水中浸泡5分钟` },
+    { order: 2, desc: subIng ? `${subIng}洗净切好` : '辅料洗净切好', heat: '', time: '2分钟', amount: subIng, note: '' },
+    { order: 3, desc: '蒜切末', heat: '', time: '1分钟', amount: '蒜3瓣(约15g)', note: '' },
+    { order: 4, desc: '热锅热油，爆香蒜末', heat: '中火', time: '20秒', amount: '油15ml', note: '油温六成热（约180℃），蒜末微微变黄即可' },
+    { order: 5, desc: `下${mainIng}大火快炒`, heat: '大火', time: '1分钟', amount: '', note: `炒至${mainIng}断生（表面微微变软）` },
+    { order: 6, desc: subIng ? `下${subIng}继续翻炒` : '加辅料翻炒', heat: '大火', time: '30秒', amount: '', note: '' },
+    { order: 7, desc: '加盐、生抽调味', heat: '大火', time: '10秒', amount: '盐3g(半小勺)、生抽10ml(1勺)', note: '调味后快速翻炒均匀' },
+    { order: 8, desc: '出锅装盘', heat: '', time: '', amount: '', note: '' }
+  ]
 }
 
 // ========== 补充更多食材 ==========

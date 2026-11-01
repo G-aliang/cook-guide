@@ -73,13 +73,20 @@ export const useIngredientStore = defineStore('ingredient', {
       }
       return result
     },
-    paged: (state, getters) => {
-      const filtered = getters.filtered
+    paged: (state) => {
+      let result = state.ingredients
+      if (state.filter.category) {
+        result = result.filter(i => i.category === state.filter.category)
+      }
+      if (state.filter.keyword) {
+        const kw = state.filter.keyword.toLowerCase()
+        result = result.filter(i => i.name?.toLowerCase().includes(kw))
+      }
       const start = (state.page - 1) * state.pageSize
       const end = start + state.pageSize
       return {
-        items: filtered.slice(start, end),
-        hasMore: end < filtered.length,
+        items: result.slice(start, end),
+        hasMore: end < result.length,
       }
     },
   },

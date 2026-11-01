@@ -87,9 +87,9 @@ const isMobile = ref(window.innerWidth < 768)
 
 const filter = computed(() => store.filter)
 const loading = computed(() => store.loading)
-const filtered = computed(() => store.filtered)
-const pagedItems = computed(() => store.paged.items)
-const hasMore = computed(() => store.paged.hasMore)
+const filtered = computed(() => store.filtered || [])
+const pagedItems = computed(() => (store.paged?.items) || [])
+const hasMore = computed(() => store.paged?.hasMore || false)
 const page = computed(() => store.page)
 const pageSize = computed(() => store.pageSize)
 
