@@ -3,8 +3,8 @@
  * 用途：为待生成的菜品生成 AI 提示词，按批次输出到文件
  *
  * 使用：
- *   node ai-gen/gen-prompts.js              # 生成所有批次
- *   node ai-gen/gen-prompts.js 1 10         # 只生成第1-10批
+ *   node ai-gen/scripts/gen-prompts.js       # 生成所有批次
+ *   node ai-gen/scripts/gen-prompts.js 1 10  # 只生成第1-10批
  */
 
 import { readFileSync, writeFileSync } from 'fs'
@@ -114,7 +114,7 @@ let md = `# 菜品详细数据生成提示词
 > 使用方法：
 > 1. 复制某一批的提示词到 AI 工具（ChatGPT/Claude 等）
 > 2. 将 AI 返回的 JSON 保存到 \`ai-gen/ai-output/\` 目录（文件名如 \`batch-01.json\`）
-> 3. 所有批次完成后运行：\`node ai-gen/batch-generate.js --manual\`
+> 3. 所有批次完成后运行：\`node ai-gen/scripts/batch-generate.js --manual\`
 > 4. 再运行合并：\`node merge-dishes.js\`
 
 ---

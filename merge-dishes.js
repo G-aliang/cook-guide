@@ -27,7 +27,7 @@ const dryRun = process.argv.includes('--dry-run')
 function loadData() {
   if (!existsSync(CONFIG.generatedFile)) {
     console.error(`找不到 AI 生成数据: ${CONFIG.generatedFile}`)
-    console.error('请先运行: node ai-gen/batch-generate.js --manual')
+    console.error('请先运行: node ai-gen/scripts/batch-generate.js --manual')
     process.exit(1)
   }
 

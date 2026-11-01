@@ -3,8 +3,8 @@
  * 用途：从系统数据中导出菜品名单为独立 JSON 文件
  *
  * 使用：
- *   node ai-gen/export-list.js           # 导出全部（含状态标记）
- *   node ai-gen/export-list.js --pending # 只导出待生成的
+ *   node ai-gen/scripts/export-list.js           # 导出全部（含状态标记）
+ *   node ai-gen/scripts/export-list.js --pending # 只导出待生成的
  */
 
 import { readFileSync, writeFileSync } from 'fs'

@@ -4,7 +4,7 @@
 > 使用方法：
 > 1. 复制某一批的提示词到 AI 工具（ChatGPT/Claude 等）
 > 2. 将 AI 返回的 JSON 保存到 `ai-gen/ai-output/` 目录（文件名如 `batch-01.json`）
-> 3. 所有批次完成后运行：`node ai-gen/batch-generate.js --manual`
+> 3. 所有批次完成后运行：`node ai-gen/scripts/batch-generate.js --manual`
 > 4. 再运行合并：`node merge-dishes.js`
 
 ---
