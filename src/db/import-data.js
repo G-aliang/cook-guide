@@ -12,10 +12,11 @@ export async function importInitialData() {
       return false
     }
 
-    // 从 public 目录获取数据文件
-    const response = await fetch('./import-data.json')
+    // 从 public 目录获取数据文件（使用 BASE_URL 确保路径正确）
+    const baseUrl = import.meta.env.BASE_URL
+    const response = await fetch(`${baseUrl}import-data.json`)
     if (!response.ok) {
-      console.warn('数据文件不可用，跳过导入')
+      console.warn(`数据文件不可用 (${response.status})，跳过导入`)
       return false
     }
 
