@@ -6,7 +6,9 @@
 
 | 文档 | 说明 | 状态 |
 |------|------|------|
-| （待创建） | | ⬜ 待编写 |
+| [使用文档.md](使用文档.md) | 访问方式、功能说明、代码/数据更新流程 | ✅ 已完成 |
+| [GitHub Pages指南.md](GitHub%20Pages指南.md) | GitHub Pages 部署配置指南 | ✅ 已完成 |
+| [Cloudflare部署指南.md](Cloudflare部署指南.md) | 私有化部署：Cloudflare Pages + Access 登录鉴权 | ✅ 已完成 |
 
 ## 计划文档
 

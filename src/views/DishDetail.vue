@@ -93,6 +93,17 @@
         </div>
       </div>
 
+      <!-- 避坑指南 -->
+      <div class="module-card" v-if="current.pitfalls && current.pitfalls.length">
+        <div class="module-title">⚠️ 新手避坑指南</div>
+        <div class="pitfall-list">
+          <div v-for="(p, i) in current.pitfalls" :key="i" class="pitfall-item">
+            <div class="pitfall-mistake">❌ {{ p.mistake }}</div>
+            <div class="pitfall-solution">✅ {{ p.solution }}</div>
+          </div>
+        </div>
+      </div>
+
       <!-- 营养信息 -->
       <div class="module-card" v-if="current.nutrition">
         <div class="module-title">📊 营养信息</div>

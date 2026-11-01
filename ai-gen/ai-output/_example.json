@@ -1,0 +1,372 @@
+[
+  {
+    "name": "番茄炒蛋",
+    "category": "热炒",
+    "difficulty": "入门",
+    "duration": "10分钟",
+    "intro": "酸甜开胃的快手菜，永远的下饭之王。",
+    "ingredients": [
+      { "name": "番茄", "amount": "2个(约300g)", "note": "选红透的，汁多味甜" },
+      { "name": "鸡蛋", "amount": "3个(约150g)", "note": "室温鸡蛋更容易打散" },
+      { "name": "盐", "amount": "3g(半小勺)", "note": "" },
+      { "name": "白糖", "amount": "8g(1勺)", "note": "中和酸味，让味道更平衡" },
+      { "name": "葱花", "amount": "5g(1根)", "note": "增香点缀" },
+      { "name": "食用油", "amount": "25ml(2勺半)", "note": "分两次用" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "番茄顶部划十字，开水烫15秒去皮", "heat": "", "time": "2分钟", "amount": "番茄2个", "note": "烫后立即入冷水，皮即可轻松撕下" },
+      { "order": 2, "desc": "番茄切块", "heat": "", "time": "1分钟", "amount": "", "note": "切成2cm见方的块，大小均匀" },
+      { "order": 3, "desc": "鸡蛋打散加盐", "heat": "", "time": "1分钟", "amount": "鸡蛋3个、盐1g", "note": "加一小撮盐可以让蛋更蓬松" },
+      { "order": 4, "desc": "热锅热油，倒入蛋液", "heat": "中大火", "time": "20秒", "amount": "油15ml", "note": "油温六成热(约180℃)，蛋液边缘开始凝固时用铲子划散" },
+      { "order": 5, "desc": "炒至金黄盛出", "heat": "中火", "time": "30秒", "amount": "", "note": "蛋液八成熟(表面金黄、内部微湿)即可盛出，不要炒老" },
+      { "order": 6, "desc": "锅中留底油，下番茄炒出汁", "heat": "中火", "time": "2分钟", "amount": "油10ml", "note": "小火慢炒，用铲子压番茄出汁，炒至番茄软烂出沙" },
+      { "order": 7, "desc": "加盐、糖调味", "heat": "中火", "time": "10秒", "amount": "盐2g、糖8g", "note": "糖可以中和番茄的酸味" },
+      { "order": 8, "desc": "倒入鸡蛋翻炒均匀", "heat": "大火", "time": "30秒", "amount": "", "note": "快速翻炒，让蛋块裹上番茄汁" },
+      { "order": 9, "desc": "撒葱花出锅", "heat": "", "time": "", "amount": "葱花5g", "note": "" }
+    ],
+    "pitfalls": [
+      { "mistake": "鸡蛋炒老", "solution": "蛋液八成熟就盛出，内部微湿状态最好" },
+      { "mistake": "番茄不出沙", "solution": "中火慢炒2分钟，用铲子压破番茄皮出汁" },
+      { "mistake": "忘记加糖", "solution": "糖是中和酸味的关键，约8g(1勺)" },
+      { "mistake": "番茄不去皮", "solution": "开水烫15秒后入冷水，皮一撕就掉" }
+    ],
+    "tags": { "cooking": ["炒"], "diet": ["素"], "cuisine": ["家常"], "meal": ["早餐", "午餐", "晚餐"], "custom": ["快手菜", "下饭"] }
+  },
+  {
+    "name": "红烧肉",
+    "category": "热炒",
+    "difficulty": "进阶",
+    "duration": "60分钟",
+    "intro": "肥而不腻的经典硬菜，入口即化。",
+    "ingredients": [
+      { "name": "五花肉", "amount": "500g", "note": "选肥瘦相间的，层次分明" },
+      { "name": "冰糖", "amount": "20g", "note": "炒糖色用，颜色红亮" },
+      { "name": "八角", "amount": "2颗", "note": "" },
+      { "name": "香叶", "amount": "2片", "note": "" },
+      { "name": "生抽", "amount": "30ml(3勺)", "note": "调味" },
+      { "name": "老抽", "amount": "10ml(1勺)", "note": "上色" },
+      { "name": "料酒", "amount": "20ml(2勺)", "note": "去腥" },
+      { "name": "姜", "amount": "5片(约15g)", "note": "" },
+      { "name": "葱", "amount": "2根(约20g)", "note": "" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "五花肉切成2.5cm见方的块", "heat": "", "time": "5分钟", "amount": "五花肉500g", "note": "肥瘦比例约3:7最佳" },
+      { "order": 2, "desc": "冷水下锅焯水", "heat": "中火", "time": "5分钟", "amount": "水500ml、料酒10ml", "note": "冷水下锅，加料酒和姜片去腥，水开后撇去浮沫，捞出温水冲洗" },
+      { "order": 3, "desc": "热锅冷油，放冰糖炒糖色", "heat": "小火", "time": "3分钟", "amount": "油10ml、冰糖20g", "note": "小火慢慢炒，冰糖融化后变成琥珀色，不要炒糊否则发苦" },
+      { "order": 4, "desc": "倒入肉块翻炒上色", "heat": "中火", "time": "3分钟", "amount": "", "note": "快速翻炒让每块肉都裹上糖色" },
+      { "order": 5, "desc": "加姜葱、料酒", "heat": "中火", "time": "30秒", "amount": "姜5片、葱2根、料酒10ml", "note": "" },
+      { "order": 6, "desc": "加开水没过肉", "heat": "", "time": "", "amount": "开水500ml", "note": "一定要加开水，冷水会让肉收缩变柴" },
+      { "order": 7, "desc": "加生抽、八角、香叶", "heat": "", "time": "", "amount": "生抽30ml、八角2颗、香叶2片", "note": "" },
+      { "order": 8, "desc": "大火烧开转小火炖", "heat": "小火", "time": "50分钟", "amount": "", "note": "加盖小火慢炖，炖至筷子能轻松插入" },
+      { "order": 9, "desc": "加老抽调色", "heat": "中火", "time": "2分钟", "amount": "老抽10ml", "note": "开盖后加老抽上色" },
+      { "order": 10, "desc": "大火收汁", "heat": "大火", "time": "5分钟", "amount": "", "note": "汤汁变浓稠裹在肉上即可" },
+      { "order": 11, "desc": "出锅装盘", "heat": "", "time": "", "amount": "", "note": "" }
+    ],
+    "pitfalls": [
+      { "mistake": "炒糖色炒糊", "solution": "全程小火，看到冰糖变成琥珀色立即下肉，颜色再深一点就会发苦" },
+      { "mistake": "加冷水炖", "solution": "必须加开水，冷水会让蛋白质收缩，肉变柴" },
+      { "mistake": "炖的时间不够", "solution": "至少炖50分钟，用筷子能轻松插入肥肉部分才算到位" },
+      { "mistake": "收汁收太干", "solution": "汤汁浓稠裹在肉上就好，留一点汤汁拌饭" },
+      { "mistake": "焯水用热水", "solution": "必须冷水下锅，热水下锅肉表面蛋白质凝固，血沫出不来" }
+    ],
+    "tags": { "cooking": ["炖"], "diet": ["荤菜"], "cuisine": ["家常"], "meal": ["晚餐"], "custom": ["宴客菜"] }
+  },
+  {
+    "name": "麻婆豆腐",
+    "category": "热炒",
+    "difficulty": "进阶",
+    "duration": "20分钟",
+    "intro": "麻辣鲜香，口感滑嫩，川菜经典。",
+    "ingredients": [
+      { "name": "嫩豆腐", "amount": "400g(1块)", "note": "用嫩豆腐口感滑嫩，老豆腐适合红烧" },
+      { "name": "猪肉末", "amount": "100g", "note": "用三分肥七分瘦的猪肉" },
+      { "name": "豆瓣酱", "amount": "20g(1.5勺)", "note": "郫县豆瓣酱最佳" },
+      { "name": "花椒粉", "amount": "3g(1小勺)", "note": "出锅前撒" },
+      { "name": "辣椒面", "amount": "5g(1勺)", "note": "" },
+      { "name": "蒜", "amount": "3瓣(约15g)", "note": "切末" },
+      { "name": "姜", "amount": "3片(约10g)", "note": "切末" },
+      { "name": "生抽", "amount": "10ml(1勺)", "note": "" },
+      { "name": "盐", "amount": "3g(半小勺)", "note": "" },
+      { "name": "水淀粉", "amount": "30ml(水20ml+淀粉10g)", "note": "勾芡用" },
+      { "name": "食用油", "amount": "25ml(2勺半)", "note": "" },
+      { "name": "葱花", "amount": "5g", "note": "出锅撒" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "豆腐切2cm方块", "heat": "", "time": "3分钟", "amount": "嫩豆腐400g", "note": "切好后放入淡盐水中浸泡5分钟去豆腥味" },
+      { "order": 2, "desc": "豆腐焯水", "heat": "中火", "time": "2分钟", "amount": "水500ml、盐3g", "note": "水开后下豆腐，煮1分钟捞出沥干" },
+      { "order": 3, "desc": "猪肉末煸炒", "heat": "中火", "time": "2分钟", "amount": "猪肉末100g、油10ml", "note": "炒至肉末变色出油" },
+      { "order": 4, "desc": "加豆瓣酱、辣椒面炒出红油", "heat": "小火", "time": "1分钟", "amount": "豆瓣酱20g、辣椒面5g", "note": "小火慢炒，豆瓣酱炒出红油" },
+      { "order": 5, "desc": "加姜蒜末炒香", "heat": "小火", "time": "20秒", "amount": "姜末10g、蒜末15g", "note": "" },
+      { "order": 6, "desc": "倒入豆腐", "heat": "中火", "time": "1分钟", "amount": "", "note": "用铲子轻轻推动，不要翻炒太用力以免豆腐碎" },
+      { "order": 7, "desc": "加清水、生抽、盐", "heat": "中火", "time": "2分钟", "amount": "水150ml、生抽10ml、盐3g", "note": "水量没过豆腐一半即可" },
+      { "order": 8, "desc": "小火炖3分钟", "heat": "小火", "time": "3分钟", "amount": "", "note": "让豆腐入味" },
+      { "order": 9, "desc": "水淀粉勾芡", "heat": "中火", "time": "30秒", "amount": "水淀粉30ml", "note": "分两次勾芡，第一次薄芡，第二次浓芡" },
+      { "order": 10, "desc": "撒花椒粉、葱花出锅", "heat": "", "time": "", "amount": "花椒粉3g、葱花5g", "note": "花椒粉最后撒，保持麻味" }
+    ],
+    "pitfalls": [
+      { "mistake": "豆腐碎", "solution": "焯水后沥干，炖煮时用铲子轻轻推而不是翻炒" },
+      { "mistake": "豆瓣酱没炒出红油", "solution": "小火慢炒1分钟，看到油变红色再下其他食材" },
+      { "mistake": "勾芡太厚", "solution": "分两次勾芡，第一次薄芡入味，第二次浓芡挂汁" },
+      { "mistake": "花椒粉放早了", "solution": "花椒粉最后撒，放早了麻味会挥发" },
+      { "mistake": "豆腐没焯水", "solution": "淡盐水浸泡+沸水焯1分钟，去除豆腥味" }
+    ],
+    "tags": { "cooking": ["炖"], "diet": ["荤菜"], "cuisine": ["川菜"], "meal": ["午餐", "晚餐"], "custom": ["下饭"] }
+  },
+  {
+    "name": "宫保鸡丁",
+    "category": "热炒",
+    "difficulty": "进阶",
+    "duration": "30分钟",
+    "intro": "麻辣鲜香，下饭神器。",
+    "ingredients": [
+      { "name": "鸡胸肉", "amount": "250g", "note": "用鸡腿肉口感更嫩" },
+      { "name": "花生米", "amount": "50g", "note": "炸香去皮" },
+      { "name": "干辣椒", "amount": "8个(约8g)", "note": "剪成1cm段" },
+      { "name": "花椒", "amount": "10粒(约2g)", "note": "" },
+      { "name": "大葱", "amount": "1根(约30g)", "note": "切1.5cm段" },
+      { "name": "生抽", "amount": "15ml(1.5勺)", "note": "" },
+      { "name": "醋", "amount": "15ml(1.5勺)", "note": "陈醋最佳" },
+      { "name": "白糖", "amount": "10g(1勺)", "note": "宫保汁关键" },
+      { "name": "料酒", "amount": "10ml(1勺)", "note": "腌肉用" },
+      { "name": "淀粉", "amount": "8g(1勺)", "note": "腌肉和勾芡" },
+      { "name": "盐", "amount": "2g(小半勺)", "note": "" },
+      { "name": "食用油", "amount": "30ml(3勺)", "note": "" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "鸡胸肉切丁", "heat": "", "time": "5分钟", "amount": "鸡胸肉250g", "note": "切成1.5cm见方的丁，大小均匀" },
+      { "order": 2, "desc": "鸡肉腌制", "heat": "", "time": "10分钟", "amount": "料酒10ml、淀粉8g、盐1g", "note": "加料酒去腥，淀粉让肉更嫩" },
+      { "order": 3, "desc": "花生米炸香", "heat": "小火", "time": "3分钟", "amount": "花生米50g、油10ml", "note": "冷油下花生米，小火炸至微微变色，捞出去皮" },
+      { "order": 4, "desc": "调宫保汁", "heat": "", "time": "1分钟", "amount": "生抽15ml、醋15ml、糖10g、淀粉3g、水30ml", "note": "所有调料混合均匀" },
+      { "order": 5, "desc": "热锅热油，滑炒鸡丁", "heat": "中大火", "time": "2分钟", "amount": "油15ml", "note": "油温六成热下鸡丁，滑炒至变色盛出" },
+      { "order": 6, "desc": "热油爆香干辣椒、花椒", "heat": "小火", "time": "15秒", "amount": "油5ml", "note": "干辣椒变深红、花椒变色即可，不要炸糊" },
+      { "order": 7, "desc": "下葱段炒香", "heat": "中火", "time": "10秒", "amount": "葱段30g", "note": "" },
+      { "order": 8, "desc": "倒入鸡丁翻炒", "heat": "大火", "time": "30秒", "amount": "", "note": "" },
+      { "order": 9, "desc": "倒入宫保汁翻炒", "heat": "大火", "time": "30秒", "amount": "宫保汁60ml", "note": "快速翻炒，汁变浓稠裹在鸡丁上" },
+      { "order": 10, "desc": "加入花生米翻炒出锅", "heat": "大火", "time": "10秒", "amount": "花生米50g", "note": "最后放花生米保持酥脆" }
+    ],
+    "pitfalls": [
+      { "mistake": "鸡肉炒老", "solution": "中大火滑炒2分钟变色即盛出，不要炒太久" },
+      { "mistake": "花生米炸糊", "solution": "冷油下花生米，小火慢炸，变色立即捞出" },
+      { "mistake": "宫保汁太甜", "solution": "糖醋比例约1:1.5，糖10g配醋15ml" },
+      { "mistake": "花生米放早了", "solution": "最后放花生米，放早了会回软不酥脆" },
+      { "mistake": "辣椒炸糊", "solution": "小火15秒，辣椒变深红立即下其他食材" }
+    ],
+    "tags": { "cooking": ["炒"], "diet": ["荤菜"], "cuisine": ["川菜"], "meal": ["午餐", "晚餐"], "custom": ["下饭"] }
+  },
+  {
+    "name": "鱼香肉丝",
+    "category": "热炒",
+    "difficulty": "进阶",
+    "duration": "25分钟",
+    "intro": "酸甜微辣，经典川菜。",
+    "ingredients": [
+      { "name": "猪里脊肉", "amount": "200g", "note": "纯瘦肉，口感嫩滑" },
+      { "name": "木耳", "amount": "30g(干品)", "note": "泡发后切丝" },
+      { "name": "胡萝卜", "amount": "1根(约100g)", "note": "切丝" },
+      { "name": "青椒", "amount": "1个(约80g)", "note": "切丝" },
+      { "name": "泡椒", "amount": "3个(约30g)", "note": "剁碎" },
+      { "name": "豆瓣酱", "amount": "10g(1勺)", "note": "" },
+      { "name": "姜", "amount": "3片(约10g)", "note": "切末" },
+      { "name": "蒜", "amount": "4瓣(约20g)", "note": "切末" },
+      { "name": "生抽", "amount": "15ml(1.5勺)", "note": "" },
+      { "name": "醋", "amount": "20ml(2勺)", "note": "鱼香汁关键" },
+      { "name": "白糖", "amount": "15g(1.5勺)", "note": "鱼香汁关键" },
+      { "name": "料酒", "amount": "10ml(1勺)", "note": "腌肉用" },
+      { "name": "淀粉", "amount": "8g(1勺)", "note": "腌肉和勾芡" },
+      { "name": "盐", "amount": "2g", "note": "" },
+      { "name": "食用油", "amount": "30ml(3勺)", "note": "" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "里脊肉切丝", "heat": "", "time": "5分钟", "amount": "猪里脊200g", "note": "切成0.3cm粗的丝，顺纹理切" },
+      { "order": 2, "desc": "肉丝腌制", "heat": "", "time": "10分钟", "amount": "料酒10ml、淀粉8g、盐1g、生抽5ml", "note": "腌10分钟让肉入味变嫩" },
+      { "order": 3, "desc": "木耳泡发切丝，胡萝卜青椒切丝", "heat": "", "time": "5分钟", "amount": "木耳30g、胡萝卜100g、青椒80g", "note": "木耳用温水泡发30分钟" },
+      { "order": 4, "desc": "调鱼香汁", "heat": "", "time": "1分钟", "amount": "生抽10ml、醋20ml、糖15g、淀粉5g、水40ml", "note": "糖醋比例约3:4是鱼香味的精髓" },
+      { "order": 5, "desc": "热锅热油，滑炒肉丝", "heat": "中大火", "time": "1分钟", "amount": "油15ml", "note": "油温五成热下肉丝，滑炒至变色盛出" },
+      { "order": 6, "desc": "热油炒豆瓣酱、泡椒", "heat": "小火", "time": "30秒", "amount": "油10ml、豆瓣酱10g、泡椒30g", "note": "炒出红油" },
+      { "order": 7, "desc": "加姜蒜末炒香", "heat": "小火", "time": "15秒", "amount": "姜末10g、蒜末20g", "note": "" },
+      { "order": 8, "desc": "下蔬菜炒软", "heat": "中火", "time": "1分钟", "amount": "木耳、胡萝卜、青椒", "note": "炒至胡萝卜变软" },
+      { "order": 9, "desc": "倒入肉丝翻炒", "heat": "大火", "time": "30秒", "amount": "", "note": "" },
+      { "order": 10, "desc": "倒入鱼香汁勾芡", "heat": "大火", "time": "30秒", "amount": "鱼香汁75ml", "note": "快速翻炒，汁变浓稠裹在食材上" }
+    ],
+    "pitfalls": [
+      { "mistake": "肉丝炒老", "solution": "中大火1分钟变色即盛出" },
+      { "mistake": "鱼香味不对", "solution": "糖醋比例约3:4(糖15g:醋20ml)，这是鱼香味的精髓" },
+      { "mistake": "蔬菜炒太烂", "solution": "中火1分钟炒软即可，保持口感" },
+      { "mistake": "勾芡太厚", "solution": "汁变浓稠就关火，太厚会糊口" }
+    ],
+    "tags": { "cooking": ["炒"], "diet": ["荤菜"], "cuisine": ["川菜"], "meal": ["午餐", "晚餐"] }
+  },
+  {
+    "name": "糖醋排骨",
+    "category": "热炒",
+    "difficulty": "挑战",
+    "duration": "60分钟",
+    "intro": "酸甜可口，色泽红亮，宴客硬菜。",
+    "ingredients": [
+      { "name": "猪肋排", "amount": "500g", "note": "选肋排，肉质嫩骨小" },
+      { "name": "白糖", "amount": "40g(4勺)", "note": "炒糖色+糖醋汁" },
+      { "name": "醋", "amount": "40ml(4勺)", "note": "糖醋1:1比例" },
+      { "name": "生抽", "amount": "15ml(1.5勺)", "note": "" },
+      { "name": "料酒", "amount": "20ml(2勺)", "note": "腌肉+去腥" },
+      { "name": "姜", "amount": "5片(约15g)", "note": "" },
+      { "name": "葱", "amount": "2根(约20g)", "note": "" },
+      { "name": "食用油", "amount": "30ml(3勺)", "note": "煎排骨用" },
+      { "name": "盐", "amount": "2g", "note": "" },
+      { "name": "熟芝麻", "amount": "5g", "note": "出锅撒" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "排骨剁成3cm小段", "heat": "", "time": "5分钟", "amount": "猪肋排500g", "note": "让商家帮忙剁好更省事" },
+      { "order": 2, "desc": "排骨焯水", "heat": "中火", "time": "5分钟", "amount": "水500ml、料酒10ml、姜片", "note": "冷水下锅，水开后撇去浮沫，捞出温水冲洗" },
+      { "order": 3, "desc": "排骨用料酒、盐腌制", "heat": "", "time": "10分钟", "amount": "料酒10ml、盐2g", "note": "腌10分钟去腥入味" },
+      { "order": 4, "desc": "热锅热油煎排骨", "heat": "中火", "time": "5分钟", "amount": "油30ml", "note": "煎至两面金黄，逼出多余油脂" },
+      { "order": 5, "desc": "加姜葱炒香", "heat": "中火", "time": "30秒", "amount": "姜5片、葱2根", "note": "" },
+      { "order": 6, "desc": "炒糖色", "heat": "小火", "time": "2分钟", "amount": "白糖20g", "note": "小火炒至琥珀色，立即倒入排骨翻炒上色" },
+      { "order": 7, "desc": "加料酒、生抽", "heat": "中火", "time": "30秒", "amount": "料酒10ml、生抽15ml", "note": "" },
+      { "order": 8, "desc": "加开水没过排骨", "heat": "", "time": "", "amount": "开水400ml", "note": "一定要加开水" },
+      { "order": 9, "desc": "小火炖30分钟", "heat": "小火", "time": "30分钟", "amount": "", "note": "加盖小火慢炖，炖至排骨软烂" },
+      { "order": 10, "desc": "调糖醋汁", "heat": "中火", "time": "2分钟", "amount": "白糖20g、醋40ml", "note": "糖醋1:1比例，熬至浓稠" },
+      { "order": 11, "desc": "倒入糖醋汁翻炒", "heat": "大火", "time": "3分钟", "amount": "糖醋汁60ml", "note": "大火收汁，让汁裹在排骨上" },
+      { "order": 12, "desc": "撒芝麻出锅", "heat": "", "time": "", "amount": "芝麻5g", "note": "" }
+    ],
+    "pitfalls": [
+      { "mistake": "炒糖色炒糊", "solution": "全程小火，琥珀色立即下排骨，颜色再深会发苦" },
+      { "mistake": "糖醋比例不对", "solution": "糖醋1:1是经典比例，糖20g配醋20ml" },
+      { "mistake": "排骨炖不够", "solution": "至少炖30分钟，筷子能轻松插入排骨才算软烂" },
+      { "mistake": "收汁收太干", "solution": "汁浓稠裹在排骨上就好，留一点汁拌饭" },
+      { "mistake": "用冷水炖", "solution": "必须加开水，冷水会让肉收缩变柴" }
+    ],
+    "tags": { "cooking": ["炖"], "diet": ["荤菜"], "cuisine": ["家常"], "meal": ["晚餐"], "custom": ["宴客菜"] }
+  },
+  {
+    "name": "清蒸鲈鱼",
+    "category": "热炒",
+    "difficulty": "挑战",
+    "duration": "20分钟",
+    "intro": "鲜嫩多汁，营养丰富，粤菜经典。",
+    "ingredients": [
+      { "name": "鲈鱼", "amount": "1条(约500g)", "note": "选鲜活鲈鱼，眼亮鳃红" },
+      { "name": "葱", "amount": "3根(约30g)", "note": "2根切段垫底，1根切丝撒面" },
+      { "name": "姜", "amount": "5片(约15g)", "note": "3片垫底，2片切丝撒面" },
+      { "name": "生抽", "amount": "30ml(3勺)", "note": "蒸鱼豉油最佳" },
+      { "name": "料酒", "amount": "15ml(1.5勺)", "note": "腌鱼去腥" },
+      { "name": "食用油", "amount": "20ml(2勺)", "note": "最后浇热油" },
+      { "name": "蒸鱼豉油", "amount": "15ml(1.5勺)", "note": "调味用" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "鲈鱼处理干净", "heat": "", "time": "5分钟", "amount": "鲈鱼1条", "note": "去鳞、去鳃、去内脏，两面各划3刀便于入味" },
+      { "order": 2, "desc": "用料酒、姜片腌制", "heat": "", "time": "10分钟", "amount": "料酒15ml、姜片2片", "note": "腌10分钟去腥，鱼肚内也要放姜片" },
+      { "order": 3, "desc": "盘中铺葱段姜片垫底", "heat": "", "time": "2分钟", "amount": "葱段2根、姜片3片", "note": "垫底可以让鱼受热均匀，不直接接触盘底" },
+      { "order": 4, "desc": "放鱼上蒸锅", "heat": "大火", "time": "10分钟", "amount": "", "note": "蒸锅水开后放入，大火蒸8-10分钟(500g的鱼)" },
+      { "order": 5, "desc": "取出倒掉盘中汤汁", "heat": "", "time": "1分钟", "amount": "", "note": "盘中的汤汁有腥味，必须倒掉" },
+      { "order": 6, "desc": "撒葱丝姜丝", "heat": "", "time": "1分钟", "amount": "葱丝1根、姜丝2片", "note": "" },
+      { "order": 7, "desc": "淋蒸鱼豉油、生抽", "heat": "", "time": "1分钟", "amount": "蒸鱼豉油15ml、生抽30ml", "note": "沿盘边淋入，不要直接淋在鱼身上" },
+      { "order": 8, "desc": "浇热油", "heat": "大火", "time": "15秒", "amount": "油20ml", "note": "油烧至冒烟(约200℃)，浇在葱姜丝上激发出香味" }
+    ],
+    "pitfalls": [
+      { "mistake": "蒸太久", "solution": "500g的鱼大火蒸8-10分钟即可，蒸久了肉会老" },
+      { "mistake": "不倒盘中汤汁", "solution": "蒸出的汤汁有腥味，必须倒掉再调味" },
+      { "mistake": "油不够热", "solution": "油要烧至冒烟(约200℃)，浇在葱姜丝上才有香味" },
+      { "mistake": "鱼不垫高", "solution": "用葱姜垫底，让鱼不直接接触盘底，受热均匀" },
+      { "mistake": "直接淋汁在鱼身", "solution": "沿盘边淋入，避免破坏鱼肉的嫩滑" }
+    ],
+    "tags": { "cooking": ["蒸"], "diet": ["荤菜"], "cuisine": ["粤菜"], "meal": ["晚餐"], "custom": ["宴客菜"] }
+  },
+  {
+    "name": "白灼虾",
+    "category": "热炒",
+    "difficulty": "入门",
+    "duration": "8分钟",
+    "intro": "鲜甜简单，原汁原味。",
+    "ingredients": [
+      { "name": "鲜虾", "amount": "200g(约15只)", "note": "选鲜活的虾，越大越好" },
+      { "name": "葱", "amount": "2根(约20g)", "note": "1根切段煮水，1根切丝蘸料" },
+      { "name": "姜", "amount": "3片(约10g)", "note": "煮水去腥" },
+      { "name": "料酒", "amount": "10ml(1勺)", "note": "煮水去腥" },
+      { "name": "生抽", "amount": "30ml(3勺)", "note": "蘸料用" },
+      { "name": "白糖", "amount": "3g(半小勺)", "note": "蘸料提鲜" },
+      { "name": "蒸鱼豉油", "amount": "15ml(1.5勺)", "note": "蘸料用" },
+      { "name": "香油", "amount": "5ml(半勺)", "note": "蘸料用" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "虾剪去虾须虾枪", "heat": "", "time": "2分钟", "amount": "鲜虾200g", "note": "保留虾头虾壳，这样煮出来更鲜" },
+      { "order": 2, "desc": "虾开背去虾线", "heat": "", "time": "3分钟", "amount": "", "note": "用牙签从虾背第二节挑出黑色虾线" },
+      { "order": 3, "desc": "锅中加水、葱段、姜片、料酒", "heat": "大火", "time": "5分钟", "amount": "水500ml、葱段1根、姜片3片、料酒10ml", "note": "水要没过虾，加葱姜料酒去腥" },
+      { "order": 4, "desc": "水开后下虾", "heat": "大火", "time": "2分钟", "amount": "", "note": "水开后下虾，煮至虾变红、卷曲即可，约1.5-2分钟" },
+      { "order": 5, "desc": "捞出装盘", "heat": "", "time": "1分钟", "amount": "", "note": "" },
+      { "order": 6, "desc": "调蘸料", "heat": "", "time": "2分钟", "amount": "生抽30ml、蒸鱼豉油15ml、糖3g、香油5ml、葱丝", "note": "所有调料混合均匀" },
+      { "order": 7, "desc": "蘸料上桌", "heat": "", "time": "", "amount": "", "note": "虾蘸料食用" }
+    ],
+    "pitfalls": [
+      { "mistake": "虾煮太久", "solution": "水开后煮1.5-2分钟，虾变红卷曲就捞出，煮久了肉会老" },
+      { "mistake": "虾线没去干净", "solution": "用牙签从虾背第二节挑出，黑色那条就是虾线" },
+      { "mistake": "蘸料太咸", "solution": "生抽30ml+蒸鱼豉油15ml+糖3g的比例刚好，不要额外加盐" },
+      { "mistake": "煮虾水不够", "solution": "水要没过虾，否则虾受热不均匀" }
+    ],
+    "tags": { "cooking": ["煮"], "diet": ["荤菜"], "cuisine": ["粤菜"], "meal": ["午餐", "晚餐"] }
+  },
+  {
+    "name": "蒜蓉西兰花",
+    "category": "热炒",
+    "difficulty": "入门",
+    "duration": "10分钟",
+    "intro": "蒜香浓郁，营养健康的西兰花做法。",
+    "ingredients": [
+      { "name": "西兰花", "amount": "1颗(约300g)", "note": "选花球紧实、颜色深绿的" },
+      { "name": "蒜", "amount": "5瓣(约25g)", "note": "一半切末一半切片" },
+      { "name": "盐", "amount": "3g(半小勺)", "note": "" },
+      { "name": "生抽", "amount": "10ml(1勺)", "note": "" },
+      { "name": "食用油", "amount": "15ml(1勺半)", "note": "" },
+      { "name": "水", "amount": "30ml", "note": "焯水用" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "西兰花掰成小朵", "heat": "", "time": "3分钟", "amount": "西兰花300g", "note": "沿着花茎掰成直径3cm的小朵" },
+      { "order": 2, "desc": "西兰花焯水", "heat": "大火", "time": "2分钟", "amount": "水500ml、盐2g", "note": "水开后下西兰花，焯1-2分钟，保持翠绿" },
+      { "order": 3, "desc": "焯水后过凉水", "heat": "", "time": "1分钟", "amount": "", "note": "立即过凉水，保持脆嫩口感和翠绿颜色" },
+      { "order": 4, "desc": "蒜切末和切片", "heat": "", "time": "2分钟", "amount": "蒜5瓣", "note": "3瓣切末(爆香用)，2瓣切片(最后放)" },
+      { "order": 5, "desc": "热油爆香蒜末", "heat": "中火", "time": "15秒", "amount": "油10ml、蒜末15g", "note": "蒜末微微变黄即可，不要炒糊" },
+      { "order": 6, "desc": "下西兰花翻炒", "heat": "大火", "time": "1分钟", "amount": "", "note": "大火快炒1分钟" },
+      { "order": 7, "desc": "加盐、生抽调味", "heat": "大火", "time": "10秒", "amount": "盐3g、生抽10ml", "note": "快速翻炒均匀" },
+      { "order": 8, "desc": "撒蒜片出锅", "heat": "", "time": "", "amount": "蒜片10g", "note": "蒜片最后撒，保持蒜香" }
+    ],
+    "pitfalls": [
+      { "mistake": "西兰花焯太久", "solution": "水开后焯1-2分钟，颜色变深就捞出" },
+      { "mistake": "不过凉水", "solution": "焯水后立即过凉水，保持翠绿和脆嫩" },
+      { "mistake": "蒜末炒糊", "solution": "中火15秒，蒜末微微变黄就下西兰花" },
+      { "mistake": "炒太久出水", "solution": "大火快炒1分钟即可，炒久了会出水变软" }
+    ],
+    "tags": { "cooking": ["炒"], "diet": ["素"], "cuisine": ["家常"], "meal": ["午餐", "晚餐"] }
+  },
+  {
+    "name": "凉拌黄瓜",
+    "category": "凉菜",
+    "difficulty": "入门",
+    "duration": "5分钟",
+    "intro": "清脆爽口，夏日开胃凉菜。",
+    "ingredients": [
+      { "name": "黄瓜", "amount": "2根(约300g)", "note": "选带刺的嫩黄瓜，口感更脆" },
+      { "name": "蒜", "amount": "3瓣(约15g)", "note": "切末" },
+      { "name": "醋", "amount": "20ml(2勺)", "note": "陈醋或米醋" },
+      { "name": "生抽", "amount": "10ml(1勺)", "note": "" },
+      { "name": "白糖", "amount": "5g(半勺)", "note": "提鲜" },
+      { "name": "盐", "amount": "3g(半小勺)", "note": "" },
+      { "name": "香油", "amount": "5ml(半勺)", "note": "增香" },
+      { "name": "辣椒油", "amount": "10ml(1勺)", "note": "可选，不吃辣可省" }
+    ],
+    "steps": [
+      { "order": 1, "desc": "黄瓜洗净", "heat": "", "time": "1分钟", "amount": "黄瓜2根", "note": "用刷子刷洗表面" },
+      { "order": 2, "desc": "黄瓜拍碎切段", "heat": "", "time": "2分钟", "amount": "", "note": "用刀面拍裂黄瓜，再切成2cm段，这样更入味" },
+      { "order": 3, "desc": "加盐腌制5分钟", "heat": "", "time": "5分钟", "amount": "盐3g", "note": "腌出水分后倒掉，黄瓜更脆" },
+      { "order": 4, "desc": "蒜切末", "heat": "", "time": "1分钟", "amount": "蒜3瓣", "note": "" },
+      { "order": 5, "desc": "调酱汁", "heat": "", "time": "1分钟", "amount": "醋20ml、生抽10ml、糖5g、香油5ml、辣椒油10ml", "note": "所有调料混合均匀" },
+      { "order": 6, "desc": "倒入酱汁拌匀", "heat": "", "time": "1分钟", "amount": "", "note": "酱汁倒入黄瓜中，轻轻拌匀" },
+      { "order": 7, "desc": "装盘", "heat": "", "time": "", "amount": "", "note": "可冷藏10分钟更佳" }
+    ],
+    "pitfalls": [
+      { "mistake": "黄瓜不拍碎", "solution": "拍裂的黄瓜更入味，切面更大更容易吸收酱汁" },
+      { "mistake": "不腌水", "solution": "加盐腌5分钟，倒掉水分，黄瓜更脆不水" },
+      { "mistake": "酱汁太咸", "solution": "黄瓜已经腌过有底味，酱汁不要额外加盐" },
+      { "mistake": "不冷藏", "solution": "拌好后冷藏10分钟，口感更清爽" }
+    ],
+    "tags": { "cooking": ["拌"], "diet": ["素"], "cuisine": ["家常"], "meal": ["午餐", "晚餐"], "custom": ["开胃"] }
+  }
+]

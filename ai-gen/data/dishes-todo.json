@@ -1,0 +1,2252 @@
+[
+  {
+    "name": "酸辣土豆丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清炒时蔬",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "醋溜白菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "韭菜炒蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "皮蛋豆腐",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "回锅肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "青椒肉丝",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "红烧牛肉",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "番茄蛋花汤",
+    "category": "汤羹",
+    "difficulty": "入门"
+  },
+  {
+    "name": "紫菜蛋花汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "冬瓜排骨汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蛋炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "葱油拌面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "银耳莲子汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "青椒土豆丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红烧豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "可乐鸡翅",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌木耳",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "糖醋里脊",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "地三鲜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "香菇炖鸡",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "水煮肉片",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "红烧带鱼",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "凉拌腐竹",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜蓉粉丝蒸扇贝",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "番茄牛腩",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "麻辣香锅",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "白菜木耳",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "菠菜鸡蛋",
+    "category": "汤羹",
+    "difficulty": "入门"
+  },
+  {
+    "name": "芹菜花生",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "韭菜鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "胡萝卜木耳",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "洋葱鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "土豆牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "白菜粉条",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "豆腐木耳",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "豆腐蘑菇",
+    "category": "汤羹",
+    "difficulty": "入门"
+  },
+  {
+    "name": "鸡蛋番茄",
+    "category": "汤羹",
+    "difficulty": "入门"
+  },
+  {
+    "name": "鸡蛋紫菜",
+    "category": "汤羹",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清炒菠菜",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蒜蓉芹菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌黄瓜木耳",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "醋溜白菜心",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "素炒三丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "干煸四季豆",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "虎皮青椒",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红烧茄子",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清炒豆芽",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "凉拌莴笋丝",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜蓉空心菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "上汤娃娃菜",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "清炒油麦菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌土豆丝",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "韭菜炒豆芽",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "青椒炒木耳",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌豆腐皮",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清炒山药",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "白菜炖豆腐",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "土豆炖豆角",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜丝鲫鱼汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "冬瓜丸子汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "玉米排骨汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药排骨汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "海带排骨汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "莲藕排骨汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "番茄豆腐汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "香菇鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "菌菇汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "三鲜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "酸辣汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "罗宋汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鱼香茄子",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蒜蓉蒸茄子",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "香煎茄子",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "肉末茄子",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "青椒炒豆干",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "芹菜炒香干",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "韭菜炒豆干",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "木耳炒山药",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "胡萝卜炒山药",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红烧鸡翅",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "椒盐鸡翅",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "香煎鸡胸肉",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "辣子鸡丁",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "水煮鸡片",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "白切鸡",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "葱油鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "口水鸡",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "红烧排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "椒盐排骨",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "蒜香排骨",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "粉蒸排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "红烧牛腩",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "清炖牛肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "酱牛肉",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "卤牛肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清蒸带鱼",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "糖醋带鱼",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "香煎带鱼",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红烧鱼",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "清蒸鱼",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "水煮鱼",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "酸菜鱼",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "烤鱼",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "红烧狮子头",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "四喜丸子",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "豆腐肉丸",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "萝卜丸子",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "冬瓜丸子",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "狮子头",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "东坡肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "梅菜扣肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "粉蒸肉",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "椒盐虾",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "油焖大虾",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜蓉蒸虾",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "红烧蹄筋",
+    "category": "热炒",
+    "difficulty": "挑战"
+  },
+  {
+    "name": "红烧牛筋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "清炖鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蘑菇鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "扬州炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "虾仁炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "火腿炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "青椒炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "酱油炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "咖喱炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "三鲜炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "素炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "肉丝炒饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "炸酱面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "担担面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "热干面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "牛肉面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "肥牛面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "肥牛饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤肉饭",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "鸡丝凉面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "麻酱凉面",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "饺子",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "包子",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "馄饨",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "汤圆",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "粽子",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "葱油饼",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "煎饼",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "手抓饼",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蛋饼",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "烧饼",
+    "category": "主食",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红豆汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "绿豆汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "百合汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "莲子汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "桂圆汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红枣汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "枸杞汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "银耳汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "雪梨汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "山楂汤",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "双皮奶",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "姜撞奶",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "龟苓膏",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉粉",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "冰粉",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "八宝粥",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "南瓜粥",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "小米粥",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "银耳粥",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红枣粥",
+    "category": "甜点",
+    "difficulty": "入门"
+  },
+  {
+    "name": "白菜炖粉条",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜炖牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆炖牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "南瓜蒸排骨",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红枣鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "板栗烧鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "红烧鸭块",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "啤酒鸭",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红烧鱼块",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "糖醋鲤鱼",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红烧大虾",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "木须肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "京酱肉丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜苔炒肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "芹菜炒肉丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "韭菜炒肉丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜苗回锅肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "盐煎肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "小炒肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "干锅花菜",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "干锅土豆片",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "干锅茶树菇",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "干锅豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "干锅肥肠",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "铁板豆腐",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "铁板牛柳",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "铁板鱿鱼",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "铁板虾",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "铁板茄子",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "酱爆鸡丁",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "酱爆鱿鱼",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "酱爆豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "酱爆茄子",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "酱爆鸡杂",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "滑蛋虾仁",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "滑蛋牛肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "滑蛋鸡丁",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "滑蛋豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "家常豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "熊掌豆腐",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蜂窝豆腐",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "抱佛脚",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蚂蚁上树",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "夫妻肺片",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "棒棒鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "怪味鸡",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "粉蒸牛肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "粉蒸肥肠",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "粉蒸五花肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "粉蒸羊肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红烧肥肠",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "番茄炖牛腩",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "番茄牛腩煲",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "番茄牛肉汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "番茄牛腩面",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "土豆烧牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆烧排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆烧鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆烧鸭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆烧羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜烧牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜烧排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜烧鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜烧鸭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜烧羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药烧排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药烧鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药烧鸭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药烧羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "南瓜蒸鸡",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "南瓜蒸鸭",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "南瓜蒸羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "南瓜炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "玉米炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "玉米炖鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "玉米炖鸭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "玉米炖羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "莲藕炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "莲藕炖鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "莲藕炖鸭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "莲藕炖羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "海带炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "海带炖鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "海带炖鸭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "海带炖羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "白菜炖猪肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "白菜炖牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "白菜炖羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜炖粉条",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜炖猪肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜炖羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆炖粉条",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆炖猪肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "土豆炖羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "茄子炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "茄子炖粉条",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "茄子炖猪肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "茄子炖牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "茄子炖羊肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "凉拌海带丝",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌紫菜",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌西红柿",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜蓉粉丝蒸娃娃菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清炒荷兰豆",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "豆角烧茄子",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "豆角炖土豆",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "豆角炒肉丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "干煸豆角",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蒜蓉豆角",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "四季豆炒肉末",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "四季豆炖土豆",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "四季豆炒干辣椒",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清炒四季豆",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜蓉四季豆",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "荷兰豆炒虾仁",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "荷兰豆炒肉片",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜蓉荷兰豆",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "白灼荷兰豆",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "莴笋炒肉片",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "莴笋炒木耳",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "蒜蓉莴笋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "清炒莴笋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "山药炒木耳",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "山药炒肉片",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蒜蓉山药",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌山药",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "芋头蒸排骨",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "芋头炖牛肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "芋头炒肉片",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "芋头炖鸭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "芋头汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "南瓜炒肉片",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "南瓜蒸蛋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "南瓜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "冬瓜炒虾仁",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "冬瓜炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "冬瓜肉丸汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "冬瓜蛤蜊汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "冬瓜海带汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜炖牛腩",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "萝卜丝汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "莲藕炒肉片",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌莲藕",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "海带豆腐汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "海带丝凉拌",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "紫菜包饭",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "紫菜豆腐汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "紫菜虾皮汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "紫菜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "平菇炒肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "平菇炖鸡",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "平菇汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "平菇炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "平菇烧豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "金针菇肥牛",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "金针菇拌黄瓜",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "金针菇炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "金针菇炖鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "金针菇凉拌",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "油麦菜炒肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "油麦菜炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "油麦菜炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "油麦菜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蒜蓉油麦菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "茼蒿炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "茼蒿炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "茼蒿肉丝汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "凉拌茼蒿",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "茼蒿炒肉丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "苋菜炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "苋菜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "蒜蓉苋菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "苋菜炒肉丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌苋菜",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "空心菜炒肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "空心菜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "空心菜炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌空心菜",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "芦笋炒肉丝",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "芦笋炒虾仁",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "芦笋炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "芦笋炖鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "白灼芦笋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "西葫芦炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "西葫芦炒肉片",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "西葫芦汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "凉拌西葫芦",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "西葫芦炒虾仁",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鹌鹑蛋红烧肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鹌鹑蛋炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鹌鹑蛋炒肉",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鹌鹑蛋汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "卤鹌鹑蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "咸鸭蛋蒸肉饼",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "咸鸭蛋豆腐",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "咸鸭蛋炒饭",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "咸鸭蛋汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "咸鸭蛋蒸蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "火腿炖鸡汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "火腿蒸豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "火腿冬瓜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "火腿炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "午餐肉炒饭",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "午餐肉炒蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "午餐肉汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "午餐肉三明治",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "培根炒饭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "培根炒鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "培根汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "培根炒意面",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "培根卷",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "腊肉蒸豆腐",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "腊肉炒饭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "腊肉炖萝卜",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "腊肉蒸蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "腊肉炒蒜苗",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "墨鱼炖排骨",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "墨鱼炒青椒",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "墨鱼汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "墨鱼炒白菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "墨鱼蒸蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "鱿鱼须炒芹菜",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鱿鱼须炒青椒",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "鱿鱼须汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鱿鱼须炒饭",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "凉拌鱿鱼须",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "草鱼炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "草鱼汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "草鱼片",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "草鱼红烧",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "草鱼蒸蛋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鲫鱼炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鲫鱼汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鲫鱼蒸蛋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鲫鱼红烧",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "鲫鱼豆腐汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "燕麦粥",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "燕麦牛奶",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "燕麦饼干",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "燕麦面包",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "燕麦饭",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "面条菜炒肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "面条菜炖豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "面条菜汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "面条菜凉拌",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "面条菜蒸蛋",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "黄豆芽炒肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "黄豆芽炒韭菜",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "黄豆芽汤",
+    "category": "汤羹",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "黄豆芽炒粉丝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌黄豆芽",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "红油耳片",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "麻辣牛肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "棒棒鸡丝",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "凉拌鸡丝",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "凉拌三丝",
+    "category": "凉菜",
+    "difficulty": "入门"
+  },
+  {
+    "name": "五香牛肉",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "牛肉干",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "牛肉松",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸡爪",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸡肝",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "卤鸡胗",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸡心",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤猪蹄",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "卤猪耳",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤猪舌",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤猪肝",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "卤猪肚",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸭脖",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸭翅",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "卤鸭掌",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸭肝",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸭胗",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "卤豆干",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤豆腐",
+    "category": "热炒",
+    "difficulty": "进阶"
+  },
+  {
+    "name": "卤鸡蛋",
+    "category": "热炒",
+    "difficulty": "入门"
+  },
+  {
+    "name": "卤鸡腿",
+    "category": "热炒",
+    "difficulty": "入门"
+  }
+]
