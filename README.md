@@ -69,6 +69,7 @@ npm run preview
 - [需求文档](doc/需求/README.md) — 项目需求规格（做什么）
 - [设计文档](doc/设计/README.md) — 技术设计方案（怎么做）
 - [开发文档](doc/开发/README.md) — 开发过程记录
+  - [Git协作规范](doc/开发/Git协作规范.md) — Commit 格式、分支管理、合并策略
 - [使用手册](doc/使用/README.md) — 最终用户使用说明
 
 ---
