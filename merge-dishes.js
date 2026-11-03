@@ -13,6 +13,7 @@
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs'
+import { nextDataVersion } from './ai-gen/lib/data-version.js'
 
 const CONFIG = {
   generatedFile: 'D:/code/cook/ai-gen/data/dishes-generated.json',
@@ -116,7 +117,8 @@ function merge(generated, mainData) {
 
   mainData.data.dish_ingredients = [...keptRelations, ...newRelations]
   mainData.data.dishes = dishes
-  mainData.exportedAt = Date.now()
+  mainData.dataVersion = nextDataVersion(mainData.dataVersion)
+  mainData.exportedAt = new Date().toISOString()
 
   console.log(`\n合并完成:`)
   console.log(`  更新菜品: ${updated} 道`)

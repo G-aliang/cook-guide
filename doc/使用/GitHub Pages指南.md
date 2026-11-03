@@ -3,6 +3,8 @@
 > 适用项目：家常菜入门指南（cook-guide）
 > 日期：2026-11-01
 
+> ⚠️ **重要提示**：GitHub Pages 的站点**始终是公开的**，且**没有登录鉴权等访问控制**；免费账户的**私有仓库无法启用 Pages**。若目标是「只有自己能访问」，请见 [Cloudflare 部署指南](./Cloudflare部署指南.md)，详见文末「九、公开性与访问控制」。
+
 ---
 
 ## 一、什么是 GitHub Pages
@@ -227,6 +229,55 @@ git push -u origin main
 | `vite.config.js` | Vite 配置（含 PWA 和 base 路径设置） |
 | `public/import-data.json` | 初始数据文件（自动导入到浏览器） |
 | `dist/` | 构建产物（推送到 gh-pages 分支） |
+
+---
+
+## 九、公开性与访问控制
+
+> 本节记录 GitHub Pages 在「私有化」方向上的关键限制，供决策参考。
+
+### 9.1 仓库公开 → 源码公开
+
+- 本项目仓库 `G-aliang/cook-guide` 当前为 **Public（公开）**
+- 任何人都可以在 `https://github.com/G-aliang/cook-guide` 浏览源码、Fork、Star
+- 通过 GitHub API 查询可确认：`"private": false`、`"visibility": "public"`
+
+### 9.2 网站公开 → 任何人可访问
+
+- 站点 `https://g-aliang.github.io/cook-guide/` **完全公开**，任何拿到链接的人都能直接打开，无需登录
+- 个人数据（收藏 / 浏览记录 / 学习进度 / 备注）仅存在各人浏览器的 IndexedDB 中，互不可见，这部分不会泄露
+
+### 9.3 即使仓库私有，网站仍然公开
+
+GitHub 官方文档明确写道：
+
+> *"GitHub Pages sites are publicly available on the internet, **even if the repository for the site is private**."*
+> （即使站点仓库是私有的，Pages 网站仍然公网可访问）
+
+也就是说：**把仓库改成私有，并不会让网站变私有**。
+
+### 9.4 免费账户的私有仓库无法启用 Pages
+
+| 账户类型 | 公开仓库 | 私有仓库 |
+|----------|:--------:|:--------:|
+| GitHub Free | ✅ 可用 Pages | ❌ 不支持（需 Pro 及以上）|
+| GitHub Pro / Team / Enterprise | ✅ | ✅ |
+
+### 9.5 GitHub Pages 没有访问控制功能
+
+- GitHub Pages **不提供**密码保护、登录鉴权等任何访问控制
+- 仅 **GitHub Enterprise Cloud** 的 Private Pages 支持访问控制，个人账户不适用
+
+### 9.6 小结
+
+| 需求 | GitHub Pages 能否满足 |
+|------|----------------------|
+| 隐藏源码 | ⚠️ 需私有仓库，但免费账户的私有仓库又开不了 Pages |
+| 网站不被他人访问 | ❌ 不支持 |
+| 登录 + 鉴权 | ❌ 不支持 |
+| 外网随时访问 | ✅ 支持 |
+
+**结论：** 若目标是「只有自己能访问 + 外网可用 + 私有仓库可部署」，GitHub Pages 无法满足，需改用 [Cloudflare Pages + Access](./Cloudflare部署指南.md)。
 
 ---
 

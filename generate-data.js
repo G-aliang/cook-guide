@@ -2,6 +2,7 @@
 // 运行: node generate-data.js
 
 import { writeFileSync } from 'fs'
+import { nextDataVersionForFile } from './ai-gen/lib/data-version.js'
 
 // ========== 食材数据 ==========
 const ingredients = [
@@ -684,7 +685,8 @@ const allDishes = [...dishTemplates, ...moreDishes]
 // ========== 输出 JSON ==========
 const output = {
   version: '1.0',
-  exportedAt: Date.now(),
+  dataVersion: nextDataVersionForFile('D:/code/cook/data/import-data.json'),
+  exportedAt: new Date().toISOString(),
   data: {
     ingredients: allIngredients.map((ing, i) => ({ ...ing, id: i + 1, createdAt: Date.now(), updatedAt: Date.now() })),
     dishes: allDishes.map((dish, i) => ({

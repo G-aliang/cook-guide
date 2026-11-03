@@ -7,3 +7,6 @@ dev-error.txt
 *.log
 .DS_Store
 .vscode
+
+# AI 生成的原始输出（工作文件，不入库）
+ai-gen/ai-output/batch-*.json

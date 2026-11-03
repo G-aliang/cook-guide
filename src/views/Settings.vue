@@ -6,8 +6,8 @@
     <div class="card" style="margin-bottom:20px">
       <div class="section-title">📋 版本信息</div>
       <div class="version-info">
-        <div>家常菜入门指南 v1.0.0</div>
-        <div class="version-date">更新日期：2026-10-31</div>
+        <div class="version-row"><span>应用版本</span><span>家常菜 v1.0.0</span></div>
+        <div class="version-row"><span>数据版本</span><span>{{ dataVersionText }}</span></div>
       </div>
     </div>
 
@@ -35,6 +35,24 @@ import ConfirmDialog from '../components/ConfirmDialog.vue'
 const showReset = ref(false)
 const dataSize = ref(0)
 const fileInput = ref(null)
+const dataVersionText = ref('读取中...')
+
+function formatVersion(v) {
+  if (!v) return '未记录'
+  const s = String(v)
+  // 新格式：YYYYMMDDNN（如 2026110301）→ 2026-11-03 · 01
+  const m = s.match(/^(\d{8})(\d{2})$/)
+  if (m) {
+    const stamp = m[1]
+    return `${stamp.slice(0, 4)}-${stamp.slice(4, 6)}-${stamp.slice(6, 8)} · ${m[2]}`
+  }
+  // 兼容旧的毫秒时间戳
+  const ts = Number(s)
+  if (isNaN(ts)) return s
+  const d = new Date(ts)
+  const p = n => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`
+}
 
 async function exportData() {
   try {
@@ -112,11 +130,17 @@ async function calcSize() {
   }
 }
 
-onMounted(calcSize)
+onMounted(() => {
+  calcSize()
+  dataVersionText.value = formatVersion(localStorage.getItem('cook-data-version'))
+})
 </script>
 
 <style scoped>
 .version-info { font-size: 14px; color: var(--text-2); }
+.version-row { display: flex; justify-content: space-between; padding: 6px 0; }
+.version-row span:first-child { color: var(--text-2); }
+.version-row span:last-child { color: var(--text); font-weight: 500; }
 .version-date { font-size: 12px; color: var(--text-3); margin-top: 4px; }
 .data-actions { display: flex; flex-direction: column; gap: 12px; }
 .data-btn-export { padding: 14px 20px; border-radius: 12px; background: var(--primary-light); border: 1px solid var(--primary); color: var(--primary); font-size: 14px; text-align: left; cursor: pointer; }

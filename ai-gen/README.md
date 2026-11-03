@@ -13,10 +13,10 @@ ai-gen/
 ├── run.js                 # 总控脚本（统一入口）
 ├── prompts.md             # 提示词文件（AI 用，自动生成）
 ├── scripts/               # 脚本
-│   ├── export-list.js     #   导出菜品名单
-│   ├── gen-prompts.js     #   生成提示词
+│   ├── export-list.js     #   导出名单 + 生成提示词
 │   ├── batch-generate.js  #   解析 AI 输出
-│   └── analyze-status.js  #   分析进度
+│   ├── analyze-status.js  #   分析进度
+│   └── check-pipeline.js  #   流程自检
 ├── data/                  # 数据文件（自动生成）
 │   ├── dishes-list.json   #   全部名单（含生成状态）
 │   ├── dishes-todo.json   #   待生成名单
@@ -34,9 +34,7 @@ data/import-data.json (460 道，系统数据源)
    │ node ai-gen/run.js export
    ▼
 ai-gen/data/dishes-todo.json (待生成 450 道)
-   │ node ai-gen/run.js prompts
-   ▼
-ai-gen/prompts.md (90 批提示词)
+ai-gen/prompts.md (通用模板 + 90 批名单)
    │ 【你复制提示词到 AI 工具，保存结果到 ai-output/】
    ▼
 ai-gen/ai-output/batch-001.json ...
@@ -55,24 +53,19 @@ dist/ → 推送 → GitHub Pages
 
 ## 操作步骤
 
-### 1. 导出名单
+### 1. 导出名单 + 生成提示词
 
 ```bash
 cd D:\code\cook
 node ai-gen/run.js export
 ```
 
-产出 `ai-gen/data/dishes-list.json`（全部 460 道）和 `dishes-todo.json`（待生成 450 道）。
+一次产出三个文件：
+- `ai-gen/data/dishes-list.json`（全部 460 道，含状态）
+- `ai-gen/data/dishes-todo.json`（待生成 450 道）
+- `ai-gen/prompts.md`（一份通用提示词 + 90 批菜名名单）
 
-### 2. 生成提示词
-
-```bash
-node ai-gen/run.js prompts
-```
-
-产出 `ai-gen/prompts.md`，包含**一份通用提示词 + 90 批菜名名单**（每批 5 道）。
-
-### 3. AI 生成（人工）
+### 2. AI 生成（人工）
 
 1. 打开 `ai-gen/prompts.md`（含"通用提示词"+"分批名单"）
 2. 复制「通用提示词」，把 `【此处填入菜名】` 替换为某批的菜名（如"第 001 批"）
@@ -82,7 +75,7 @@ node ai-gen/run.js prompts
 
 > ⚠️ 只保留 JSON 内容，不要含额外说明文字。
 
-### 4. 解析校验
+### 3. 解析校验
 
 ```bash
 node ai-gen/run.js parse
@@ -94,7 +87,7 @@ node ai-gen/run.js parse
 已保存 5 道菜到: ai-gen/data/dishes-generated.json
 ```
 
-### 5. 合并进系统
+### 4. 合并进系统
 
 ```bash
 node ai-gen/run.js merge
@@ -102,7 +95,7 @@ node ai-gen/run.js merge
 
 按菜名匹配，用详细数据覆盖，写入 `data/` 和 `public/`。
 
-### 6. 构建部署
+### 5. 构建部署
 
 ```bash
 node ai-gen/run.js build
@@ -133,8 +126,7 @@ cd ..
 cd D:\code\cook
 
 # ── 准备 ──
-node ai-gen/run.js export     # 导出名单
-node ai-gen/run.js prompts    # 生成提示词
+node ai-gen/run.js export     # 导出名单 + 生成提示词
 
 # ── 人工 ──
 # 打开 ai-gen/prompts.md，复制一批提示词 → AI 工具 → 存到 ai-output/batch-XXX.json
@@ -152,8 +144,7 @@ cd dist && git init && git add -A && git commit -m "更新菜品数据" && git p
 
 | 步骤 | 看到什么算成功 |
 |------|---------------|
-| export | "待生成 450 道" |
-| prompts | "共 90 批" |
+| export | "待生成 450 道"、"共 90 批" |
 | parse | "✓ 菜名 - X步, Y种食材, Z条避坑" |
 | merge | "更新菜品 X 道" |
 | build | "files generated" |
@@ -162,7 +153,7 @@ cd dist && git init && git add -A && git commit -m "更新菜品数据" && git p
 
 | 回路 | 触发场景 | 命令 |
 |------|----------|------|
-| **数据生成环** | 补充详细菜谱 | export → prompts → [AI] → parse → merge |
+| **数据生成环** | 补充详细菜谱 | export → [AI] → parse → merge |
 | **质量修复环** | 数据有重复/异常名 | `node ai-gen/run.js clean` |
 | **部署环** | 任何变更后上线 | `node ai-gen/run.js build` → 推送 dist |
 
@@ -174,12 +165,13 @@ cd dist && git init && git add -A && git commit -m "更新菜品数据" && git p
 
 | 命令 | 作用 |
 |------|------|
-| `node ai-gen/run.js status` | 查看进度 |
-| `node ai-gen/run.js export` | 导出名单 |
-| `node ai-gen/run.js prompts` | 生成提示词 |
-| `node ai-gen/run.js parse` | 解析 AI 输出 |
-| `node ai-gen/run.js merge` | 合并进系统 |
+| `node ai-gen/run.js status` | 查看进度（含导出名单+提示词） |
+| `node ai-gen/run.js export` | ① 导出名单 + 生成提示词 |
+| `node ai-gen/run.js parse` | ② 解析 AI 输出 |
+| `node ai-gen/run.js merge` | ③ 合并进系统 |
 | `node ai-gen/run.js clean` | 清理目录（去重） |
+| `node ai-gen/run.js version` | 查看数据版本号（加 `--apply` 生成新版本号） |
+| `node ai-gen/run.js check` | 流程自检 |
 | `node ai-gen/run.js build` | 构建 |
 | `node ai-gen/run.js all` | 一键（除 AI 生成外） |
 | `node ai-gen/run.js help` | 帮助 |
@@ -188,39 +180,15 @@ cd dist && git init && git add -A && git commit -m "更新菜品数据" && git p
 
 ## 提示词模板
 
-`prompts.md` 由脚本自动生成，模板核心如下：
+完整模板在 `prompts.md` 中（脚本自动生成），此处不重复。
 
-```
-你是一位经验丰富的家常菜厨师，擅长将菜谱转化为新手也能完全照做的详细教程。
+**核心约束速查：**
+- 食材清单精确到克，标注约等于多少个/勺/瓣
+- 每步含：操作描述 + 火候 + 时间 + 用量 + 注意事项
+- 避坑指南 3-5 条
+- 输出为 JSON 数组，字段见下节「数据格式」
 
-请帮我生成一份详细的【菜名】（分类）的制作过程，要求：
-1. 食材清单：精确到克数，标注约等于多少个/勺/瓣，每项附选购建议
-2. 制作步骤：每步含操作描述、火候、时间、用量、注意事项
-3. 避坑指南：3-5 个新手容易犯的错误及正确做法
-4. 总时长、难度等级、分类标签
-
-严格按以下 JSON 格式输出：
-{ name, category, difficulty, duration, intro,
-  ingredients: [{ name, amount, note }],
-  steps: [{ order, desc, heat, time, amount, note }],
-  pitfalls: [{ mistake, solution }],
-  tags: { cooking, diet, cuisine, meal, custom } }
-
-注意事项：
-- 用量精确到克或毫升，不要写"适量"
-- 时间精确到秒或分钟
-- 火候明确并说明判断方法
-```
-
-### 不同类型菜的额外要求
-
-| 类型 | 额外要求 |
-|------|----------|
-| 热炒 | 强调大火快炒、火候控制、翻炒手法 |
-| 凉菜 | 强调焯水时间、过凉水、调料混合顺序 |
-| 汤羹 | 强调焯水去血沫、炖煮火候、调味时机 |
-| 主食 | 强调米饭/面条处理、火候控制、翻炒手法 |
-| 甜点 | 强调食材泡发、炖煮火候、调味时机 |
+> 要修改模板：编辑 `scripts/export-list.js` 里的 `TEMPLATE` 变量，再跑 `node ai-gen/run.js export` 重新生成。
 
 ---
 
