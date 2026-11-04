@@ -61,7 +61,7 @@
 
         <!-- ⑤ 处理 -->
         <div class="module-card" v-if="current.processing && current.processing.length">
-          <div class="module-title">⑤ 处理</div>
+          <div class="module-title">⑤ {{ current.category === '调味项' ? '使用时机与用量' : '处理' }}</div>
           <table class="info-table">
             <tr v-for="(p, i) in current.processing" :key="i">
               <td>{{ p.step }}</td>
