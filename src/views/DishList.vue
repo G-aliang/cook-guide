@@ -16,21 +16,38 @@
       <span v-for="d in difficulties" :key="d" class="cat-tab" :class="{ active: filter.difficulty === d }" @click="setDifficulty(d)">{{ d }}</span>
     </div>
 
-    <!-- 多维度标签筛选 -->
-    <div class="tag-filters" v-if="filter.tags && (filter.tags.cooking?.length || filter.tags.cuisine?.length || filter.tags.meal?.length)">
-      <div v-if="filter.tags.cooking?.length" class="filter-group">
-        <span class="filter-label">烹饪：</span>
-        <span v-for="t in filter.tags.cooking" :key="t" class="tag tag-primary">{{ t }} ✕</span>
+    <!-- 多维度筛选面板 -->
+    <div class="filter-panel">
+      <div class="filter-head" @click="showFilter = !showFilter">
+        <span class="filter-title">筛选<em v-if="activeCount"> · 已选 {{ activeCount }}</em></span>
+        <span class="filter-toggle">{{ showFilter ? '收起 ▲' : '展开 ▼' }}</span>
       </div>
-      <div v-if="filter.tags.cuisine?.length" class="filter-group">
-        <span class="filter-label">菜系：</span>
-        <span v-for="t in filter.tags.cuisine" :key="t" class="tag tag-primary">{{ t }} ✕</span>
+      <div v-show="showFilter" class="filter-body">
+        <div class="filter-row" v-for="dim in dims" :key="dim.key">
+          <span class="filter-label">{{ dim.label }}</span>
+          <div class="chips">
+            <span
+              v-for="opt in dim.options"
+              :key="opt.value"
+              class="chip"
+              :class="{ active: isActive(dim.key, opt.value) }"
+              @click="store.toggleTag(dim.key, opt.value)"
+            >{{ opt.value }}<em class="chip-count">{{ opt.count }}</em></span>
+          </div>
+        </div>
+        <div class="filter-actions" v-if="activeCount">
+          <button class="btn btn-sm" @click="clearTags">清除筛选</button>
+        </div>
       </div>
-      <div v-if="filter.tags.meal?.length" class="filter-group">
-        <span class="filter-label">时段：</span>
-        <span v-for="t in filter.tags.meal" :key="t" class="tag tag-primary">{{ t }} ✕</span>
+    </div>
+
+    <!-- 已选条件 -->
+    <div class="tag-filters" v-if="activeCount">
+      <div class="filter-group" v-for="dim in dims" :key="dim.key" v-show="activeTags(dim.key).length">
+        <span class="filter-label">{{ dim.label }}：</span>
+        <span v-for="t in activeTags(dim.key)" :key="t" class="tag tag-primary" style="cursor:pointer" @click="store.toggleTag(dim.key, t)">{{ t }} ✕</span>
       </div>
-      <button class="btn btn-sm" @click="clearTags">清除筛选</button>
+      <button class="btn btn-sm" @click="clearTags">清除全部</button>
     </div>
 
     <!-- 搜索 -->
@@ -97,10 +114,37 @@ const store = useDishStore()
 
 const categories = CATEGORIES.dish
 const difficulties = CATEGORIES.difficulty
+const tagDims = CATEGORIES.tagDims
 const showForm = ref(false)
 const editingDish = ref(null)
 const searchKeyword = ref('')
+const showFilter = ref(true)
 const isMobile = ref(window.innerWidth < 768)
+
+// 各维度的可选项：只列出当前菜品里实际用到的取值，并按数量排序
+const dims = computed(() => {
+  const dishes = store.dishes || []
+  return tagDims.map(dim => {
+    const counter = {}
+    for (const d of dishes) {
+      for (const v of (d.tags?.[dim.key] || [])) {
+        if (v) counter[v] = (counter[v] || 0) + 1
+      }
+    }
+    const options = Object.entries(counter)
+      .map(([value, count]) => ({ value, count }))
+      .sort((a, b) => b.count - a.count)
+    return { ...dim, options }
+  }).filter(dim => dim.options.length)
+})
+
+const activeCount = computed(() => {
+  const tags = store.filter.tags || {}
+  return Object.values(tags).reduce((n, arr) => n + (arr?.length || 0), 0)
+})
+
+function activeTags(dim) { return (store.filter.tags || {})[dim] || [] }
+function isActive(dim, value) { return activeTags(dim).includes(value) }
 
 const filter = computed(() => store.filter)
 const loading = computed(() => store.loading)
@@ -167,5 +211,22 @@ onMounted(() => {
 .text-muted { color: var(--text-3); font-size: 13px; }
 .tag-filters { margin-bottom: 12px; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid var(--border); }
 .filter-group { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
-.filter-label { font-size: 13px; color: var(--text-2); }
+.filter-label { font-size: 13px; color: var(--text-2); flex: 0 0 auto; }
+
+/* 筛选面板 */
+.filter-panel { margin-bottom: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.filter-head { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; cursor: pointer; }
+.filter-title { font-size: 14px; font-weight: 500; }
+.filter-title em { font-style: normal; font-size: 12px; color: var(--primary); }
+.filter-toggle { font-size: 12px; color: var(--text-3); }
+.filter-body { padding: 0 12px 12px; border-top: 1px solid var(--border); }
+.filter-row { display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+.filter-row:last-of-type { border-bottom: none; }
+.filter-row .filter-label { padding-top: 3px; width: 32px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.chip { padding: 3px 10px; border: 1px solid var(--border); border-radius: 14px; background: #fff; font-size: 13px; color: var(--text-2); cursor: pointer; user-select: none; }
+.chip.active { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.chip-count { font-style: normal; font-size: 11px; color: var(--text-3); margin-left: 3px; }
+.chip.active .chip-count { color: var(--primary); }
+.filter-actions { padding-top: 10px; }
 </style>

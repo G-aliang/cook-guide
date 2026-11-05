@@ -54,6 +54,19 @@ export const useDishStore = defineStore('dish', {
       this.page = 1
       this.hasMore = true
     },
+    // 切换某维度下的标签（维度内多选，维度间为「且」）
+    toggleTag(dim, value) {
+      const tags = { ...this.filter.tags }
+      const arr = tags[dim] ? [...tags[dim]] : []
+      const i = arr.indexOf(value)
+      if (i >= 0) arr.splice(i, 1)
+      else arr.push(value)
+      if (arr.length) tags[dim] = arr
+      else delete tags[dim]
+      this.filter = { ...this.filter, tags }
+      this.page = 1
+      this.hasMore = true
+    },
     setKeyword(keyword) {
       this.keyword = keyword
       this.page = 1
@@ -67,52 +80,9 @@ export const useDishStore = defineStore('dish', {
     },
   },
   getters: {
-    filtered: (state) => {
-      let result = state.dishes
-      if (state.filter.category) {
-        result = result.filter(d => d.category === state.filter.category)
-      }
-      if (state.filter.difficulty) {
-        result = result.filter(d => d.difficulty === state.filter.difficulty)
-      }
-      const tags = state.filter.tags
-      if (tags.cooking && tags.cooking.length) {
-        result = result.filter(d => d.tags?.cooking?.some(t => tags.cooking.includes(t)))
-      }
-      if (tags.cuisine && tags.cuisine.length) {
-        result = result.filter(d => d.tags?.cuisine?.some(t => tags.cuisine.includes(t)))
-      }
-      if (tags.meal && tags.meal.length) {
-        result = result.filter(d => d.tags?.meal?.some(t => tags.meal.includes(t)))
-      }
-      if (state.keyword) {
-        const kw = state.keyword.toLowerCase()
-        result = result.filter(d => d.name?.toLowerCase().includes(kw))
-      }
-      return result
-    },
+    filtered: (state) => applyFilters(state),
     paged: (state) => {
-      let result = state.dishes
-      if (state.filter.category) {
-        result = result.filter(d => d.category === state.filter.category)
-      }
-      if (state.filter.difficulty) {
-        result = result.filter(d => d.difficulty === state.filter.difficulty)
-      }
-      const tags = state.filter.tags
-      if (tags.cooking && tags.cooking.length) {
-        result = result.filter(d => d.tags?.cooking?.some(t => tags.cooking.includes(t)))
-      }
-      if (tags.cuisine && tags.cuisine.length) {
-        result = result.filter(d => d.tags?.cuisine?.some(t => tags.cuisine.includes(t)))
-      }
-      if (tags.meal && tags.meal.length) {
-        result = result.filter(d => d.tags?.meal?.some(t => tags.meal.includes(t)))
-      }
-      if (state.keyword) {
-        const kw = state.keyword.toLowerCase()
-        result = result.filter(d => d.name?.toLowerCase().includes(kw))
-      }
+      const result = applyFilters(state)
       const start = (state.page - 1) * state.pageSize
       const end = start + state.pageSize
       return {
@@ -122,3 +92,23 @@ export const useDishStore = defineStore('dish', {
     },
   },
 })
+
+// 统一筛选逻辑：分类 / 难度 → 关键词 → 多维标签（维度内 OR、维度间 AND）
+function applyFilters(state) {
+  let result = state.dishes
+  const { category, difficulty, tags } = state.filter
+  if (category) result = result.filter(d => d.category === category)
+  if (difficulty) result = result.filter(d => d.difficulty === difficulty)
+  if (tags) {
+    for (const [dim, values] of Object.entries(tags)) {
+      if (Array.isArray(values) && values.length) {
+        result = result.filter(d => (d.tags?.[dim] || []).some(t => values.includes(t)))
+      }
+    }
+  }
+  if (state.keyword) {
+    const kw = state.keyword.toLowerCase()
+    result = result.filter(d => d.name?.toLowerCase().includes(kw))
+  }
+  return result
+}
