@@ -30,6 +30,9 @@
           <span v-if="current.nutrition?.calories" class="tag tag-gray">约{{ current.nutrition.calories }}kcal/份</span>
         </div>
         <div class="dish-intro" v-if="current.intro">{{ current.intro }}</div>
+        <button v-if="current.steps?.length" class="btn btn-primary kitchen-enter" @click="enterKitchen">
+          🍳 厨房模式 · 大字一步一屏
+        </button>
         <div v-if="current.videoUrl" class="video-link">
           <a :href="current.videoUrl" target="_blank" class="video-btn">▶ 观看视频</a>
         </div>
@@ -67,7 +70,10 @@
         <div class="module-title">📋 食材清单</div>
         <div class="ingredient-list">
           <div v-for="(ing, i) in current.ingredients" :key="i" class="ingredient-row" @click="goIngredient(ing.ingredientId)">
-            <span class="ing-name">{{ ing.name }}</span>
+            <span class="ing-name">
+              {{ ing.name }}
+              <em v-if="ing.alternatives && ing.alternatives.length" class="ing-alt">或 {{ ing.alternatives.join(' / ') }}</em>
+            </span>
             <span class="ing-amount">{{ ing.amount }}</span>
           </div>
         </div>
@@ -82,7 +88,7 @@
               <span class="step-num">{{ i + 1 }}</span>
               <div class="step-meta">
                 <span v-if="step.heat" class="step-badge step-heat">{{ step.heat }}</span>
-                <span v-if="step.time" class="step-badge step-time">⏱ {{ step.time }}</span>
+                <span v-if="step.time" class="step-badge step-time step-time-btn" @click="startTimer(step, i)" title="点击开始倒计时">⏱ {{ step.time }}</span>
               </div>
               <a v-if="step.videoUrl" :href="step.videoUrl" target="_blank" class="step-video">▶ 视频</a>
             </div>
@@ -143,13 +149,62 @@
       </div>
     </div>
 
+    <!-- 厨房模式：一步一屏 + 大字 + 屏幕常亮 -->
+    <div v-if="kitchenMode" class="km-overlay" @touchstart="onKmTouchStart" @touchend="onKmTouchEnd">
+      <div class="km-head">
+        <div class="km-head-left">
+          <span class="km-dish">{{ current?.name }}</span>
+          <span v-if="wakeLockActive" class="km-lock">● 屏幕常亮</span>
+        </div>
+        <div class="km-head-right">
+          <span class="km-progress">{{ kmIndex + 1 }} / {{ kmSteps.length }}</span>
+          <button class="km-close" aria-label="退出厨房模式" @click="exitKitchen">✕</button>
+        </div>
+      </div>
+
+      <div class="km-body">
+        <div class="km-badges">
+          <span v-if="kmStep.heat" class="step-badge step-heat km-badge">{{ kmStep.heat }}</span>
+          <span v-if="kmStep.time" class="step-badge step-time step-time-btn km-badge" @click="startTimer(kmStep, kmIndex)">⏱ {{ kmStep.time }} · 点击计时</span>
+        </div>
+        <div class="km-desc">{{ kmStep.desc }}</div>
+        <div v-if="kmStep.amount" class="km-extra">📦 {{ kmStep.amount }}</div>
+        <div v-if="kmStep.note" class="km-note">💡 {{ kmStep.note }}</div>
+      </div>
+
+      <div class="km-foot">
+        <button class="km-nav-btn" :disabled="kmIndex === 0" @click="kmPrev">上一步</button>
+        <button class="km-nav-btn km-nav-primary" @click="kmNext">
+          {{ kmIndex === kmSteps.length - 1 ? '完成 ✓' : '下一步' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- 步骤倒计时浮层 -->
+    <div v-if="timer" class="timer-bar" :class="{ 'is-done': timer.done, 'in-kitchen': kitchenMode }">
+      <div class="timer-body">
+        <div class="timer-label">第 {{ timer.stepNo }} 步 · {{ timer.label }}</div>
+        <div class="timer-clock">{{ clockText }}</div>
+        <div v-if="timer.done" class="timer-tip">时间到啦，看看火候～</div>
+      </div>
+      <div class="timer-actions">
+        <template v-if="!timer.done">
+          <button class="btn btn-sm btn-outline" @click="toggleTimer">{{ timer.running ? '暂停' : '继续' }}</button>
+        </template>
+        <template v-else>
+          <button class="btn btn-sm btn-outline" @click="restartTimer">再来一次</button>
+        </template>
+        <button class="btn btn-sm" @click="stopTimer">关闭</button>
+      </div>
+    </div>
+
     <DishForm v-if="showForm" :editing="current" @save="onSave" @cancel="showForm = false" />
     <ConfirmDialog :visible="showDelete" title="删除菜品" :message="`确定要删除 ${current?.name} 吗？关联的食材、备注、收藏、浏览记录将一并删除。`" @confirm="onDelete" @cancel="showDelete = false" />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useDishStore } from '../stores/dish'
 import { useNoteStore } from '../stores/note'
@@ -237,7 +292,176 @@ async function onDelete() {
   router.push('/dishes')
 }
 
-watch(() => route.params.id, loadData)
+// ===== 步骤倒计时 =====
+// timer: { step, stepNo, label, total, remain, running, done } | null
+const timer = ref(null)
+const clockText = ref('')
+let tickId = null
+let audioCtx = null
+
+/** 解析「45秒 / 3分钟 / 1.5分钟」为秒数；「约5分钟」「2-3分钟」等取其中的较大值，无法识别返回 0 */
+function parseSeconds(text) {
+  const raw = String(text || '').trim()
+  let m = raw.match(/^(\d+(?:\.\d+)?)\s*(秒|分钟|分)$/)
+  if (!m) m = raw.match(/(\d+(?:\.\d+)?)\s*(秒|分钟|分)/)
+  if (!m) return 0
+  const n = parseFloat(m[1])
+  return Math.max(1, Math.round(m[2] === '秒' ? n : n * 60))
+}
+
+function formatClock(sec) {
+  const s = Math.max(0, Math.round(sec))
+  const mm = String(Math.floor(s / 60)).padStart(2, '0')
+  const ss = String(s % 60).padStart(2, '0')
+  return `${mm}:${ss}`
+}
+
+/** 三声短促提示音（Web Audio，无需音频文件） */
+function playAlarm() {
+  try {
+    const Ctx = window.AudioContext || window.webkitAudioContext
+    if (!Ctx) return
+    audioCtx = audioCtx || new Ctx()
+    if (audioCtx.state === 'suspended') audioCtx.resume()
+    const start = audioCtx.currentTime
+    ;[0, 0.5, 1].forEach((offset) => {
+      const osc = audioCtx.createOscillator()
+      const gain = audioCtx.createGain()
+      osc.type = 'sine'
+      osc.frequency.setValueAtTime(880, start + offset)
+      gain.gain.setValueAtTime(0.0001, start + offset)
+      gain.gain.exponentialRampToValueAtTime(0.35, start + offset + 0.02)
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + offset + 0.38)
+      osc.connect(gain)
+      gain.connect(audioCtx.destination)
+      osc.start(start + offset)
+      osc.stop(start + offset + 0.4)
+    })
+  } catch (e) {
+    /* 浏览器不支持时静默降级 */
+  }
+}
+
+/** 震动（移动端）；桌面端无效果 */
+function vibrate() {
+  try {
+    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+      navigator.vibrate([300, 150, 300, 150, 300])
+    }
+  } catch (e) {
+    /* 忽略 */
+  }
+}
+
+function startTickLoop() {
+  if (tickId) return
+  tickId = setInterval(tick, 500)
+}
+
+function tick() {
+  const t = timer.value
+  if (!t || !t.running || !t.endAt) return
+  // 按截止时间戳计算，切后台被节流也不会走慢
+  t.remain = Math.max(0, Math.ceil((t.endAt - Date.now()) / 1000))
+  clockText.value = formatClock(t.remain)
+  if (t.remain <= 0) {
+    t.running = false
+    t.done = true
+    t.endAt = 0
+    clearTickLoop()
+    playAlarm()
+    vibrate()
+  }
+}
+
+function clearTickLoop() {
+  if (tickId) {
+    clearInterval(tickId)
+    tickId = null
+  }
+}
+
+function startTimer(step, index) {
+  const total = parseSeconds(step && step.time)
+  if (!total) return
+  clearTickLoop()
+  timer.value = {
+    step,
+    stepNo: index + 1,
+    label: step.time,
+    total,
+    remain: total,
+    endAt: Date.now() + total * 1000,
+    running: true,
+    done: false
+  }
+  clockText.value = formatClock(total)
+  startTickLoop()
+}
+
+function toggleTimer() {
+  const t = timer.value
+  if (!t || t.done) return
+  if (t.running) {
+    // 暂停：把当前剩余量固化下来
+    t.remain = Math.max(0, Math.ceil((t.endAt - Date.now()) / 1000))
+    clockText.value = formatClock(t.remain)
+    t.running = false
+    t.endAt = 0
+  } else {
+    t.endAt = Date.now() + t.remain * 1000
+    t.running = true
+    startTickLoop()
+  }
+}
+
+function restartTimer() {
+  const t = timer.value
+  if (!t) return
+  clearTickLoop()
+  t.remain = t.total
+  t.endAt = Date.now() + t.total * 1000
+  t.running = true
+  t.done = false
+  clockText.value = formatClock(t.total)
+  startTickLoop()
+}
+
+function stopTimer() {
+  clearTickLoop()
+  timer.value = null
+}
+
+// 从后台切回来时立刻校正一次显示
+function onVisibilityChange() {
+  if (document.visibilityState === 'visible') {
+    tick()
+    // 切到后台时系统会释放 wake lock，回来要重新申请
+    if (kitchenMode.value && !wakeLock) requestWakeLock()
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', onVisibilityChange)
+  window.addEventListener('keydown', onKmKey)
+})
+
+onUnmounted(() => {
+  clearTickLoop()
+  document.removeEventListener('visibilitychange', onVisibilityChange)
+  window.removeEventListener('keydown', onKmKey)
+  document.body.style.overflow = ''
+  releaseWakeLock()
+})
+
+// 切换菜品时退出厨房模式，别停在上一道菜的步骤上
+watch(
+  () => route.params.id,
+  (val, oldVal) => {
+    if (oldVal !== undefined && kitchenMode.value) exitKitchen()
+    loadData()
+  }
+)
 onMounted(loadData)
 </script>
 
@@ -259,6 +483,7 @@ onMounted(loadData)
 .ingredient-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
 .ingredient-row:hover { background: var(--primary-light); }
 .ing-name { font-size: 14px; }
+.ing-alt { font-style: normal; font-size: 12px; color: var(--text-2); margin-left: 4px; }
 .ing-amount { font-size: 14px; color: var(--text-2); }
 .step-list { }
 .step-item { margin-bottom: 16px; }
@@ -282,8 +507,61 @@ onMounted(loadData)
 .related-ing-item { padding: 4px 12px; background: var(--bg); border-radius: 8px; font-size: 13px; color: var(--text); text-decoration: none; }
 .related-ing-item:hover { background: var(--primary-light); text-decoration: none; }
 .detail-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+/* 可点击的步骤时间 */
+.step-time-btn { cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; transition: background 0.15s, transform 0.1s; }
+.step-time-btn:hover { background: var(--primary-light); color: var(--primary); }
+.step-time-btn:active { transform: scale(0.95); }
+/* 倒计时浮层 */
+.timer-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 260px;
+  max-width: calc(100vw - 32px);
+  padding: 10px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+.timer-bar.is-done { border-color: var(--primary); }
+.timer-body { flex: 1; min-width: 0; }
+.timer-label { font-size: 11px; color: var(--text-2); margin-bottom: 2px; }
+.timer-clock { font-size: 22px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.timer-bar.is-done .timer-clock { color: var(--primary); }
+.timer-tip { font-size: 11px; color: var(--primary); margin-top: 2px; }
+.timer-actions { display: flex; gap: 8px; flex-shrink: 0; }
+/* 厨房模式下浮到按钮上方 */
+.timer-bar.in-kitchen { bottom: 96px; z-index: 210; }
+/* 厨房模式入口按钮 */
+.kitchen-enter { width: 100%; margin-top: 14px; padding: 12px; font-size: 15px; }
+/* 厨房模式全屏 */
+.km-overlay { position: fixed; inset: 0; z-index: 200; background: var(--card); display: flex; flex-direction: column; }
+.km-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.km-head-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.km-dish { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.km-lock { font-size: 11px; color: var(--secondary); white-space: nowrap; }
+.km-head-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.km-progress { font-size: 15px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.km-close { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text-2); background: var(--bg); border: none; border-radius: 10px; cursor: pointer; }
+.km-body { flex: 1; min-height: 0; overflow-y: auto; padding: 20px 18px; }
+.km-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.km-badge { font-size: 14px; padding: 5px 12px; border-radius: 8px; }
+.km-desc { font-size: clamp(20px, 5.2vw, 30px); line-height: 1.75; font-weight: 500; }
+.km-extra { margin-top: 18px; font-size: clamp(15px, 3.6vw, 18px); color: var(--text-2); }
+.km-note { margin-top: 14px; padding: 10px 14px; font-size: clamp(15px, 3.6vw, 18px); color: var(--primary); background: var(--primary-light); border-radius: 10px; }
+.km-foot { display: flex; gap: 12px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); background: var(--card); }
+.km-nav-btn { flex: 1; padding: 16px; font-size: 17px; font-weight: 500; color: var(--text); background: var(--card); border: 1px solid var(--border); border-radius: 12px; cursor: pointer; }
+.km-nav-btn:disabled { color: var(--text-3); cursor: default; }
+.km-nav-primary { color: #fff; background: var(--primary); border-color: var(--primary); }
 @media (max-width: 768px) {
   .dish-title-row { flex-direction: column; }
   .dish-action-btns { flex-direction: row; flex-wrap: wrap; }
+  .timer-bar { bottom: 80px; }
 }
 </style>

@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      registerType: 'autoUpdate',
+      // prompt：新版本先等待，由页面弹「有新版本」提示，用户点击后再激活并刷新
+      // （不用 autoUpdate，避免用户正在操作时被静默刷新）
+      registerType: 'prompt',
+      // 关闭自动注入的注册脚本，改由 src/pwa.js 手动注册以接管更新提示
+      injectRegister: null,
       includeAssets: ['favicon.svg'],
       manifest: {
         name: '家常菜入门指南',
@@ -25,6 +29,10 @@ export default defineConfig({
         ]
       },
       workbox: {
+        // 新 SW 不自动接管，等用户点「刷新」后通过消息跳过等待；
+        // 激活后立即接管页面，保证刷新时加载到新版本
+        skipWaiting: false,
+        clientsClaim: true,
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/api/],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,

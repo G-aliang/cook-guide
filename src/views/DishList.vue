@@ -51,7 +51,10 @@
     </div>
 
     <!-- 搜索 -->
-    <input v-model="searchKeyword" class="input" style="margin-bottom:16px" placeholder="搜索菜品名称..." @input="onSearch" />
+    <input v-model="searchKeyword" class="input" style="margin-bottom:16px" placeholder="搜索菜品名称或食材名，如「番茄」「豆腐」" @input="onSearch" />
+    <div v-if="searchKeyword.trim() && filtered.length" class="search-hint">
+      按名称和食材一起找，共 {{ filtered.length }} 道菜
+    </div>
 
     <!-- 加载状态 -->
     <div v-if="loading" class="empty-state">加载中...</div>
@@ -67,6 +70,7 @@
             <span v-if="dish.nutrition?.calories" class="tag tag-gray">{{ dish.nutrition.calories }}kcal</span>
           </div>
           <div class="dish-name">{{ dish.name }}</div>
+          <div v-if="matchedIngredient(dish)" class="dish-match-ing">🧺 含 {{ matchedIngredient(dish) }}</div>
           <div class="dish-desc">{{ dish.intro?.substring(0, 40) || '暂无简介' }}...</div>
           <div class="dish-tags" v-if="dish.tags">
             <span v-if="dish.tags.cooking?.length" class="tag tag-gray">{{ dish.tags.cooking.join(',') }}</span>
@@ -82,6 +86,7 @@
             <div class="list-desc">{{ dish.duration || '' }} · {{ dish.difficulty }}</div>
           </div>
           <div class="list-tags">
+            <span v-if="matchedIngredient(dish)" class="tag tag-primary">🧺 {{ matchedIngredient(dish) }}</span>
             <span class="tag" :class="difficultyClass(dish.difficulty)">{{ dish.difficulty }}</span>
             <span v-if="dish.nutrition?.calories" class="tag tag-gray">{{ dish.nutrition.calories }}kcal</span>
           </div>
@@ -178,6 +183,21 @@ function setCategory(cat) { store.setFilter({ category: cat }) }
 function setDifficulty(d) { store.setFilter({ difficulty: store.filter.difficulty === d ? '' : d }) }
 function clearTags() { store.setFilter({ tags: {} }) }
 function onSearch() { store.setKeyword(searchKeyword.value) }
+// 菜名没命中、但食材命中时，标出命中的那个食材
+function matchedIngredient(dish) {
+  const kw = (store.keyword || '').trim().toLowerCase()
+  if (!kw) return ''
+  if (dish.name?.toLowerCase().includes(kw)) return ''
+  const hit = (dish.ingredients || []).find(
+    ing =>
+      String(ing.name || '').toLowerCase().includes(kw) ||
+      (ing.alternatives || []).some(a => String(a || '').toLowerCase().includes(kw))
+  )
+  if (!hit) return ''
+  if (String(hit.name || '').toLowerCase().includes(kw)) return hit.name
+  const alt = (hit.alternatives || []).find(a => String(a).toLowerCase().includes(kw))
+  return alt || hit.name
+}
 function goPage(p) { if (p !== -1) store.page = p }
 function prevPage() { store.prevPage() }
 function nextPage() { store.nextPage() }
@@ -200,6 +220,8 @@ onMounted(() => {
 .dish-card { cursor: pointer; }
 .dish-header { display: flex; gap: 4px; margin-bottom: 8px; }
 .dish-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.dish-match-ing { font-size: 12px; color: var(--primary); margin-bottom: 6px; }
+.search-hint { font-size: 12px; color: var(--text-2); margin: -10px 0 12px; }
 .dish-desc { font-size: 12px; color: var(--text-2); margin-bottom: 8px; }
 .dish-tags { display: flex; gap: 4px; flex-wrap: wrap; }
 .dish-list-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer; }

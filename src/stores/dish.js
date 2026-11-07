@@ -106,9 +106,19 @@ function applyFilters(state) {
       }
     }
   }
-  if (state.keyword) {
-    const kw = state.keyword.toLowerCase()
-    result = result.filter(d => d.name?.toLowerCase().includes(kw))
+  if (state.keyword && state.keyword.trim()) {
+    const kw = state.keyword.trim().toLowerCase()
+    result = result.filter(d => {
+      // 先比菜名
+      if (d.name?.toLowerCase().includes(kw)) return true
+      // 再比食材名：菜品记录里自带 ingredients 列表（导入与手动录入都有 name）
+      // 「或」式食材的备选也算命中，搜「鸡腿」也能找到「土鸡或鸡腿」的菜
+      return (d.ingredients || []).some(
+        ing =>
+          String(ing.name || '').toLowerCase().includes(kw) ||
+          (ing.alternatives || []).some(a => String(a || '').toLowerCase().includes(kw))
+      )
+    })
   }
   return result
 }

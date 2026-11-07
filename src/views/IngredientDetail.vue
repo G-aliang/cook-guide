@@ -36,15 +36,31 @@
           </table>
         </div>
 
-        <!-- ③ 购买/挑选 -->
+        <!-- ③ 没有它可以用… -->
+        <div class="module-card" v-if="current.substitutes && current.substitutes.length">
+          <div class="module-title">③ 没有它可以用…</div>
+          <div class="substitute-list">
+            <router-link
+              v-for="s in current.substitutes"
+              :key="s.name"
+              :to="`/ingredients/${s.id}`"
+              class="substitute-item"
+            >
+              <span class="substitute-head">{{ s.emoji || '📦' }} {{ s.name }}</span>
+              <span v-if="s.note" class="substitute-note">{{ s.note }}</span>
+            </router-link>
+          </div>
+        </div>
+
+        <!-- ④ 购买/挑选 -->
         <div class="module-card" v-if="current.buying">
-          <div class="module-title">③ 购买/挑选</div>
+          <div class="module-title">④ 购买/挑选</div>
           <div class="module-content">{{ current.buying }}</div>
         </div>
 
-        <!-- ④ 储存 -->
+        <!-- ⑤ 储存 -->
         <div class="module-card" v-if="current.storage && current.storage.length">
-          <div class="module-title">④ 储存</div>
+          <div class="module-title">⑤ 储存</div>
           <table class="info-table">
             <tr v-for="(s, i) in current.storage" :key="i">
               <td>{{ s.method }}</td>
@@ -59,9 +75,9 @@
           </div>
         </div>
 
-        <!-- ⑤ 处理 -->
+        <!-- ⑥ 处理 -->
         <div class="module-card" v-if="current.processing && current.processing.length">
-          <div class="module-title">⑤ {{ current.category === '调味项' ? '使用时机与用量' : '处理' }}</div>
+          <div class="module-title">⑥ {{ current.category === '调味项' ? '使用时机与用量' : '处理' }}</div>
           <table class="info-table">
             <tr v-for="(p, i) in current.processing" :key="i">
               <td>{{ p.step }}</td>
@@ -70,9 +86,9 @@
           </table>
         </div>
 
-        <!-- ⑥ 相关菜品 -->
+        <!-- ⑦ 相关菜品 -->
         <div class="module-card">
-          <div class="module-title">⑥ 相关菜品</div>
+          <div class="module-title">⑦ 相关菜品</div>
           <div v-if="relatedDishes && relatedDishes.length" class="related-dishes">
             <router-link v-for="d in relatedDishes" :key="d.id" :to="`/dishes/${d.id}`" class="related-dish-item">
               <span class="tag tag-gray">{{ d.difficulty }}</span>
@@ -82,9 +98,9 @@
           <div v-else class="empty-note">暂无关联菜品</div>
         </div>
 
-        <!-- ⑦ 营养成分 -->
+        <!-- ⑧ 营养成分 -->
         <div class="module-card" v-if="current.nutrition">
-          <div class="module-title">⑦ 营养成分</div>
+          <div class="module-title">⑧ 营养成分</div>
           <table class="nutrition-table">
             <tr><td>单位</td><td>{{ current.nutrition.perUnit }}</td></tr>
             <tr v-if="current.nutrition.calories"><td>热量</td><td>{{ current.nutrition.calories }} kcal</td></tr>
@@ -97,9 +113,9 @@
           <div v-if="current.nutrition.healthNotes" class="health-note">✅ {{ current.nutrition.healthNotes }}</div>
         </div>
 
-        <!-- ⑧ 个人备注 -->
+        <!-- ⑨ 个人备注 -->
         <div class="module-card">
-          <div class="module-title">⑧ 个人备注</div>
+          <div class="module-title">⑨ 个人备注</div>
           <NoteInput />
           <div class="note-list-container">
             <NoteList :notes="notes" />
@@ -204,6 +220,12 @@ onMounted(loadData)
 .related-dish-item { padding: 4px 12px; background: var(--bg); border-radius: 8px; font-size: 13px; color: var(--text); text-decoration: none; }
 .related-dish-item:hover { background: var(--primary-light); text-decoration: none; }
 .note-list-container { margin-top: 8px; }
+/* ③ 没有它可以用… */
+.substitute-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.substitute-item { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; background: var(--bg); border-radius: 8px; text-decoration: none; }
+.substitute-item:hover { background: var(--primary-light); text-decoration: none; }
+.substitute-head { font-size: 14px; font-weight: 500; color: var(--text); }
+.substitute-note { font-size: 12px; color: var(--text-2); line-height: 1.4; }
 .empty-note { color: var(--text-3); font-size: 13px; }
 .detail-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; }
 
