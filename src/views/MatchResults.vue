@@ -42,6 +42,10 @@
           <div class="match-badge" :class="matchClass(dish.matchInfo)">
             {{ matchText(dish.matchInfo) }}
           </div>
+          <div class="match-detail" v-if="dish.matchInfo">
+            <span v-if="usedNames(dish.matchInfo).length">已用：{{ usedNames(dish.matchInfo).join('、') }}</span>
+            <span v-if="unusedNames(dish.matchInfo).length" class="miss">未用：{{ unusedNames(dish.matchInfo).join('、') }}</span>
+          </div>
         </div>
       </div>
 
@@ -50,6 +54,10 @@
           <div class="list-info">
             <div class="list-name">{{ dish.name }}</div>
             <div class="list-desc">{{ dish.duration || '' }} · {{ dish.difficulty }}</div>
+            <div class="match-detail" v-if="dish.matchInfo">
+              <span v-if="usedNames(dish.matchInfo).length">已用：{{ usedNames(dish.matchInfo).join('、') }}</span>
+              <span v-if="unusedNames(dish.matchInfo).length" class="miss">未用：{{ unusedNames(dish.matchInfo).join('、') }}</span>
+            </div>
           </div>
           <span class="tag" :class="matchClass(dish.matchInfo)">{{ matchText(dish.matchInfo) }}</span>
         </div>
@@ -107,6 +115,18 @@ function removeIngredient(idx) {
   loadMatch()
 }
 
+// 已选食材中，这道菜确实用到的
+function usedNames(info) {
+  const ids = info?.matchedIngredientIds || []
+  return selectedIngredients.value.filter(s => ids.includes(s.id)).map(s => s.name)
+}
+
+// 已选食材中，这道菜没用到的
+function unusedNames(info) {
+  const ids = info?.matchedIngredientIds || []
+  return selectedIngredients.value.filter(s => !ids.includes(s.id)).map(s => s.name)
+}
+
 function goDetail(id) {
   router.push(`/dishes/${id}`)
 }
@@ -156,6 +176,8 @@ onMounted(() => {
 .dish-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
 .dish-desc { font-size: 12px; color: var(--text-2); margin-bottom: 8px; }
 .match-badge { font-size: 12px; padding: 2px 8px; border-radius: 4px; display: inline-block; }
+.match-detail { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--text-2); margin-top: 6px; }
+.match-detail .miss { color: var(--text-3); }
 .dish-list-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
 .list-info { flex: 1; }
 .list-name { font-size: 14px; font-weight: 500; }

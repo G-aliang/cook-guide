@@ -3,7 +3,8 @@
     <h2 class="page-title">🔎 选菜匹配</h2>
 
     <!-- 自定义食材输入 -->
-    <input v-model="customIngredient" class="input" style="margin-bottom:16px" placeholder="点此添加自定义食材" @keyup.enter="addCustom" />
+    <input v-model="customIngredient" class="input" style="margin-bottom:8px" placeholder="点此添加自定义食材" @keyup.enter="addCustom" />
+    <div class="match-hint">盐、糖、生抽、葱姜蒜等调味料视为厨房常备，不参与匹配</div>
 
     <!-- 已选食材区 -->
     <div class="selected-area card" v-if="selected.length">
@@ -101,10 +102,11 @@ async function match() {
 
 onMounted(async () => {
   allIngredients.value = await ingredientModel.getAll()
-  // 按分类分组
+  // 按分类分组（调味料视为常备品，不参与匹配，故不列出）
   const grouped = {}
   for (const ing of allIngredients.value) {
     const cat = ing.category || '其他'
+    if (cat === '调味项') continue
     if (!grouped[cat]) grouped[cat] = []
     grouped[cat].push({ id: ing.id, name: ing.name, emoji: ing.emoji })
   }
@@ -118,6 +120,7 @@ onMounted(async () => {
 
 <style scoped>
 .selected-area { margin-bottom: 16px; }
+.match-hint { font-size: 12px; color: var(--text-3); margin-bottom: 16px; }
 .selected-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .selected-count { font-size: 14px; font-weight: 600; }
 .selected-tags { display: flex; flex-wrap: wrap; gap: 6px; }

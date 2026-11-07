@@ -52,39 +52,47 @@ export const dishModel = {
       .then(rels =>
         Promise.all(rels.map(r => db.ingredients.get(r.ingredientId)))
       ),
-  // 食材匹配推荐
+  // 食材匹配推荐（调味料视为常备品，不参与匹配与计数）
   async matchByIngredients(ingredientIds) {
     if (!ingredientIds || ingredientIds.length === 0) return []
 
+    // 调味项（盐/糖/生抽/葱姜蒜/番茄酱…）不计入匹配
+    const seasonings = await db.ingredients.where('category').equals('调味项').toArray()
+    const seasoningIds = new Set(seasonings.map(i => i.id))
+    const usable = ingredientIds.filter(id => !seasoningIds.has(id))
+    if (usable.length === 0) return []
+
     const allRels = await db.dish_ingredients
       .where('ingredientId')
-      .anyOf(ingredientIds)
+      .anyOf(usable)
       .toArray()
 
     const dishMatchMap = new Map()
     for (const rel of allRels) {
+      if (seasoningIds.has(rel.ingredientId)) continue
       if (!dishMatchMap.has(rel.dishId)) {
         dishMatchMap.set(rel.dishId, {
           dishId: rel.dishId,
-          matchedCount: 0,
           matchedIngredientIds: [],
         })
       }
       const entry = dishMatchMap.get(rel.dishId)
-      entry.matchedCount++
-      entry.matchedIngredientIds.push(rel.ingredientId)
+      // 同一食材只计一次，避免重复关联把匹配度算高
+      if (!entry.matchedIngredientIds.includes(rel.ingredientId)) {
+        entry.matchedIngredientIds.push(rel.ingredientId)
+      }
     }
 
     const sorted = [...dishMatchMap.values()]
-      .sort((a, b) => b.matchedCount - a.matchedCount)
+      .sort((a, b) => b.matchedIngredientIds.length - a.matchedIngredientIds.length)
 
     const results = await Promise.all(
       sorted.map(item =>
         db.dishes.get(item.dishId).then(dish => ({
           ...dish,
           matchInfo: {
-            matchedCount: item.matchedCount,
-            totalSelected: ingredientIds.length,
+            matchedCount: item.matchedIngredientIds.length,
+            totalSelected: usable.length,
             matchedIngredientIds: item.matchedIngredientIds,
           },
         }))
