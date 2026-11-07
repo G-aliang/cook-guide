@@ -46,6 +46,17 @@ const commands = {
       execSync(`${NODE} ai-gen/scripts/gen-version.js${extra}`, { cwd: ROOT, stdio: 'inherit' })
     },
   },
+  rebuild: {
+    desc: '按精确名+别名表重建菜品-食材关联（含「或」式备选）',
+    run: () => execSync(`${NODE} ai-gen/scripts/rebuild-links.js`, { cwd: ROOT, stdio: 'inherit' }),
+  },
+  substitutes: {
+    desc: '生成替代食材 + 拆分「或」式食材（并自动重建关联）',
+    run: () => {
+      execSync(`${NODE} ai-gen/scripts/gen-substitutes.js`, { cwd: ROOT, stdio: 'inherit' })
+      execSync(`${NODE} ai-gen/scripts/rebuild-links.js`, { cwd: ROOT, stdio: 'inherit' })
+    },
+  },
   check: {
     desc: '流程自检（验证各环节、文件、数据一致性）',
     run: () => execSync(`${NODE} ai-gen/scripts/check-pipeline.js`, { cwd: ROOT, stdio: 'inherit' }),

@@ -43,6 +43,9 @@ const ALIAS = {
   '三黄鸡或鸡腿': '鸡腿', '土鸡或鸡腿': '鸡腿', '鸡腿或整鸡': '鸡腿',
   '牛腩或牛腱': '牛腩', '牛腩或牛里脊': '牛腩',
   '火腿或肉丝': '火腿', '火腿或鸡肉': '火腿', '鸭腿或半只鸭': '鸭腿',
+  // 「或」式拆分后的主料（库里没有整只鸡/整条鱼，统一落到最接近的部位或同类）
+  '土鸡': '鸡腿', '三黄鸡': '鸡腿', '整鸡': '鸡腿', '老母鸡': '鸡腿', '鸡肉': '鸡腿',
+  '肉丝': '猪里脊', '牛腱': '牛腱子', '藕': '莲藕', '半只鸭': '鸭肉', '后腿肉': '猪肉',
   '蛋清': '鸡蛋', '鸡蛋清': '鸡蛋',
   // 水产
   '鲜虾': '基围虾', '大虾': '基围虾', '虾': '基围虾', '虾仁粒': '虾仁', '鲜墨鱼': '墨鱼',
@@ -60,25 +63,44 @@ const now = Date.now()
 const idByName = {}
 data.ingredients.forEach(i => { idByName[i.name] = i.id })
 
+// 名称 -> 关联食材 id：先查别名表，再查精确名
+function resolveId(name) {
+  const key = String(name || '').trim()
+  const mapped = Object.prototype.hasOwnProperty.call(ALIAS, key) ? ALIAS[key] : key
+  return idByName[mapped]
+}
+
 // 重建：每个菜品最多保留一条 (dishId, ingredientId)
+// 「或」式食材已拆成 主料 + alternatives，备选也建关联（role: 'alt'），
+// 这样匹配时两个候选都能命中，而不是只认一个
 const rows = []
 let relId = 0
 const perDish = []
 let skipped = 0
+let altRows = 0
 const unmatched = {}
 
 for (const dish of data.dishes) {
   const seen = new Set()
   const ids = []
-  for (const ing of dish.ingredients) {
-    const mapped = Object.prototype.hasOwnProperty.call(ALIAS, ing.name) ? ALIAS[ing.name] : ing.name
-    const iid = idByName[mapped]
-    if (!iid) { unmatched[ing.name] = (unmatched[ing.name] || 0) + 1; skipped++; continue }
-    if (seen.has(iid)) continue
+  const pushRow = (iid, amount, role) => {
+    if (seen.has(iid)) return
     seen.add(iid)
     ids.push(iid)
     relId++
-    rows.push({ id: relId, dishId: dish.id, ingredientId: iid, amount: ing.amount })
+    rows.push(role ? { id: relId, dishId: dish.id, ingredientId: iid, amount, role } : { id: relId, dishId: dish.id, ingredientId: iid, amount })
+    if (role) altRows++
+  }
+  for (const ing of dish.ingredients) {
+    const mainId = resolveId(ing.name)
+    if (mainId) pushRow(mainId, ing.amount)
+    else { unmatched[ing.name] = (unmatched[ing.name] || 0) + 1; skipped++ }
+
+    for (const alt of ing.alternatives || []) {
+      const altId = resolveId(alt)
+      if (!altId) continue
+      pushRow(altId, ing.amount, 'alt')
+    }
   }
   dish.relatedIngredientIds = ids
   dish.updatedAt = now
@@ -94,6 +116,7 @@ const avg = (perDish.reduce((a, b) => a + b, 0) / perDish.length).toFixed(1)
 console.log('关联重建完成')
 console.log('  行数: ' + before + ' → ' + rows.length)
 console.log('  平均每道菜关联食材: ' + avg + ' 个')
+console.log('  其中「或」式备选关联: ' + altRows + ' 条')
 console.log('  未能匹配（库里没有的写法）: ' + skipped + ' 处')
 const top = Object.entries(unmatched).sort((a, b) => b[1] - a[1]).slice(0, 12)
 console.log('  主要未匹配: ' + top.map(([k, v]) => k + '(' + v + ')').join('、'))

@@ -16,7 +16,9 @@ ai-gen/
 │   ├── export-list.js     #   导出名单 + 生成提示词
 │   ├── batch-generate.js  #   解析 AI 输出
 │   ├── analyze-status.js  #   分析进度
-│   └── check-pipeline.js  #   流程自检
+│   ├── check-pipeline.js  #   流程自检
+│   ├── rebuild-links.js   #   按精确名+别名表重建菜品-食材关联
+│   └── gen-substitutes.js #   生成替代食材 + 拆分「或」式食材
 ├── data/                  # 数据文件（自动生成）
 │   ├── dishes-list.json   #   全部名单（含生成状态）
 │   ├── dishes-todo.json   #   待生成名单
@@ -155,6 +157,7 @@ cd dist && git init && git add -A && git commit -m "更新菜品数据" && git p
 |------|----------|------|
 | **数据生成环** | 补充详细菜谱 | export → [AI] → parse → merge |
 | **质量修复环** | 数据有重复/异常名 | `node ai-gen/run.js clean` |
+| **关联/替代环** | 改别名表、拆「或」式食材、更新替代关系 | `node ai-gen/run.js substitutes`（或 `rebuild` 仅重建关联） |
 | **部署环** | 任何变更后上线 | `node ai-gen/run.js build` → 推送 dist |
 
 > 💡 支持**滚动执行**：不用等 450 道全生成完，每跑 5 道就能 merge → build → 部署一次，随时看到效果。
@@ -171,6 +174,8 @@ cd dist && git init && git add -A && git commit -m "更新菜品数据" && git p
 | `node ai-gen/run.js merge` | ③ 合并进系统 |
 | `node ai-gen/run.js clean` | 清理目录（去重） |
 | `node ai-gen/run.js version` | 查看数据版本号（加 `--apply` 生成新版本号） |
+| `node ai-gen/run.js substitutes` | 生成替代食材 + 拆分「或」式食材（并自动重建关联） |
+| `node ai-gen/run.js rebuild` | 仅重建菜品-食材关联（改别名表后跑） |
 | `node ai-gen/run.js check` | 流程自检 |
 | `node ai-gen/run.js build` | 构建 |
 | `node ai-gen/run.js all` | 一键（除 AI 生成外） |
@@ -192,6 +197,25 @@ cd dist && git init && git add -A && git commit -m "更新菜品数据" && git p
 
 ---
 
+## 数据质量脚本（关联与替代）
+
+这两个脚本直接改 `data/import-data.json` 和 `public/import-data.json`，可重复执行（幂等）：
+
+| 脚本 | 做什么 |
+|------|--------|
+| `scripts/rebuild-links.js` | 按「精确名 + 别名表」重建全部菜品-食材关联；「或」式备选也建关联并打 `role: 'alt'`；同名去重；重算 `dish.relatedIngredientIds` |
+| `scripts/gen-substitutes.js` | ① 把 `土鸡或鸡腿` 拆成 `name: 土鸡` + `alternatives: [鸡腿]`；② 生成 `ingredients[].substitutes`（人工互换表 + 菜谱「或」式配对反推）；③ 递增数据版本号 |
+
+**什么时候跑：**
+
+- 新增/修改了菜品食材名写法 → `substitutes`（拆「或」+ 建关联）
+- 只改了别名表 `ALIAS`（在 `rebuild-links.js` 顶部）→ `rebuild`
+- 跑完记得 `node ai-gen/run.js build` 并推送
+
+> ⚠️ 两个脚本都会执行 `JSON.stringify` 紧凑写回，这是既有格式，不算问题；但提交前请确认 `dataVersion` 只涨一次。
+
+---
+
 ## 数据格式
 
 AI 输出的 JSON 对应应用的 `dishes` 表字段：
@@ -206,6 +230,7 @@ AI 输出的 JSON 对应应用的 `dishes` 表字段：
 | `ingredients[].name` | 食材名 | 土豆 |
 | `ingredients[].amount` | 用量（含克数） | 400g（约2个） |
 | `ingredients[].note` | 选购建议 | 选光滑偏圆的 |
+| `ingredients[].alternatives` | 「或」式备选（脚本自动拆，手写时可直接写「A或B」由脚本拆） | ["鸡腿"] |
 | `steps[].order` | 步骤序号 | 1 |
 | `steps[].desc` | 步骤描述 | 土豆去皮切丝 |
 | `steps[].heat` | 火候 | 中火 |
@@ -229,17 +254,13 @@ AI 输出的 JSON 对应应用的 `dishes` 表字段：
 
 | 项目 | 数量 |
 |------|------|
-| 系统菜品总数 | 460 道 |
-| 已生成详细数据 | 10 道 |
-| 待生成 | 450 道（90 批） |
+| 食材 | 313 种 |
+| 菜品 | 902 道（全部含详细数据，台账 902/902/0） |
+| 菜品-食材关联 | 6447 条（含 19 条「或」式备选） |
+| 食材替代关系 | 248 条，覆盖 181 种食材 |
+| 数据版本 | `2026110702` |
 
-| 批次 | 分类 | 菜品数 |
-|------|------|--------|
-| 001-064 | 热炒 | 317 道 |
-| 065-076 | 汤羹 | 57 道 |
-| 077-082 | 主食 | 30 道 |
-| 083-088 | 凉菜 | 25 道 |
-| 089-090 | 甜点 | 21 道 |
+> 扩容已完成（豆制品系列 + 十大菜系），当前不再有待生成名单；后续加菜仍可走 export → AI → parse → merge。
 
 ---
 
